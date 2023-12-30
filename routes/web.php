@@ -1,0 +1,160 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+/*
+//ini untuk root
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/login', function () {
+    return view('login');
+});
+*/
+
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
+Route::get('/', function () {
+    return view('login');
+});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+Route::get('data-factory', function () {
+    return view('master_data.basic_master.dataFactory');
+});
+Route::get('data-user', function () {
+    return view('master_data.basic_master.dataUser');
+});
+Route::get('setting-user', function () {
+    return view('master_data.system.settingUser');
+});
+Route::get('master-setting', function () {
+    return view('master_data.system.masterSetting');
+});
+Route::get('employee', function () {
+    return view('master_data.human_resource.employee');
+});
+Route::get('admin-barang', function () {
+    return view('admin.barang');
+});
+Route::get('admin-pembelian', function () {
+    return view('admin.pembelian');
+});
+Route::get('admin-penjualan', function () {
+    return view('admin.penjualan');
+});
+Route::get('product-score-card', function () {
+    return view('customer.productScoreCard');
+});
+Route::get('customer-score-card', function () {
+    return view('customer.customerScoreCard');
+});
+
+Route::get('vendor-product-scorecard', function () {
+    return view('vendor.productScoreCard');
+});
+Route::get('vendor-customer-scorecard', function () {
+    return view('vendor.customerScoreCard');
+});
+Route::get('purchase-request', function () {
+    return view('transaksi.pesanan.purchase');
+});
+Route::get('purchase-request-approval', function () {
+    return view('transaksi.pesanan.purchaseApproval');
+});
+Route::get('purchase-order', function () {
+    return view('transaksi.pembelian.purchaseOrder');
+});
+Route::get('purchase-order-approval', function () {
+    return view('transaksi.pembelian.purchaseOrderApproval');
+});
+Route::get('general-receive-note', function () {
+    return view('transaksi.penerimaan.generalReceive');
+});
+Route::get('payment-entry', function () {
+    return view('transaksi.pembayaran.paymentEntry');
+});
+Route::get('payment-query', function () {
+    return view('transaksi.pembayaran.paymentQuery');
+});
+Route::get('material-request', function () {
+    return view('transaksi.pemakaian.materialRequest');
+});
+Route::get('general-issue', function () {
+    return view('transaksi.pemakaian.generalIssue');
+});
+Route::get('purchase-request-summary', function () {
+    return view('report.pesanan.purchaseRequestSummary');
+});
+Route::get('purchase-summary', function () {
+    return view('report.pembelian.purchaseSummary');
+});
+Route::get('general-receive-summary', function () {
+    return view('report.penerimaan.generalReceiveSummary');
+});
+Route::get('payment-summary', function () {
+    return view('report.pembayaran.paymentSummary');
+});
+Route::get('material-request-summary', function () {
+    return view('report.pemakaian.materialRequestSummary');
+});
+Route::get('general-issue-note', function () {
+    return view('report.pemakaian.generalIssueSummary');
+});
+Route::get('coa-group', function () {
+    return view('coa.coaGroupAdd');
+});
+Route::get('coa-entry-list', function () {
+    return view('coa.coaEntryList');
+});
+Route::get('credit-management', function () {
+    $list_modul = DB::table('modul_form')->get();
+    return view('coa.creditManagementAdd', ['list_modul' => $list_modul]);
+});
+Route::get('list-credit-management', function () {
+    $list_credit_term = DB::table('credit_term')->get();
+    return view('coa.creditManagement', ['list_credit_term' => $list_credit_term]);
+});
+Route::get('customer-supplier-group', function () {
+    $list_modul = DB::table('modul_form')->get();
+    return view('coa.customerSupplierGroupAdd', ['list_modul' => $list_modul]);
+});
+Route::get('list-customer-supplier-group', function () {
+    $list_customer_supplier = DB::table('customer_supplier_group')->get();
+    return view('coa.customerSupplierGroup', ['list_customer_supplier' => $list_customer_supplier]);
+});
+Route::get('group-modul', function () {
+    return view('coa.groupModulAdd');
+});
+Route::get('list-group-modul', function () {
+    $list_group = DB::table('group_modul')->get();
+    return view('coa.groupModul', ['list_group' => $list_group]);
+});
+Route::get('modul-management', function () {
+    $list_group = DB::table('group_modul')->get();
+    return view('coa.modulManagementAdd', ['list_group' => $list_group]);
+});
+Route::get('list-modul-management', function () {
+    $list_modul = DB::table('modul_form')->get();
+    return view('coa.modulManagement', ['list_modul' => $list_modul]);
+});
+Route::get('currency-management', function () {
+    return view('coa.currencyManagement');
+});
+Route::get('supplier-type-management', function () {
+    return view('coa.supplierTypeManagement');
+});
