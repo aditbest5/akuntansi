@@ -26,8 +26,9 @@ Route::post('coa/get-group-name', [COAController::class, 'queryGroupName']);
 Route::post('coa/store-modul', [COAController::class, 'storeModul']);
 Route::post('coa/store-credit', [COAController::class, 'storeCredit']);
 Route::delete('coa/delete-credit', [COAController::class, 'destroyCredit']);
+Route::post('coa/store-customer', [COAController::class, 'storeCustomer']);
+Route::delete('coa/delete-customer', [COAController::class, 'destroyCustomer']);
 Route::post('coa/store-supplier', [COAController::class, 'storeSupplier']);
-Route::delete('coa/delete-supplier', [COAController::class, 'destroySupplier']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

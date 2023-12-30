@@ -312,7 +312,7 @@ function deleteCredit(id) {
         });
 }
 
-function submitSupplier(e) {
+function submitCustomer(e) {
     e.preventDefault();
     let modul_code = document.getElementById("modul_code").value;
     let group_code = document.getElementById("group_code").value;
@@ -342,7 +342,7 @@ function submitSupplier(e) {
     };
 
     // Lakukan permintaan fetch
-    fetch("api/coa/store-supplier", requestOptions)
+    fetch("api/coa/store-customer", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -369,7 +369,7 @@ function submitSupplier(e) {
         });
 }
 
-function deleteSupplier(id) {
+function deleteCustomer(id) {
     const requestOptions = {
         method: "DELETE",
         headers: {
@@ -382,7 +382,7 @@ function deleteSupplier(id) {
     };
 
     // Lakukan permintaan fetch
-    fetch("api/coa/delete-supplier", requestOptions)
+    fetch("api/coa/delete-customer", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -399,6 +399,64 @@ function deleteSupplier(id) {
                 } else {
                     alert("OK");
                     document.location.href = "/list-credit-management";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function submitSupplier(e) {
+    e.preventDefault();
+    let supplier_type_code =
+        document.getElementById("supplier_type_code").value;
+    let supplier_type_name =
+        document.getElementById("supplier_type_name").value;
+    let supplier_type_desc =
+        document.getElementById("supplier_type_desc").value;
+    let supplier_type_status = document.getElementById(
+        "supplier_type_status"
+    ).value;
+    let modul_code = document.getElementById("modul_code").value;
+
+    const requestData = {
+        modul_code,
+        supplier_type_code,
+        supplier_type_name,
+        supplier_type_desc,
+        supplier_type_status,
+    };
+
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(requestData),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("api/coa/store-supplier", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-customer-supplier-group";
                 }
             }
         })

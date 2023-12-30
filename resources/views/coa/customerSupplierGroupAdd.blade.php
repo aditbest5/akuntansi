@@ -46,7 +46,7 @@
                             </div>
                         </div><!--end header-title-->
                         <div class="flex-auto p-4 ">
-                            <form onsubmit="return submitSupplier(event)">
+                            <form onsubmit="return submitCustomer(event)">
                                 <div class="grid xl:grid-cols-2 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
                                         <select name="modul_code" id="modul_code"
