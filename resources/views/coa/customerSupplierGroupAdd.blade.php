@@ -49,22 +49,6 @@
                             <form onsubmit="return submitCustomer(event)">
                                 <div class="grid xl:grid-cols-2 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
-                                        <select name="modul_code" id="modul_code"
-                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
-                                            required>
-                                            <option value='00' hidden>Pilih Modul Code</option>
-                                            @forelse ($list_modul as $key => $value)
-                                                <option value='{{ $value->modul_code }}'>
-                                                    {{ $value->modul_code }}</option>
-                                            @empty
-                                                <option value='00'>Tidak Ada Data</option>
-                                            @endforelse
-                                        </select>
-                                        <label for="modul_code"
-                                            class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Module
-                                            Code</label>
-                                    </div>
-                                    <div class="relative z-0 mb-2 w-full group">
                                         <input type="text" name="group_code" id="group_code"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
                                             placeholder=" " required />
@@ -73,9 +57,6 @@
                                             Code
                                         </label>
                                     </div>
-                                </div>
-                                <br>
-                                <div class="grid xl:grid-cols-2 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
                                         <input type="text" name="group_name" id="group_name"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
@@ -84,6 +65,9 @@
                                             class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Group
                                             Name</label>
                                     </div>
+                                </div>
+                                <br>
+                                <div class="grid xl:grid-cols-2 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
                                         <input type="text" name="group_description" id="group_description"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
@@ -93,9 +77,6 @@
                                             Description
                                         </label>
                                     </div>
-                                </div>
-                                <br>
-                                <div class="grid xl:grid-cols-2 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
                                         <input type="text" name="coa_code" id="coa_code"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
@@ -104,6 +85,9 @@
                                             class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">COA
                                             Code</label>
                                     </div>
+                                </div>
+                                <br>
+                                <div class="grid xl:grid-cols-2 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
                                         <input type="text" name="coa_name" id="coa_name"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
@@ -112,16 +96,15 @@
                                             class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
                                             Coa Name</label>
                                     </div>
-                                </div>
-                                <br>
-                                <div class="relative z-0 mb-2 w-full group">
-                                    <label for="group_status"
-                                        class="font-medium text-sm text-slate-600 dark:text-slate-400">Group Status</label>
-                                    <select id="group_status" name="group_status"
-                                        class="w-full rounded-md mt-1 border border-slate-300/60 dark:border-slate-700 dark:text-slate-300 bg-transparent px-3 py-[6.5px] focus:outline-none focus:ring-0 placeholder:text-slate-400/70 placeholder:font-normal placeholder:text-sm hover:border-slate-400 focus:border-primary-500 dark:focus:border-primary-500  dark:hover:border-slate-700">
-                                        <option value="0">Tidak</option>
-                                        <option value="1">Aktif</option>
-                                    </select>
+                                    <div class="relative z-0 mb-2 w-full group">
+                                        <label for="group_status"
+                                            class="font-medium text-sm text-slate-600 dark:text-slate-400">Group Status</label>
+                                        <select id="group_status" name="group_status"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer">
+                                            <option value="0">Tidak</option>
+                                            <option value="1">Aktif</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <br>
                                 <button type="submit"

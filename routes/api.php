@@ -29,8 +29,6 @@ Route::delete('coa/delete-credit', [COAController::class, 'destroyCredit']);
 Route::post('coa/store-customer', [COAController::class, 'storeCustomer']);
 Route::delete('coa/delete-customer', [COAController::class, 'destroyCustomer']);
 Route::post('coa/store-supplier', [COAController::class, 'storeSupplier']);
-
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

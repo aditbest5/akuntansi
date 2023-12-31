@@ -218,7 +218,6 @@ function submitModul(e) {
 
 function submitCredit(e) {
     e.preventDefault();
-    let modul_code = document.getElementById("modul_code").value;
     let credit_term_code = document.getElementById("credit_term_code").value;
     let credit_term_name = document.getElementById("credit_term_name").value;
     let credit_term_value = document.getElementById("credit_term_value").value;
@@ -229,7 +228,6 @@ function submitCredit(e) {
     const requestData = {
         credit_term_code,
         credit_term_name,
-        modul_code,
         credit_term_value,
         credit_term_status,
     };
@@ -254,6 +252,7 @@ function submitCredit(e) {
         })
         .then((data) => {
             // Proses respons JSON
+            console.log(data)
             if (data.length == 0) {
                 alert("Tidak Ada Data", "warning", "Warning");
             } else {
@@ -314,7 +313,6 @@ function deleteCredit(id) {
 
 function submitCustomer(e) {
     e.preventDefault();
-    let modul_code = document.getElementById("modul_code").value;
     let group_code = document.getElementById("group_code").value;
     let group_name = document.getElementById("group_name").value;
     let coa_code = document.getElementById("coa_code").value;
@@ -323,7 +321,6 @@ function submitCustomer(e) {
     let group_status = document.getElementById("group_status").value;
 
     const requestData = {
-        modul_code,
         group_code,
         group_name,
         group_description,
@@ -350,6 +347,7 @@ function submitCustomer(e) {
             return response.json();
         })
         .then((data) => {
+            console.log(data)
             // Proses respons JSON
             if (data.length == 0) {
                 alert("Tidak Ada Data", "warning", "Warning");
@@ -420,10 +418,8 @@ function submitSupplier(e) {
     let supplier_type_status = document.getElementById(
         "supplier_type_status"
     ).value;
-    let modul_code = document.getElementById("modul_code").value;
 
     const requestData = {
-        modul_code,
         supplier_type_code,
         supplier_type_name,
         supplier_type_desc,
@@ -456,7 +452,7 @@ function submitSupplier(e) {
                     alert("Error");
                 } else {
                     alert("OK");
-                    document.location.href = "/list-customer-supplier-group";
+                    document.location.href = "/list-supplier-type-management";
                 }
             }
         })
