@@ -17,6 +17,7 @@ class COAController extends Controller
         $list_modul = DB::table('modul_form')->where('id', $id)->first();
         return view('coa.modulManagementEdit', ['list_modul' => $list_modul, 'list_group' => $list_group]);
     }
+
     public function storeGroup(Request $request)
     {
         header("Access-Control-Allow-Origin: *");
@@ -63,6 +64,12 @@ class COAController extends Controller
     public function queryGroupName(Request $request)
     {
         $name = DB::table('group_modul')->where('id', $request->id)->first();
+        return json_encode($name);
+    }
+
+    public function queryModulName(Request $request)
+    {
+        $name = DB::table('modul_form')->where('id', $request->id)->first();
         return json_encode($name);
     }
 
@@ -173,5 +180,35 @@ class COAController extends Controller
             $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
         }
         return response()->json($results);
+    }
+
+
+    public function storeDocumentFormat(Request $request)
+    {
+        $results = DB::table('document_format')->insert([
+            'doc_num_code' => $request->input('doc_num_code'),
+            'modul_code' => $request->input('modul_code'),
+            'modul_name' => $request->input('modul_name'),
+            'doc_num_name' => $request->input('doc_num_name'),
+            'start_number' => $request->input('start_number'),
+            'format' => $request->input('format'),
+
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
+    }
+
+
+    public function destroyDocumentFormat(Request $request)
+    {
+        $deleted = DB::table('document_format')->where('id', $request->input('id'))->delete();
+        if (!$deleted) {
+            $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
+        } else {
+            $resutlMsg = array("sts" => "OK", "desc" => " Delete Success !", "msg" => "");
+        }
+        return response()->json($resutlMsg);
     }
 }

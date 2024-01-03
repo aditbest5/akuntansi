@@ -185,5 +185,6 @@ Route::get('/list-document-format', function () {
 
 Route::get('/document-format', function () {
     $list_document_format = DB::table('document_format')->get();
-    return view('coa.documentNumberingManagementAdd', ['list_document_format' => $list_document_format]);
+    $list_modul = DB::table('modul_form')->get();
+    return view('coa.documentNumberingManagementAdd', ['list_document_format' => $list_document_format, 'list_modul' => $list_modul]);
 });

@@ -65,7 +65,15 @@
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    Document Numbering Format Description
+                                                    Modul Form
+                                                </th>
+                                                <th scope="col"
+                                                    class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                                                    Start Number
+                                                </th>
+                                                <th scope="col"
+                                                    class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                                                    Format
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
@@ -87,15 +95,18 @@
                                                         {{ $value->doc_num_name }}</td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                        {{ $value->modul_code }}</td>
+                                                    <td
+                                                        class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                         {{ $value->start_number }}</td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                         {{ $value->format }}</td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        <a href="/edit-modul-management/{{ $value->id }}"><i
+                                                        <a href="/edit-document-format/{{ $value->id }}"><i
                                                                 class="icofont-edit text-lg text-gray-500 dark:text-gray-400"></i></a>
-                                                        <button onclick="deleteGroup({{ $value->id }})"><i
+                                                        <button onclick="deleteDocumentFormat({{ $value->id }})"><i
                                                                 class="icofont-ui-delete text-lg text-red-500 dark:text-red-400"></i></button>
                                                     </td>
                                                 </tr>
@@ -106,6 +117,10 @@
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                         Data not found</td>
+                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                                                    </td>
+                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                                                    </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
