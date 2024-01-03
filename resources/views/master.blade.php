@@ -9,15 +9,15 @@
     <meta content="" name="Mannatthemes" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="template/dist/assets/images/favicon.ico" />
+    <link rel="shortcut icon" href="/template/dist/assets/images/favicon.ico" />
 
     <!-- Css -->
     <!-- Main Css -->
-    <link href="template/dist/assets/libs/prismjs/themes/prism-twilight.min.css" type="text/css" rel="stylesheet" />
-    <link rel="stylesheet" href="template/dist/assets/libs/simple-datatables/style.css" />
-    <link rel="stylesheet" href="template/dist/assets/libs/icofont/icofont.min.css">
-    <link href="template/dist/assets/libs/flatpickr/flatpickr.min.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" href="template/dist/assets/css/tailwind.min.css">
+    <link href="/template/dist/assets/libs/prismjs/themes/prism-twilight.min.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="/template/dist/assets/libs/simple-datatables/style.css" />
+    <link rel="stylesheet" href="/template/dist/assets/libs/icofont/icofont.min.css">
+    <link href="/template/dist/assets/libs/flatpickr/flatpickr.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="/template/dist/assets/css/tailwind.min.css">
 
 </head>
 
@@ -33,11 +33,11 @@
             class=" text-center border-b bg-[#603dc3] border-r h-[64px] flex justify-center items-center brand-logo dark:bg-[#603dc3] dark:border-slate-700/40 group-data-[sidebar=dark]:bg-[#603dc3] group-data-[sidebar=dark]:border-slate-700/40 group-data-[sidebar=brand]:bg-brand group-[.dark]:group-data-[sidebar=brand]:bg-[#603dc3] group-data-[sidebar=brand]:border-slate-700/40">
             <a href="index.html" class="logo">
                 <span>
-                    <img src="template/dist/assets/images/arneva.png" alt="logo-small"
+                    <img src="/template/dist/assets/images/arneva.png" alt="logo-small"
                         class="logo-sm h-8 align-middle inline-block">
                 </span>
             </a>
-        </div   >
+        </div>
         <div class="border-r pb-14 h-[100vh] dark:bg-[#603dc3] dark:border-slate-700/40 group-data-[sidebar=dark]:border-slate-700/40 group-data-[sidebar=brand]:border-slate-700/40"
             data-simplebar>
             <div class="p-4 block">
@@ -236,7 +236,7 @@
                                             class="nav-link  hover:text-primary-500  rounded-md dark:hover:text-primary-500 relative   flex items-center decoration-0 px-3 py-3 group-data-[sidebar=brand]:hover:text-slate-200">
                                             <i
                                                 class="icofont-dotted-right me-2 text-slate-600 text-[8px] group-data-[sidebar=brand]:text-slate-400 "></i>
-                                                Document Numbering Format Management
+                                            Document Numbering Format Management
 
                                         </a>
                                     </li>
@@ -247,10 +247,10 @@
                         <div
                             class="border-b border-dashed dark:border-slate-700/40 my-3 group-data-[sidebar=dark]:border-slate-700/40 group-data-[sidebar=brand]:border-slate-700/40">
                         </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
     </div>
 
 
@@ -343,7 +343,7 @@
                                 <a href="javascript:void(0);" class="dropdown-item">
                                     <div class="flex">
                                         <img class="object-cover rounded-full h-8 w-8 shrink-0 me-3"
-                                            src="template/dist/assets/images/users/avatar-3.png" alt="logo" />
+                                            src="/template/dist/assets/images/users/avatar-3.png" alt="logo" />
                                         <div class="flex-grow flex-1 ms-0.5 overflow-hidden">
                                             <p
                                                 class="text-sm font-medium text-gray-900 truncate
@@ -383,7 +383,7 @@
                                 <a href="javascript:void(0);" class="dropdown-item">
                                     <div class="flex">
                                         <img class="object-cover rounded-full h-8 w-8 shrink-0 me-3"
-                                            src="template/dist/assets/images/users/avatar-9.png" alt="logo" />
+                                            src="/template/dist/assets/images/users/avatar-9.png" alt="logo" />
                                         <div class="flex-grow flex-1 ms-0.5 overflow-hidden">
                                             <p
                                                 class="text-sm font-medium  text-gray-900 truncate
@@ -406,7 +406,7 @@
                         class="dropdown-toggle flex items-center rounded-full text-sm
                     focus:bg-none focus:ring-0 dark:focus:ring-0 md:me-0"
                         id="user-profile" aria-expanded="false" data-fc-autoclose="both" data-fc-type="dropdown">
-                        <img class="h-8 w-8 rounded-full" src="template/dist/assets/images/users/avatar-1.png"
+                        <img class="h-8 w-8 rounded-full" src="/template/dist/assets/images/users/avatar-1.png"
                             alt="user photo" />
                         <span class="ltr:ms-2 rtl:ms-0 rtl:me-2 hidden text-left xl:block">
                             <span class="block font-medium text-slate-600 dark:text-gray-300">Maria Gibson</span>
@@ -470,18 +470,18 @@
     <!-- <div class="menu-overlay"></div> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-    <script src="template/dist/assets/libs/lucide/umd/lucide.min.js"></script>
-    <script src="template/dist/assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="template/dist/assets/libs/flatpickr/flatpickr.min.js"></script>
-    <script src="template/dist/assets/libs/@frostui/tailwindcss/frostui.js"></script>
-    <script src="template/dist/assets/libs/prismjs/prism.js"></script>
+    <script src="/template/dist/assets/libs/lucide/umd/lucide.min.js"></script>
+    <script src="/template/dist/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="/template/dist/assets/libs/flatpickr/flatpickr.min.js"></script>
+    <script src="/template/dist/assets/libs/@frostui/tailwindcss/frostui.js"></script>
+    <script src="/template/dist/assets/libs/prismjs/prism.js"></script>
 
-    <script src="template/dist/assets/libs/simple-datatables/umd/simple-datatables.js"></script>
-    <script src="template/dist/assets/js/pages/datatable.init.js"></script>
-    <script src="template/dist/assets/libs/apexcharts/apexcharts.min.js"></script>
-    <script src="template/dist/assets/js/pages/analytics-index.init.js"></script>
-    <script src="template/dist/assets/js/app.js"></script>
-    <script src="template/dist/assets/js/pages/coa.js"></script>
+    <script src="/template/dist/assets/libs/simple-datatables/umd/simple-datatables.js"></script>
+    <script src="/template/dist/assets/js/pages/datatable.init.js"></script>
+    <script src="/template/dist/assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="/template/dist/assets/js/pages/analytics-index.init.js"></script>
+    <script src="/template/dist/assets/js/app.js"></script>
+    <script src="/template/dist/assets/js/pages/coa.js"></script>
 
     <!-- JAVASCRIPTS -->
 </body>

@@ -159,6 +159,45 @@ function groupCode(e) {
         });
 }
 
+function modulCode(e) {
+    let split_string = e.split("+");
+    let id = split_string[0];
+    console.log(id);
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+            id,
+        }),
+    };
+    fetch("api/coa/get-modul-name", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            const { modul_name, sts } = data;
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (sts == "N") {
+                    alert("Error");
+                } else {
+                    document.getElementById("modul_name").value = modul_name;
+                }
+            }
+        })
+        .catch((error) => {
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
 function submitModul(e) {
     e.preventDefault();
     let group_modul_code = document.getElementById("group_modul_code").value;
@@ -215,7 +254,70 @@ function submitModul(e) {
             alert("ERROR", "error", "Error \n" + error.message);
         });
 }
+function submitEditModul(e, id) {
+    e.preventDefault();
+    let group_modul_code = document.getElementById("group_modul_code").value;
+    let group_modul_name = document.getElementById("group_modul_name").value;
+    let modul_code = document.getElementById("modul_code").value;
+    let modul_name = document.getElementById("modul_name").value;
+    let modul_description = document.getElementById("modul_description").value;
+    let modul_status = document.getElementById("modul_status").value;
+    let split_group_modul_code = group_modul_code.split("+");
+    group_modul_code = split_group_modul_code[1];
+    console.log([
+        id,
+        group_modul_name,
+        modul_code,
+        modul_name,
+        modul_description,
+        modul_status,
+        group_modul_code,
+    ]);
+    const requestData = {
+        group_modul_code,
+        group_modul_name,
+        modul_code,
+        modul_name,
+        modul_description,
+        modul_status,
+    };
 
+    const requestOptions = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(requestData),
+    };
+
+    // Lakukan permintaan fetch
+    fetch(`/api/coa/update-modul/${id}`, requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-modul-management";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
 function submitCredit(e) {
     e.preventDefault();
     let credit_term_code = document.getElementById("credit_term_code").value;
@@ -252,7 +354,7 @@ function submitCredit(e) {
         })
         .then((data) => {
             // Proses respons JSON
-            console.log(data)
+            console.log(data);
             if (data.length == 0) {
                 alert("Tidak Ada Data", "warning", "Warning");
             } else {
@@ -347,7 +449,7 @@ function submitCustomer(e) {
             return response.json();
         })
         .then((data) => {
-            console.log(data)
+            console.log(data);
             // Proses respons JSON
             if (data.length == 0) {
                 alert("Tidak Ada Data", "warning", "Warning");
@@ -453,6 +555,102 @@ function submitSupplier(e) {
                 } else {
                     alert("OK");
                     document.location.href = "/list-supplier-type-management";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function submitDocumentFormat(e) {
+    e.preventDefault();
+    let doc_num_code = document.getElementById("doc_num_code").value;
+    let modul_code = document.getElementById("modul_code").value;
+    let modul_name = document.getElementById("modul_name").value;
+    let doc_num_name = document.getElementById("doc_num_name").value;
+    let start_number = document.getElementById("start_number").value;
+    let format = document.getElementById("format").value;
+    let split_modul_code = modul_code.split("+");
+    modul_code = split_modul_code[1];
+    const requestData = {
+        doc_num_code,
+        modul_code,
+        modul_name,
+        doc_num_name,
+        start_number,
+        format,
+    };
+
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(requestData),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("api/coa/store-document-format", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-document-format";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function deleteDocumentFormat(id) {
+    const requestOptions = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+            id,
+        }),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("api/coa/delete-document-format", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-document-format";
                 }
             }
         })

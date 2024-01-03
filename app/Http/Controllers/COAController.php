@@ -7,6 +7,16 @@ use Illuminate\Support\Facades\DB;
 
 class COAController extends Controller
 {
+    public function showEditModul($id)
+    {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+        $list_group = DB::table('group_modul')->get();
+        $list_modul = DB::table('modul_form')->where('id', $id)->first();
+        return view('coa.modulManagementEdit', ['list_modul' => $list_modul, 'list_group' => $list_group]);
+    }
 
     public function storeGroup(Request $request)
     {
@@ -57,10 +67,34 @@ class COAController extends Controller
         return json_encode($name);
     }
 
+    public function queryModulName(Request $request)
+    {
+        $name = DB::table('modul_form')->where('id', $request->id)->first();
+        return json_encode($name);
+    }
+
     public function storeModul(Request $request)
     {
 
         $results = DB::table('modul_form')->insert([
+            'group_modul_code' => $request->input('group_modul_code'),
+            'group_modul_name' => $request->input('group_modul_name'),
+            'modul_code' => $request->input('modul_code'),
+            'modul_name' => $request->input('modul_name'),
+            'modul_description' => $request->input('modul_description'),
+            'modul_status' => $request->input('modul_status')
+
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
+    }
+
+    public function updateModul(Request $request, $id)
+    {
+
+        $results = DB::table('modul_form')->where('id', $id)->update([
             'group_modul_code' => $request->input('group_modul_code'),
             'group_modul_name' => $request->input('group_modul_name'),
             'modul_code' => $request->input('modul_code'),
@@ -90,7 +124,7 @@ class COAController extends Controller
             $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
         }
         return response()->json($results);
-    }   
+    }
 
     public function destroyCredit(Request $request)
     {
@@ -146,5 +180,35 @@ class COAController extends Controller
             $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
         }
         return response()->json($results);
+    }
+
+
+    public function storeDocumentFormat(Request $request)
+    {
+        $results = DB::table('document_format')->insert([
+            'doc_num_code' => $request->input('doc_num_code'),
+            'modul_code' => $request->input('modul_code'),
+            'modul_name' => $request->input('modul_name'),
+            'doc_num_name' => $request->input('doc_num_name'),
+            'start_number' => $request->input('start_number'),
+            'format' => $request->input('format'),
+
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
+    }
+
+
+    public function destroyDocumentFormat(Request $request)
+    {
+        $deleted = DB::table('document_format')->where('id', $request->input('id'))->delete();
+        if (!$deleted) {
+            $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
+        } else {
+            $resutlMsg = array("sts" => "OK", "desc" => " Delete Success !", "msg" => "");
+        }
+        return response()->json($resutlMsg);
     }
 }

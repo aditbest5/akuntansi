@@ -7,14 +7,16 @@
                     <div class="w-full">
                         <div class="flex flex-wrap justify-between">
                             <div class="items-center ">
-                                <h1 class="font-medium text-3xl block dark:text-slate-100">Document Numbering Format Management</h1>
+                                <h1 class="font-medium text-3xl block dark:text-slate-100">Document Numbering Format
+                                    Management</h1>
                                 <ol class="list-reset flex text-sm">
                                     <li><a href="#" class="text-gray-500 dark:text-slate-400">Master Data</a>
                                     </li>
                                     <li><span class="text-gray-500 dark:text-slate-400 mx-2">/</span></li>
                                     <li class="text-gray-500 dark:text-slate-400">COA</li>
                                     <li><span class="text-gray-500 dark:text-slate-400 mx-2">/</span></li>
-                                    <li class="text-primary-500 hover:text-primary-600 dark:text-primary-400">Document Numbering Format
+                                    <li class="text-primary-500 hover:text-primary-600 dark:text-primary-400">Document
+                                        Numbering Format
                                         Management
                                     </li>
                                 </ol>
@@ -40,54 +42,83 @@
                         class="bg-white dark:bg-gray-900 border border-slate-200 dark:border-slate-700/40  rounded-md w-full relative mb-4">
                         <div class="border-b border-slate-200 dark:border-slate-700/40 py-3 px-4 dark:text-slate-300/70">
                             <div class="flex-none md:flex">
-                                <h4 class="font-medium text-lg flex-1 self-center mb-2 md:mb-0">Document Numbering Format Management</h4>
+                                <h4 class="font-medium text-lg flex-1 self-center mb-2 md:mb-0">Document Numbering Format
+                                    Management</h4>
                             </div>
                         </div><!--end header-title-->
                         <div class="flex-auto p-4 ">
-                            <form onsubmit="return submitCredit(event)">
+                            <form onsubmit="return submitDocumentFormat(event)">
                                 <div class="grid xl:grid-cols-2 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
-                                        <input type="text" name="credit_term_code" id="credit_term_code"
+                                        <input type="text" name="doc_num_code" id="doc_num_code"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
                                             placeholder=" " required />
-                                        <label for="credit_term_code"
-                                            class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Credit
-                                            Term Code</label>
+                                        <label for="doc_num_code"
+                                            class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Document
+                                            Number Code</label>
                                     </div>
                                     <div class="relative z-0 mb-2 w-full group">
-                                        <input type="text" name="credit_term_name" id="credit_term_name"
+                                        <input type="text" name="doc_num_name" id="doc_num_name"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
                                             placeholder=" " required />
-                                        <label for="credit_term_name"
-                                            class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Credit
-                                            Term Name</label>
+                                        <label for="doc_num_name"
+                                            class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Document
+                                            Numbering Name</label>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="grid xl:grid-cols-2 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
-                                        <input type="text" name="credit_term_value" id="credit_term_value"
+                                        <select onchange="modulCode(this.value)" name="modul_code" id="modul_code"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
-                                            placeholder=" " required />
-                                        <label for="credit_term_value"
-                                            class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Credit
-                                            Term Value</label>
+                                            required>
+                                            <option value='00' hidden>Pilih Modul Code</option>
+                                            @forelse ($list_modul as $key => $value)
+                                                {{ $value->id = (string) $value->id }}
+                                                <option value='{{ $value->id . '+' . $value->modul_code }}'>
+                                                    {{ $value->modul_code . ' - ' . $value->modul_name }}
+                                                </option>
+                                            @empty
+                                                <option value='00'>Tidak Ada Data</option>
+                                            @endforelse
+                                        </select>
+                                        <label for="modul_code"
+                                            class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Group
+                                            Modul Code
+                                        </label>
                                     </div>
                                     <div class="relative z-0 mb-2 w-full group">
-                                    <label for="credit_term_status"
-                                        class="font-medium text-sm text-slate-600 dark:text-slate-400 top-3">Document Numbering Format
-                                        Status</label>
-                                    <select id="credit_term_status" name="credit_term_status"
-                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer">
-                                        <option value="0">Tidak</option>
-                                        <option value="1">Aktif</option>
-                                    </select>
+                                        <input type="text" name="modul_name" id="modul_name"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
+                                            placeholder=" " required />
+                                        <label for="modul_name"
+                                            class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Modul
+                                            Name</label>
+                                    </div>
                                 </div>
+                                <br>
+                                <div class="grid xl:grid-cols-2 xl:gap-6">
+                                    <div class="relative z-0 mb-2 w-full group">
+                                        <input type="text" name="start_number" id="start_number"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
+                                            placeholder=" " required />
+                                        <label for="start_number"
+                                            class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Start
+                                            Number</label>
+                                    </div>
+                                    <div class="relative z-0 mb-2 w-full group">
+                                        <input type="text" name="format" id="format"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
+                                            placeholder=" " required />
+                                        <label for="format"
+                                            class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Document
+                                            Format</label>
+                                    </div>
                                 </div>
                                 <br>
                                 <button type="submit"
                                     class="inline-block focus:outline-none text-primary-500 hover:bg-primary-500 hover:text-white bg-transparent border border-gray-200 dark:bg-transparent dark:text-primary-500 dark:hover:text-white dark:border-gray-700 dark:hover:bg-primary-500  text-sm font-medium py-1 px-3 rounded mb-1 lg:mb-0">Submit</button>
-                                <a href="/list-credit-management"
+                                <a href="/list-document-format"
                                     class="inline-block focus:outline-none text-red-500 hover:bg-red-500 hover:text-white bg-transparent border border-gray-200 dark:bg-transparent dark:text-red-500 dark:hover:text-white dark:border-gray-700 dark:hover:bg-red-500  text-sm font-medium py-1 px-3 rounded mb-1 lg:mb-0">Cancel</a>
                             </form>
                         </div><!--end card-body-->
