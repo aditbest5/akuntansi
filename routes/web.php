@@ -163,3 +163,7 @@ Route::get('list-supplier-type-management', function () {
     $list_supplier_type = DB::table('supplier_type')->get();
     return view('coa.supplierTypeManagement', ['list_supplier_type' => $list_supplier_type]);
 });
+Route::get('list-document-format', function () {
+    $list_document_format = DB::table('document_format')->get();
+    return view('coa.documentNumberingManagement', ['list_document_format' => $list_document_format]);
+});
