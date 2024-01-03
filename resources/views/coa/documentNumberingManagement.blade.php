@@ -7,14 +7,16 @@
                     <div class="w-full">
                         <div class="flex flex-wrap justify-between">
                             <div class="items-center ">
-                                <h1 class="font-medium text-3xl block dark:text-slate-100">Document Numbering Format Management</h1>
+                                <h1 class="font-medium text-3xl block dark:text-slate-100">Document Numbering Format
+                                    Management</h1>
                                 <ol class="list-reset flex text-sm">
                                     <li><a href="#" class="text-gray-500 dark:text-slate-400">Master Data</a>
                                     </li>
                                     <li><span class="text-gray-500 dark:text-slate-400 mx-2">/</span></li>
                                     <li class="text-gray-500 dark:text-slate-400">COA</li>
                                     <li><span class="text-gray-500 dark:text-slate-400 mx-2">/</span></li>
-                                    <li class="text-primary-500 hover:text-primary-600 dark:text-primary-400">Document Numbering Format
+                                    <li class="text-primary-500 hover:text-primary-600 dark:text-primary-400">Document
+                                        Numbering Format
                                         Management
                                     </li>
                                 </ol>
@@ -33,7 +35,7 @@
         </div><!--end container-->
 
         <div class="xl:w-full min-h-[calc(100vh-152px)] relative pb-14">
-            <div class="flex flex-row justify-start mb-10"><a href="/group-modul"
+            <div class="flex flex-row justify-start mb-10"><a href="/document-format"
                     class="bg-blue-500 text-white font-bold py-2 px-4 rounded">+</a></div>
             <div class="xl:w-full gap-4 mb-4">
                 <div class="sm:col-span-12 md:col-span-12 lg:col-span-8 xl:col-span-6 xl:col-start-4">
@@ -91,7 +93,7 @@
                                                         {{ $value->format }}</td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        <a href="#"><i
+                                                        <a href="/edit-modul-management/{{ $value->id }}"><i
                                                                 class="icofont-edit text-lg text-gray-500 dark:text-gray-400"></i></a>
                                                         <button onclick="deleteGroup({{ $value->id }})"><i
                                                                 class="icofont-ui-delete text-lg text-red-500 dark:text-red-400"></i></button>

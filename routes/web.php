@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\COAController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -115,55 +116,74 @@ Route::get('material-request-summary', function () {
 Route::get('general-issue-note', function () {
     return view('report.pemakaian.generalIssueSummary');
 });
-Route::get('coa-group', function () {
+Route::get('/coa-group', function () {
     return view('coa.coaGroupAdd');
 });
-Route::get('coa-entry-list', function () {
+Route::get('/coa-entry-list', function () {
     return view('coa.coaEntryList');
 });
-Route::get('credit-management', function () {
+
+Route::get('/credit-management', function () {
     $list_modul = DB::table('modul_form')->get();
     return view('coa.creditManagementAdd', ['list_modul' => $list_modul]);
 });
-Route::get('list-credit-management', function () {
+
+Route::get('/list-credit-management', function () {
     $list_credit_term = DB::table('credit_term')->get();
     return view('coa.creditManagement', ['list_credit_term' => $list_credit_term]);
 });
-Route::get('customer-supplier-group', function () {
+
+Route::get('/customer-supplier-group', function () {
     $list_modul = DB::table('modul_form')->get();
     return view('coa.customerSupplierGroupAdd', ['list_modul' => $list_modul]);
 });
-Route::get('list-customer-supplier-group', function () {
+
+Route::get('/list-customer-supplier-group', function () {
     $list_customer_supplier = DB::table('customer_supplier_group')->get();
     return view('coa.customerSupplierGroup', ['list_customer_supplier' => $list_customer_supplier]);
 });
-Route::get('group-modul', function () {
+
+Route::get('/group-modul', function () {
     return view('coa.groupModulAdd');
 });
-Route::get('list-group-modul', function () {
+
+Route::get('/list-group-modul', function () {
     $list_group = DB::table('group_modul')->get();
     return view('coa.groupModul', ['list_group' => $list_group]);
 });
-Route::get('modul-management', function () {
+
+Route::get('/modul-management', function () {
     $list_group = DB::table('group_modul')->get();
     return view('coa.modulManagementAdd', ['list_group' => $list_group]);
 });
-Route::get('list-modul-management', function () {
+
+Route::get('/edit-modul-management/{edit_id}', [COAController::class, 'showEditModul']);
+
+Route::get('/list-modul-management',  function () {
     $list_modul = DB::table('modul_form')->get();
     return view('coa.modulManagement', ['list_modul' => $list_modul]);
 });
-Route::get('currency-management', function () {
+
+Route::get('/currency-management', function () {
     return view('coa.currencyManagement');
 });
-Route::get('supplier-type-management', function () {
+
+Route::get('/supplier-type-management', function () {
     $list_supplier_type = DB::table('supplier_type')->get();
     return view('coa.supplierTypeManagementAdd', ['list_supplier_type' => $list_supplier_type]);
 });
-Route::get('list-supplier-type-management', function () {
+
+Route::get('/list-supplier-type-management', function () {
     $list_supplier_type = DB::table('supplier_type')->get();
     return view('coa.supplierTypeManagement', ['list_supplier_type' => $list_supplier_type]);
 });
-Route::get('list-document-format', function () {
+
+Route::get('/list-document-format', function () {
     $list_document_format = DB::table('document_format')->get();
     return view('coa.documentNumberingManagement', ['list_document_format' => $list_document_format]);
+});
+
+Route::get('/document-format', function () {
+    $list_document_format = DB::table('document_format')->get();
+    return view('coa.documentNumberingManagementAdd', ['list_document_format' => $list_document_format]);
 });

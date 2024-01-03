@@ -24,6 +24,7 @@ Route::delete('coa/delete-group', [COAController::class, 'destroyGroup']);
 Route::delete('coa/delete-modul', [COAController::class, 'destroyModul']);
 Route::post('coa/get-group-name', [COAController::class, 'queryGroupName']);
 Route::post('coa/store-modul', [COAController::class, 'storeModul']);
+Route::put('coa/update-modul/{id}', [COAController::class, 'updateModul']);
 Route::post('coa/store-credit', [COAController::class, 'storeCredit']);
 Route::delete('coa/delete-credit', [COAController::class, 'destroyCredit']);
 Route::post('coa/store-customer', [COAController::class, 'storeCustomer']);

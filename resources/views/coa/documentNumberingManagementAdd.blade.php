@@ -7,14 +7,16 @@
                     <div class="w-full">
                         <div class="flex flex-wrap justify-between">
                             <div class="items-center ">
-                                <h1 class="font-medium text-3xl block dark:text-slate-100">Document Numbering Format Management</h1>
+                                <h1 class="font-medium text-3xl block dark:text-slate-100">Document Numbering Format
+                                    Management</h1>
                                 <ol class="list-reset flex text-sm">
                                     <li><a href="#" class="text-gray-500 dark:text-slate-400">Master Data</a>
                                     </li>
                                     <li><span class="text-gray-500 dark:text-slate-400 mx-2">/</span></li>
                                     <li class="text-gray-500 dark:text-slate-400">COA</li>
                                     <li><span class="text-gray-500 dark:text-slate-400 mx-2">/</span></li>
-                                    <li class="text-primary-500 hover:text-primary-600 dark:text-primary-400">Document Numbering Format
+                                    <li class="text-primary-500 hover:text-primary-600 dark:text-primary-400">Document
+                                        Numbering Format
                                         Management
                                     </li>
                                 </ol>
@@ -40,7 +42,8 @@
                         class="bg-white dark:bg-gray-900 border border-slate-200 dark:border-slate-700/40  rounded-md w-full relative mb-4">
                         <div class="border-b border-slate-200 dark:border-slate-700/40 py-3 px-4 dark:text-slate-300/70">
                             <div class="flex-none md:flex">
-                                <h4 class="font-medium text-lg flex-1 self-center mb-2 md:mb-0">Document Numbering Format Management</h4>
+                                <h4 class="font-medium text-lg flex-1 self-center mb-2 md:mb-0">Document Numbering Format
+                                    Management</h4>
                             </div>
                         </div><!--end header-title-->
                         <div class="flex-auto p-4 ">
@@ -74,20 +77,21 @@
                                             Term Value</label>
                                     </div>
                                     <div class="relative z-0 mb-2 w-full group">
-                                    <label for="credit_term_status"
-                                        class="font-medium text-sm text-slate-600 dark:text-slate-400 top-3">Document Numbering Format
-                                        Status</label>
-                                    <select id="credit_term_status" name="credit_term_status"
-                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer">
-                                        <option value="0">Tidak</option>
-                                        <option value="1">Aktif</option>
-                                    </select>
-                                </div>
+                                        <label for="credit_term_status"
+                                            class="font-medium text-sm text-slate-600 dark:text-slate-400 top-3">Document
+                                            Numbering Format
+                                            Status</label>
+                                        <select id="credit_term_status" name="credit_term_status"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer">
+                                            <option value="0">Tidak</option>
+                                            <option value="1">Aktif</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <br>
                                 <button type="submit"
                                     class="inline-block focus:outline-none text-primary-500 hover:bg-primary-500 hover:text-white bg-transparent border border-gray-200 dark:bg-transparent dark:text-primary-500 dark:hover:text-white dark:border-gray-700 dark:hover:bg-primary-500  text-sm font-medium py-1 px-3 rounded mb-1 lg:mb-0">Submit</button>
-                                <a href="/list-credit-management"
+                                <a href="/list-document-format"
                                     class="inline-block focus:outline-none text-red-500 hover:bg-red-500 hover:text-white bg-transparent border border-gray-200 dark:bg-transparent dark:text-red-500 dark:hover:text-white dark:border-gray-700 dark:hover:bg-red-500  text-sm font-medium py-1 px-3 rounded mb-1 lg:mb-0">Cancel</a>
                             </form>
                         </div><!--end card-body-->

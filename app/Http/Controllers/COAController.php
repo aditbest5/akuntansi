@@ -7,7 +7,16 @@ use Illuminate\Support\Facades\DB;
 
 class COAController extends Controller
 {
-
+    public function showEditModul($id)
+    {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+        $list_group = DB::table('group_modul')->get();
+        $list_modul = DB::table('modul_form')->where('id', $id)->first();
+        return view('coa.modulManagementEdit', ['list_modul' => $list_modul, 'list_group' => $list_group]);
+    }
     public function storeGroup(Request $request)
     {
         header("Access-Control-Allow-Origin: *");
@@ -75,6 +84,24 @@ class COAController extends Controller
         return response()->json($results);
     }
 
+    public function updateModul(Request $request, $id)
+    {
+
+        $results = DB::table('modul_form')->where('id', $id)->update([
+            'group_modul_code' => $request->input('group_modul_code'),
+            'group_modul_name' => $request->input('group_modul_name'),
+            'modul_code' => $request->input('modul_code'),
+            'modul_name' => $request->input('modul_name'),
+            'modul_description' => $request->input('modul_description'),
+            'modul_status' => $request->input('modul_status')
+
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
+    }
+
     public function storeCredit(Request $request)
     {
         $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'Credit Term Management')->first();
@@ -90,7 +117,7 @@ class COAController extends Controller
             $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
         }
         return response()->json($results);
-    }   
+    }
 
     public function destroyCredit(Request $request)
     {
