@@ -33,6 +33,9 @@ Route::delete('coa/delete-customer', [COAController::class, 'destroyCustomer']);
 Route::post('coa/store-supplier', [COAController::class, 'storeSupplier']);
 Route::post('coa/store-document-format', [COAController::class, 'storeDocumentFormat']);
 Route::delete('coa/delete-document-format', [COAController::class, 'destroyDocumentFormat']);
+Route::post('coa/store-currency', [COAController::class, 'storeCurrency']);
+Route::delete('coa/delete-currency', [COAController::class, 'destroyCurrency']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

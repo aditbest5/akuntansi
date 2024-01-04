@@ -55,6 +55,7 @@
                                             <tr>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+
                                                     Credit Term Code
                                                 </th>
                                                 <th scope="col"
@@ -87,6 +88,8 @@
 
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                        <img src="template/dist/assets/images/users/avatar-1.png"
+                                                            alt="" class="mr-2 h-8 rounded-full inline-block" />
                                                         {{ $value->credit_term_code }}
                                                     </td>
                                                     <td
@@ -102,8 +105,7 @@
                                                         {{ $value->credit_term_status == 0 ? 'Tidak Aktif' : 'Aktif' }}
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        <img src="assets/images/users/avatar-1.png" alt=""
-                                                            class="mr-2 h-8 rounded-full inline-block" />{{ $value->modul_code }}
+                                                        {{ $value->modul_code }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">

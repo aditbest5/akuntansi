@@ -92,6 +92,8 @@
 
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                        <img src="template/dist/assets/images/users/avatar-1.png"
+                                                            alt="" class="mr-2 h-8 rounded-full inline-block" />
                                                         {{ $value->group_code }}
                                                     </td>
                                                     <td

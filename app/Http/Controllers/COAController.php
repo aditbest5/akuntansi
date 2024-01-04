@@ -182,6 +182,21 @@ class COAController extends Controller
         return response()->json($results);
     }
 
+    public function storeCurrency(Request $request)
+    {
+        $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'Currency Management')->first();
+        $results = DB::table('currency')->insert([
+            'currency_code' => $request->input('currency_code'),
+            'currency_name' => $request->input('currency_name'),
+            'currency_desc' => $request->input('currency_desc'),
+            'currency_status' => $request->input('currency_status'),
+            'modul_code' => $modul_code->modul_code,
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
+    }
 
     public function storeDocumentFormat(Request $request)
     {
@@ -204,6 +219,17 @@ class COAController extends Controller
     public function destroyDocumentFormat(Request $request)
     {
         $deleted = DB::table('document_format')->where('id', $request->input('id'))->delete();
+        if (!$deleted) {
+            $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
+        } else {
+            $resutlMsg = array("sts" => "OK", "desc" => " Delete Success !", "msg" => "");
+        }
+        return response()->json($resutlMsg);
+    }
+
+    public function destroyCurrency(Request $request)
+    {
+        $deleted = DB::table('currency')->where('id', $request->input('id'))->delete();
         if (!$deleted) {
             $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
         } else {

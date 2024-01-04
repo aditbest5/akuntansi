@@ -165,9 +165,12 @@ Route::get('/list-modul-management',  function () {
 });
 
 Route::get('/currency-management', function () {
-    return view('coa.currencyManagement');
+    return view('coa.currencyManagementAdd');
 });
-
+Route::get('/list-currency-management', function () {
+    $list_currency = DB::table('currency')->get();
+    return view('coa.currencyManagement', ['list_currency' => $list_currency]);
+});
 Route::get('/supplier-type-management', function () {
     $list_supplier_type = DB::table('supplier_type')->get();
     return view('coa.supplierTypeManagementAdd', ['list_supplier_type' => $list_supplier_type]);

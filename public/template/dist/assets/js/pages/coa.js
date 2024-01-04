@@ -567,7 +567,7 @@ function submitSupplier(e) {
 
 function submitDocumentFormat(e) {
     e.preventDefault();
-    let doc_num_code = document.getElementById("doc_num_code").value;
+    let currency_code = document.getElementById("currency_code").value;
     let modul_code = document.getElementById("modul_code").value;
     let modul_name = document.getElementById("modul_name").value;
     let doc_num_name = document.getElementById("doc_num_name").value;
@@ -576,7 +576,7 @@ function submitDocumentFormat(e) {
     let split_modul_code = modul_code.split("+");
     modul_code = split_modul_code[1];
     const requestData = {
-        doc_num_code,
+        currency_code,
         modul_code,
         modul_name,
         doc_num_name,
@@ -651,6 +651,96 @@ function deleteDocumentFormat(id) {
                 } else {
                     alert("OK");
                     document.location.href = "/list-document-format";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function submitCurrency(e) {
+    e.preventDefault();
+    let currency_code = document.getElementById("currency_code").value;
+    let currency_name = document.getElementById("currency_name").value;
+    let currency_desc = document.getElementById("currency_desc").value;
+    let currency_status = document.getElementById("currency_status").value;
+    const requestData = {
+        currency_code,
+        currency_name,
+        currency_desc,
+        currency_status,
+    };
+
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(requestData),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("api/coa/store-currency", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-currency-management";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function deleteCurrency(id) {
+    const requestOptions = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+            id,
+        }),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("api/coa/delete-currency", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-currency-management";
                 }
             }
         })
