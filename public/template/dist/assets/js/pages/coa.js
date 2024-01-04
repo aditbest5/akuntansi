@@ -20,7 +20,7 @@ function submitGroup(e) {
     };
 
     // Lakukan permintaan fetch
-    fetch("api/coa/store-group", requestOptions)
+    fetch("/api/coa/store-group", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -58,7 +58,7 @@ function deleteGroup(id) {
         }),
     };
 
-    fetch("api/coa/delete-group", requestOptions)
+    fetch("/api/coa/delete-group", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -95,7 +95,7 @@ function deleteModul(id) {
         }),
     };
 
-    fetch("api/coa/delete-modul", requestOptions)
+    fetch("/api/coa/delete-modul", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -133,7 +133,7 @@ function groupCode(e) {
             id: id,
         }),
     };
-    fetch("api/coa/get-group-name", requestOptions)
+    fetch("/api/coa/get-group-name", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -173,7 +173,7 @@ function modulCode(e) {
             id,
         }),
     };
-    fetch("api/coa/get-modul-name", requestOptions)
+    fetch("/api/coa/get-modul-name", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -228,7 +228,7 @@ function submitModul(e) {
     };
 
     // Lakukan permintaan fetch
-    fetch("api/coa/store-modul", requestOptions)
+    fetch("/api/coa/store-modul", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -345,7 +345,7 @@ function submitCredit(e) {
     };
 
     // Lakukan permintaan fetch
-    fetch("api/coa/store-credit", requestOptions)
+    fetch("/api/coa/store-credit", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -386,7 +386,7 @@ function deleteCredit(id) {
     };
 
     // Lakukan permintaan fetch
-    fetch("api/coa/delete-credit", requestOptions)
+    fetch("/api/coa/delete-credit", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -441,7 +441,7 @@ function submitCustomer(e) {
     };
 
     // Lakukan permintaan fetch
-    fetch("api/coa/store-customer", requestOptions)
+    fetch("/api/coa/store-customer", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -538,7 +538,7 @@ function submitSupplier(e) {
     };
 
     // Lakukan permintaan fetch
-    fetch("api/coa/store-supplier", requestOptions)
+    fetch("/api/coa/store-supplier", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -567,19 +567,25 @@ function submitSupplier(e) {
 
 function submitDocumentFormat(e) {
     e.preventDefault();
-    let currency_code = document.getElementById("currency_code").value;
+    let doc_num_code = document.getElementById("doc_num_code").value;
     let modul_code = document.getElementById("modul_code").value;
     let modul_name = document.getElementById("modul_name").value;
     let doc_num_name = document.getElementById("doc_num_name").value;
     let start_number = document.getElementById("start_number").value;
     let format = document.getElementById("format").value;
-    let split_modul_code = modul_code.split("+");
-    modul_code = split_modul_code[1];
-    const requestData = {
-        currency_code,
+    console.log([
         modul_code,
         modul_name,
         doc_num_name,
+        doc_num_code,
+        start_number,
+        format,
+    ]);
+    const requestData = {
+        doc_num_code,
+        doc_num_name,
+        modul_code,
+        modul_name,
         start_number,
         format,
     };
@@ -594,7 +600,7 @@ function submitDocumentFormat(e) {
     };
 
     // Lakukan permintaan fetch
-    fetch("api/coa/store-document-format", requestOptions)
+    fetch("/api/coa/store-document-format", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -634,7 +640,7 @@ function deleteDocumentFormat(id) {
     };
 
     // Lakukan permintaan fetch
-    fetch("api/coa/delete-document-format", requestOptions)
+    fetch("/api/coa/delete-document-format", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -684,7 +690,7 @@ function submitCurrency(e) {
     };
 
     // Lakukan permintaan fetch
-    fetch("api/coa/store-currency", requestOptions)
+    fetch("/api/coa/store-currency", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
@@ -724,7 +730,7 @@ function deleteCurrency(id) {
     };
 
     // Lakukan permintaan fetch
-    fetch("api/coa/delete-currency", requestOptions)
+    fetch("/api/coa/delete-currency", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
