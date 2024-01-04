@@ -171,6 +171,7 @@ Route::get('/list-currency-management', function () {
     $list_currency = DB::table('currency')->get();
     return view('coa.currencyManagement', ['list_currency' => $list_currency]);
 });
+
 Route::get('/supplier-type-management', function () {
     $list_supplier_type = DB::table('supplier_type')->get();
     return view('coa.supplierTypeManagementAdd', ['list_supplier_type' => $list_supplier_type]);
@@ -190,4 +191,10 @@ Route::get('/document-format', function () {
     $list_document_format = DB::table('document_format')->get();
     $list_modul = DB::table('modul_form')->get();
     return view('coa.documentNumberingManagementAdd', ['list_document_format' => $list_document_format, 'list_modul' => $list_modul]);
+});
+
+Route::get('/document-format/{code}', function ($code) {
+    $modul_code = DB::table('modul_form')->where('modul_code', $code)->first();
+    $list_modul = DB::table('modul_form')->get();
+    return view('coa.documentNumberingManagementPilih', ['modul_code' => $modul_code, 'list_modul' => $list_modul]);
 });
