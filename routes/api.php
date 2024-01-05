@@ -32,6 +32,7 @@ Route::post('coa/store-customer', [COAController::class, 'storeCustomer']);
 Route::delete('coa/delete-customer', [COAController::class, 'destroyCustomer']);
 Route::post('coa/store-supplier', [COAController::class, 'storeSupplier']);
 Route::post('coa/store-document-format', [COAController::class, 'storeDocumentFormat']);
+Route::put('coa/update-document-format', [COAController::class, 'updateDocumentFormat']);
 Route::delete('coa/delete-document-format', [COAController::class, 'destroyDocumentFormat']);
 Route::post('coa/store-currency', [COAController::class, 'storeCurrency']);
 Route::delete('coa/delete-currency', [COAController::class, 'destroyCurrency']);

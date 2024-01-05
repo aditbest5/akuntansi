@@ -89,9 +89,19 @@
                                                         {{ $value->modul_description }}</td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        <a href="/document-format/{{ $value->modul_code }}"><i
-                                                                class="icofont-ui-add text-lg text-red-500 dark:text-red-400"></i></a>
+                                                        @if ($value->document_status)
+                                                            <a href="/document-format/{{ $value->modul_code }}">
+                                                                <i
+                                                                    class="icofont-ui-edit text-lg text-red-500 dark:text-red-400"></i>
+                                                            </a>
+                                                        @else
+                                                            <a href="/document-format/{{ $value->modul_code }}">
+                                                                <i
+                                                                    class="icofont-ui-add text-lg text-red-500 dark:text-red-400"></i>
+                                                            </a>
+                                                        @endif
                                                     </td>
+
                                                 </tr>
                                             @empty
                                                 <tr

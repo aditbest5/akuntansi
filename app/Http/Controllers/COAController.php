@@ -200,7 +200,7 @@ class COAController extends Controller
 
     public function storeDocumentFormat(Request $request)
     {
-        $results = DB::table('document_format')->insert([
+        $results1 = DB::table('document_format')->insert([
             'doc_num_code' => $request->input('doc_num_code'),
             'modul_code' => $request->input('modul_code'),
             'modul_name' => $request->input('modul_name'),
@@ -209,13 +209,36 @@ class COAController extends Controller
             'format' => $request->input('format'),
 
         ]);
-        if (!$results) {
+        $results2 = DB::table('modul_form')->where('modul_code', $request->input('modul_code'))->update([
+            'document_status' => '1',
+        ]);
+        if (!($results1 && $results2)) {
             $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        } else {
+            $results = array("sts" => "Y", "desc" => "Berhasil", "msg" => "Berhasil");
         }
         return response()->json($results);
     }
 
+    public function updateDocumentFormat(Request $request)
+    {
+        $results1 = DB::table('document_format')->where('code', $request->input('modul_code'))->update([
+            'doc_num_code' => $request->input('doc_num_code'),
+            'modul_code' => $request->input('modul_code'),
+            'modul_name' => $request->input('modul_name'),
+            'doc_num_name' => $request->input('doc_num_name'),
+            'start_number' => $request->input('start_number'),
+            'format' => $request->input('format'),
 
+        ]);
+
+        if (!($results1)) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        } else {
+            $results = array("sts" => "Y", "desc" => "Berhasil", "msg" => "Berhasil");
+        }
+        return response()->json($results);
+    }
     public function destroyDocumentFormat(Request $request)
     {
         $deleted = DB::table('document_format')->where('id', $request->input('id'))->delete();

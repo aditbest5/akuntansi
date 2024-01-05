@@ -77,7 +77,7 @@
                                                 <tr
                                                     class="bg-white border-b border-dashed dark:bg-gray-900 dark:border-gray-700">
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        <img src="template/dist/assets/images/users/avatar-1.png"
+                                                        <img src="/template/dist/assets/images/users/avatar-1.png"
                                                             alt=""
                                                             class="mr-2 h-8 rounded-full inline-block" />{{ $value->modul_code }}
                                                     </td>
@@ -140,10 +140,11 @@
                             </div>
                         </div><!--end header-title-->
                         <div class="flex-auto p-4 ">
-                            <form onsubmit="return submitDocumentFormat(event)">
+                            <form onsubmit="return updateDocumentFormat(event, {{ $modul_code->modul_code }})">
                                 <div class="grid xl:grid-cols-2 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
                                         <input type="text" name="doc_num_code" id="doc_num_code"
+                                            value={{ $modul_code->doc_num_code }}
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
                                             placeholder=" " required />
                                         <label for="doc_num_code"
@@ -151,7 +152,8 @@
                                             Number Code</label>
                                     </div>
                                     <div class="relative z-0 mb-2 w-full group">
-                                        <input type="text" name="doc_num_name" id="doc_num_name" value=""
+                                        <input type="text" name="doc_num_name" id="doc_num_name"
+                                            value={{ $modul_code->doc_num_name }}
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
                                             placeholder=" " required />
                                         <label for="doc_num_name"
@@ -188,6 +190,7 @@
                                 <div class="grid xl:grid-cols-2 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
                                         <input type="text" name="start_number" id="start_number"
+                                            value={{ $modul_code->start_number }}
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
                                             placeholder=" " required />
                                         <label for="start_number"
@@ -196,6 +199,7 @@
                                     </div>
                                     <div class="relative z-0 mb-2 w-full group">
                                         <input type="text" name="format" id="format"
+                                            value={{ $modul_code->format }}
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
                                             placeholder=" " required />
                                         <label for="format"

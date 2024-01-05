@@ -194,7 +194,11 @@ Route::get('/document-format', function () {
 });
 
 Route::get('/document-format/{code}', function ($code) {
-    $modul_code = DB::table('modul_form')->where('modul_code', $code)->first();
+    $modul_code = DB::table('document_format')->where('modul_code', $code)->first();
     $list_modul = DB::table('modul_form')->get();
-    return view('coa.documentNumberingManagementPilih', ['modul_code' => $modul_code, 'list_modul' => $list_modul]);
+    if (!$modul_code) {
+        $modul_code = DB::table('modul_form')->where('modul_code', $code)->first();
+        return view('coa.documentNumberingManagementPilih', ['modul_code' => $modul_code, 'list_modul' => $list_modul]);
+    }
+    return view('coa.documentNumberingManagementEdit', ['modul_code' => $modul_code, 'list_modul' => $list_modul]);
 });

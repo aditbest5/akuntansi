@@ -616,7 +616,69 @@ function submitDocumentFormat(e) {
                     alert("Error");
                 } else {
                     alert("OK");
-                    document.location.href = "/list-document-format";
+                    document.location.href = "/document-format";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function updateDocumentFormat(e, code) {
+    e.preventDefault();
+    let doc_num_code = document.getElementById("doc_num_code").value;
+    let modul_code = document.getElementById("modul_code").value;
+    let modul_name = document.getElementById("modul_name").value;
+    let doc_num_name = document.getElementById("doc_num_name").value;
+    let start_number = document.getElementById("start_number").value;
+    let format = document.getElementById("format").value;
+    console.log([
+        modul_code,
+        modul_name,
+        doc_num_name,
+        doc_num_code,
+        start_number,
+        format,
+    ]);
+    const requestData = {
+        doc_num_code,
+        doc_num_name,
+        modul_code,
+        modul_name,
+        start_number,
+        format,
+    };
+
+    const requestOptions = {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(requestData),
+    };
+
+    // Lakukan permintaan fetch
+    fetch(`/api/coa/update-document-format`, requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/document-format";
                 }
             }
         })
