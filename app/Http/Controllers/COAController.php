@@ -222,7 +222,7 @@ class COAController extends Controller
 
     public function updateDocumentFormat(Request $request)
     {
-        $results1 = DB::table('document_format')->where('code', $request->input('modul_code'))->update([
+        $results1 = DB::table('document_format')->where('modul_code', $request->input('modul_code'))->update([
             'doc_num_code' => $request->input('doc_num_code'),
             'modul_code' => $request->input('modul_code'),
             'modul_name' => $request->input('modul_name'),

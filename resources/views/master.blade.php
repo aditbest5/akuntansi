@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="/template/dist/assets/images/favicon.ico" />
+    <link rel="stylesheet" href="assets/libs/mobius1-selectr/selectr.min.css">
 
     <!-- Css -->
     <!-- Main Css -->
@@ -475,7 +476,8 @@
     <script src="/template/dist/assets/libs/flatpickr/flatpickr.min.js"></script>
     <script src="/template/dist/assets/libs/@frostui/tailwindcss/frostui.js"></script>
     <script src="/template/dist/assets/libs/prismjs/prism.js"></script>
-
+    <script src="assets/libs/mobius1-selectr/selectr.min.js"></script>
+    <script src="assets/js/pages/form-advanced.init.js"></script>
     <script src="/template/dist/assets/libs/simple-datatables/umd/simple-datatables.js"></script>
     <script src="/template/dist/assets/js/pages/datatable.init.js"></script>
     <script src="/template/dist/assets/libs/apexcharts/apexcharts.min.js"></script>

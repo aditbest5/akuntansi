@@ -627,7 +627,7 @@ function submitDocumentFormat(e) {
         });
 }
 
-function updateDocumentFormat(e, code) {
+function updateDocumentFormat(e) {
     e.preventDefault();
     let doc_num_code = document.getElementById("doc_num_code").value;
     let modul_code = document.getElementById("modul_code").value;

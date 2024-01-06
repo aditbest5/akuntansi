@@ -124,8 +124,8 @@ Route::get('/coa-entry-list', function () {
 });
 
 Route::get('/credit-management', function () {
-    $list_modul = DB::table('modul_form')->get();
-    return view('coa.creditManagementAdd', ['list_modul' => $list_modul]);
+    $document_format = DB::table('document_format')->where('modul_name', 'Credit Term Management')->first();
+    return view('coa.creditManagementAdd', ['document_format' => $document_format]);
 });
 
 Route::get('/list-credit-management', function () {
@@ -134,8 +134,8 @@ Route::get('/list-credit-management', function () {
 });
 
 Route::get('/customer-supplier-group', function () {
-    $list_modul = DB::table('modul_form')->get();
-    return view('coa.customerSupplierGroupAdd', ['list_modul' => $list_modul]);
+    $document_format = DB::table('document_format')->where('modul_name', 'Customer Supplier Group Management')->first();
+    return view('coa.customerSupplierGroupAdd', ['document_format' => $document_format]);
 });
 
 Route::get('/list-customer-supplier-group', function () {
@@ -165,7 +165,8 @@ Route::get('/list-modul-management',  function () {
 });
 
 Route::get('/currency-management', function () {
-    return view('coa.currencyManagementAdd');
+    $document_format = DB::table('document_format')->where('modul_name', 'Currency Management')->first();
+    return view('coa.currencyManagementAdd', ['document_format' => $document_format]);
 });
 Route::get('/list-currency-management', function () {
     $list_currency = DB::table('currency')->get();
@@ -173,8 +174,8 @@ Route::get('/list-currency-management', function () {
 });
 
 Route::get('/supplier-type-management', function () {
-    $list_supplier_type = DB::table('supplier_type')->get();
-    return view('coa.supplierTypeManagementAdd', ['list_supplier_type' => $list_supplier_type]);
+    $document_format = DB::table('document_format')->where('modul_name', 'Supplier Type Management')->first();
+    return view('coa.supplierTypeManagementAdd', ['document_format' => $document_format]);
 });
 
 Route::get('/list-supplier-type-management', function () {

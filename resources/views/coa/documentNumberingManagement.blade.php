@@ -104,7 +104,7 @@
                                                         {{ $value->format }}</td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        <a href="/edit-document-format/{{ $value->id }}"><i
+                                                        <a href="/document-format/{{ $value->modul_code }}"><i
                                                                 class="icofont-edit text-lg text-gray-500 dark:text-gray-400"></i></a>
                                                         <button onclick="deleteDocumentFormat({{ $value->id }})"><i
                                                                 class="icofont-ui-delete text-lg text-red-500 dark:text-red-400"></i></button>
@@ -157,7 +157,7 @@
                             var year = new Date();
                             document.write(year.getFullYear());
                         </script>
-                        Robotech
+                        Arneva
                         <span class="float-right hidden text-slate-600 dark:text-slate-400 md:inline-block">Crafted with
                             <i class="ti ti-heart text-red-500"></i> by
                             Mannatthemes</span>

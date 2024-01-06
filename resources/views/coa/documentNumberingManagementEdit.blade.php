@@ -140,7 +140,7 @@
                             </div>
                         </div><!--end header-title-->
                         <div class="flex-auto p-4 ">
-                            <form onsubmit="return updateDocumentFormat(event, {{ $modul_code->modul_code }})">
+                            <form onsubmit="return updateDocumentFormat(event)">
                                 <div class="grid xl:grid-cols-2 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
                                         <input type="text" name="doc_num_code" id="doc_num_code"
@@ -180,7 +180,7 @@
                                         <input type="text" name="modul_name" id="modul_name"
                                             value="{{ $modul_code->modul_name }}"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
-                                            placeholder=" " required />
+                                            placeholder=" " required disabled />
                                         <label for="modul_name"
                                             class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Modul
                                             Name</label>
@@ -231,7 +231,7 @@
                             var year = new Date();
                             document.write(year.getFullYear());
                         </script>
-                        Robotech
+                        Arneva
                         <span class="float-right hidden text-slate-600 dark:text-slate-400 md:inline-block">Crafted with
                             <i class="ti ti-heart text-red-500"></i> by
                             Mannatthemes</span>

@@ -75,16 +75,25 @@
                                             Type Description</label>
                                     </div>
                                     <div class="relative z-0 mb-2 w-full group">
-                                        <label for="supplier_type_status"
-                                            class="font-medium text-sm text-slate-600 dark:text-slate-400">Supplier Type
-                                            Status</label>
-                                        <select id="supplier_type_status" name="supplier_type_status"
-                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer">
-                                            <option value="0">Tidak</option>
-                                            <option value="1">Aktif</option>
-                                        </select>
+                                        <input type="text" name="supplier_type_format" id="supplier_type_format" value={{$document_format->format . $document_format->start_number + 1 }}
+                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
+                                             placeholder=" "  required />
+                                         <label for="supplier_type_format"
+                                             class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Document Format
+                                         </label>
                                     </div>
-                                </div>
+                                 </div>
+                                 <br>
+                                 <div class="relative z-0 mb-2 w-full group">
+                                     <label for="supplier_type_status"
+                                         class="font-medium text-sm text-slate-600 dark:text-slate-400 top-3">Credit Term
+                                         Status</label>
+                                     <select id="supplier_type_status" name="supplier_type_status"
+                                         class="form-input w-full rounded-md mt-1 border border-slate-300/60 dark:border-slate-700 dark:text-slate-300 bg-transparent px-3 py-1 focus:outline-none focus:ring-0 placeholder:text-slate-400/70 placeholder:font-normal placeholder:text-sm hover:border-slate-400 focus:border-primary-500 dark:focus:border-primary-500  dark:hover:border-slate-700">
+                                         <option value="0">Tidak</option>
+                                         <option value="1">Aktif</option>
+                                     </select>
+                                 </div>
                                 <br>
                                 <button type="submit"
                                     class="inline-block focus:outline-none text-primary-500 hover:bg-primary-500 hover:text-white bg-transparent border border-gray-200 dark:bg-transparent dark:text-primary-500 dark:hover:text-white dark:border-gray-700 dark:hover:bg-primary-500  text-sm font-medium py-1 px-3 rounded mb-1 lg:mb-0">Submit</button>
@@ -116,7 +125,7 @@
                             var year = new Date();
                             document.write(year.getFullYear());
                         </script>
-                        Robotech
+                        Arneva
                         <span class="float-right hidden text-slate-600 dark:text-slate-400 md:inline-block">Crafted
                             with <i class="ti ti-heart text-red-500"></i> by
                             Mannatthemes</span>
