@@ -689,7 +689,7 @@ function updateDocumentFormat(e) {
         });
 }
 
-function deleteDocumentFormat(id) {
+function deleteDocumentFormat(id, code) {
     const requestOptions = {
         method: "DELETE",
         headers: {
@@ -698,6 +698,7 @@ function deleteDocumentFormat(id) {
         },
         body: JSON.stringify({
             id,
+            code,
         }),
     };
 

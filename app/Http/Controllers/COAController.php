@@ -242,7 +242,10 @@ class COAController extends Controller
     public function destroyDocumentFormat(Request $request)
     {
         $deleted = DB::table('document_format')->where('id', $request->input('id'))->delete();
-        if (!$deleted) {
+        $updated = DB::table('modul_form')->where('modul_code', $request->input('code'))->update([
+            'document_status' => '0',
+        ]);;
+        if (!($deleted && $updated)) {
             $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
         } else {
             $resutlMsg = array("sts" => "OK", "desc" => " Delete Success !", "msg" => "");

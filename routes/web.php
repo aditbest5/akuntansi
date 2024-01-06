@@ -125,6 +125,9 @@ Route::get('/coa-entry-list', function () {
 
 Route::get('/credit-management', function () {
     $document_format = DB::table('document_format')->where('modul_name', 'Credit Term Management')->first();
+    if ($document_format === null) {
+        $document_format = (object) ['format' => null];
+    }
     return view('coa.creditManagementAdd', ['document_format' => $document_format]);
 });
 
@@ -135,6 +138,9 @@ Route::get('/list-credit-management', function () {
 
 Route::get('/customer-supplier-group', function () {
     $document_format = DB::table('document_format')->where('modul_name', 'Customer Supplier Group Management')->first();
+    if ($document_format === null) {
+        $document_format = (object) ['format' => null];
+    }
     return view('coa.customerSupplierGroupAdd', ['document_format' => $document_format]);
 });
 
@@ -166,6 +172,9 @@ Route::get('/list-modul-management',  function () {
 
 Route::get('/currency-management', function () {
     $document_format = DB::table('document_format')->where('modul_name', 'Currency Management')->first();
+    if ($document_format === null) {
+        $document_format = (object) ['format' => null];
+    }
     return view('coa.currencyManagementAdd', ['document_format' => $document_format]);
 });
 Route::get('/list-currency-management', function () {
@@ -175,6 +184,9 @@ Route::get('/list-currency-management', function () {
 
 Route::get('/supplier-type-management', function () {
     $document_format = DB::table('document_format')->where('modul_name', 'Supplier Type Management')->first();
+    if ($document_format === null) {
+        $document_format = (object) ['format' => null];
+    }
     return view('coa.supplierTypeManagementAdd', ['document_format' => $document_format]);
 });
 

@@ -74,7 +74,7 @@
                                             Term Value</label>
                                     </div>
                                     <div class="relative z-0 mb-2 w-full group">
-                                       <input type="text" name="credit_term_format" id="credit_term_format" value={{$document_format->format . $document_format->start_number + 1 }}
+                                       <input type="text" name="credit_term_format" id="credit_term_format" value="{{$document_format->format ? $document_format->format .( $document_format->start_number + 1) : $document_format->format }}"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
                                             placeholder=" "  required />
                                         <label for="credit_term_format"
