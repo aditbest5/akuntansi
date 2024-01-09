@@ -264,15 +264,6 @@ function submitEditModul(e, id) {
     let modul_status = document.getElementById("modul_status").value;
     let split_group_modul_code = group_modul_code.split("+");
     group_modul_code = split_group_modul_code[1];
-    console.log([
-        id,
-        group_modul_name,
-        modul_code,
-        modul_name,
-        modul_description,
-        modul_status,
-        group_modul_code,
-    ]);
     const requestData = {
         group_modul_code,
         group_modul_name,
@@ -373,6 +364,60 @@ function submitCredit(e) {
         });
 }
 
+function submitEditCredit(e, id) {
+    e.preventDefault();
+    let credit_term_code = document.getElementById("credit_term_code").value;
+    let credit_term_name = document.getElementById("credit_term_name").value;
+    let credit_term_value = document.getElementById("credit_term_value").value;
+    let credit_term_status =
+        document.getElementById("credit_term_status").value;
+
+    // Definisikan data yang akan dikirim
+    const requestData = {
+        credit_term_code,
+        credit_term_name,
+        credit_term_value,
+        credit_term_status,
+    };
+    // Konfigurasi untuk fetch
+    const requestOptions = {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(requestData),
+    };
+
+    // Lakukan permintaan fetch
+    fetch(`/api/coa/update-credit/${id}`, requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            console.log(data);
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-credit-management";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
 function deleteCredit(id) {
     const requestOptions = {
         method: "DELETE",
@@ -442,6 +487,62 @@ function submitCustomer(e) {
 
     // Lakukan permintaan fetch
     fetch("/api/coa/store-customer", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-customer-supplier-group";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function submitEditCustomer(e, id) {
+    e.preventDefault();
+    let group_code = document.getElementById("group_code").value;
+    let group_name = document.getElementById("group_name").value;
+    let coa_code = document.getElementById("coa_code").value;
+    let coa_name = document.getElementById("coa_name").value;
+    let group_description = document.getElementById("group_description").value;
+    let group_status = document.getElementById("group_status").value;
+
+    const requestData = {
+        group_code,
+        group_name,
+        group_description,
+        coa_code,
+        coa_name,
+        group_status,
+    };
+
+    const requestOptions = {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(requestData),
+    };
+
+    // Lakukan permintaan fetch
+    fetch(`/api/coa/update-customer/${id}`, requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");

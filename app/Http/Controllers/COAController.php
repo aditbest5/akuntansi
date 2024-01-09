@@ -126,6 +126,22 @@ class COAController extends Controller
         return response()->json($results);
     }
 
+    public function updateCredit(Request $request, $id)
+    {
+        $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'Credit Term Management')->first();
+        $results =  DB::table('credit_term')->where('id', $id)->update([
+            'credit_term_code' => $request->input('credit_term_code'),
+            'credit_term_name' => $request->input('credit_term_name'),
+            'credit_term_value' => $request->input('credit_term_value'),
+            'modul_code' => $modul_code->modul_code,
+            'credit_term_status' => $request->input('credit_term_status'),
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
+    }
+
     public function destroyCredit(Request $request)
     {
         $deleted = DB::table('credit_term')->where('id', $request->input('id'))->delete();
@@ -148,6 +164,22 @@ class COAController extends Controller
             'group_description' => $request->input('group_description'),
             'group_status' => $request->input('group_status'),
             'modul_code' => $modul_code->modul_code,
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
+    }
+
+    public function updateCustomer(Request $request, $id)
+    {
+        $results = DB::table('customer_supplier_group')->where('id', $id)->update([
+            'group_code' => $request->input('group_code'),
+            'coa_code' => $request->input('coa_code'),
+            'coa_name' => $request->input('coa_name'),
+            'group_name' => $request->input('group_name'),
+            'group_description' => $request->input('group_description'),
+            'group_status' => $request->input('group_status'),
         ]);
         if (!$results) {
             $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
@@ -209,6 +241,7 @@ class COAController extends Controller
             'format' => $request->input('format'),
 
         ]);
+
         $results2 = DB::table('modul_form')->where('modul_code', $request->input('modul_code'))->update([
             'document_status' => '1',
         ]);

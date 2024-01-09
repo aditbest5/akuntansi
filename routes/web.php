@@ -136,6 +136,13 @@ Route::get('/list-credit-management', function () {
     return view('coa.creditManagement', ['list_credit_term' => $list_credit_term]);
 });
 
+Route::get('/edit-credit-management/{edit_id}', function ($id) {
+    // $list_group = DB::table('group_modul')->get();
+    $list_credit = DB::table('credit_term')->where('id', $id)->first();
+    return view('coa.creditManagementEdit', ['list_credit' => $list_credit]);
+});
+
+
 Route::get('/customer-supplier-group', function () {
     $document_format = DB::table('document_format')->where('modul_name', 'Customer Supplier Group Management')->first();
     if ($document_format === null) {
@@ -147,6 +154,11 @@ Route::get('/customer-supplier-group', function () {
 Route::get('/list-customer-supplier-group', function () {
     $list_customer_supplier = DB::table('customer_supplier_group')->get();
     return view('coa.customerSupplierGroup', ['list_customer_supplier' => $list_customer_supplier]);
+});
+
+Route::get('/edit-customer-supplier-group/{edit_id}', function ($id) {
+    $list_customer_supplier = DB::table('customer_supplier_group')->where('id', $id)->first();
+    return view('coa.customerSupplierGroupEdit', ['list_customer_supplier' => $list_customer_supplier]);
 });
 
 Route::get('/group-modul', function () {
