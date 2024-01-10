@@ -41,14 +41,15 @@ document.addEventListener("DOMContentLoaded", function () {
                                 </li>
 
                            `;
-                    list_tambah = list_group + list_modul;
                 });
+                console.log(list_modul);
                 all_list +=
-                    list_tambah +
+                    list_group +
+                    list_modul +
                     ` </ul></div>
                 </div></li>`;
             });
-            console.log(all_list);
+            // console.log(all_list);
 
             document.getElementById("nav").innerHTML = all_list;
         });
