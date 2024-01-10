@@ -52,4 +52,23 @@ class GeneralController extends Controller
         }
         return json_encode($resutlMsg);
     }
+
+    public function modulGroup()
+    {
+        $list_group = DB::table('group_modul')->get();
+        // $list_modul = DB::table('modul_form')->get();
+        // $array_group = ["group" => $list_group];
+        // $array_group = array();
+        foreach ($list_group as $group) {
+            $modul = DB::table('modul_form')->where('group_modul_code', $group->group_modul_code)->get();
+            $array_group[] = ["group" => $group, "modul" => $modul];
+        }
+
+        if (!$array_group) {
+            $results = array("sts" => "OK", "desc" => " Query Success !", "msg" => "");
+        } else {
+            $results = array("sts" => "N", "desc" => " Query Success !", "msg" => $array_group);
+        }
+        return json_encode($results);
+    }
 }

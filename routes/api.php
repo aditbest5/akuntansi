@@ -19,6 +19,7 @@ use App\Http\Controllers\GeneralController;
 */
 
 Route::post('general/login', [GeneralController::class, 'selLogin']);
+Route::get('general/modul', [GeneralController::class, 'modulGroup']);
 Route::post('coa/store-group', [COAController::class, 'storeGroup']);
 Route::delete('coa/delete-group', [COAController::class, 'destroyGroup']);
 Route::delete('coa/delete-modul', [COAController::class, 'destroyModul']);

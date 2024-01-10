@@ -1,4 +1,4 @@
-/* Template Name: 
+/* Template Name:
    File: Main Css File
 */
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap");
@@ -4553,7 +4553,7 @@ input:checked + .custom-switch:before {
   outline: 2px solid transparent;
   outline-offset: 2px;
 }
-:is(.dark .selectr-options-container),:is(.dark 
+:is(.dark .selectr-options-container),:is(.dark
 .selectr-selected){
   --tw-border-opacity: 1;
   border-color: rgb(51 65 85 / var(--tw-border-opacity));
@@ -4756,7 +4756,7 @@ input:checked + .custom-switch:before {
   color: rgb(148 163 184 / var(--tw-text-opacity));
 }
 
-:is(.dark .datepicker-cell.next:not(.disabled)),:is(.dark 
+:is(.dark .datepicker-cell.next:not(.disabled)),:is(.dark
 .datepicker-cell.prev:not(.disabled)){
   --tw-text-opacity: 1;
   color: rgb(71 85 105 / var(--tw-text-opacity));
@@ -4784,7 +4784,7 @@ input:checked + .custom-switch:before {
   color: rgb(56 116 255 / var(--tw-text-opacity));
 }
 
-:is(.dark .datepicker-cell.focused:not(.selected)),:is(.dark 
+:is(.dark .datepicker-cell.focused:not(.selected)),:is(.dark
 .datepicker-cell:not(.disabled):hover){
   background-color: rgb(15 23 42 / 0.2);
   --tw-text-opacity: 1;
@@ -4817,7 +4817,7 @@ input.success {
   background-color: rgb(15 23 42 / 0.2);
 }
 
-:is(.dark [data-uppy-drag-drop-supported=true] .uppy-Dashboard-AddFiles),:is(.dark 
+:is(.dark [data-uppy-drag-drop-supported=true] .uppy-Dashboard-AddFiles),:is(.dark
 .uppy-Dashboard-dropFilesHereHint){
   --tw-border-opacity: 1;
   border-color: rgb(51 65 85 / var(--tw-border-opacity));
@@ -5076,7 +5076,7 @@ input.success {
           box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
-:is(.dark .datatable-selector),:is(.dark 
+:is(.dark .datatable-selector),:is(.dark
 .datatable-input){
   --tw-border-opacity: 1;
   border-color: rgb(51 65 85 / var(--tw-border-opacity));
@@ -5084,13 +5084,13 @@ input.success {
   color: rgb(203 213 225 / var(--tw-text-opacity));
 }
 
-:is(.dark .datatable-selector:hover),:is(.dark 
+:is(.dark .datatable-selector:hover),:is(.dark
 .datatable-input:hover){
   --tw-border-opacity: 1;
   border-color: rgb(51 65 85 / var(--tw-border-opacity));
 }
 
-:is(.dark .datatable-selector:focus),:is(.dark 
+:is(.dark .datatable-selector:focus),:is(.dark
 .datatable-input:focus){
   --tw-border-opacity: 1;
   border-color: rgb(56 116 255 / var(--tw-border-opacity));
@@ -5102,7 +5102,7 @@ input.success {
   padding-right: 2.5rem;
 }
 
-:is(.dark .datatable-info),:is(.dark 
+:is(.dark .datatable-info),:is(.dark
 .datatable-dropdown label){
   --tw-text-opacity: 1;
   color: rgb(148 163 184 / var(--tw-text-opacity));
@@ -5158,7 +5158,7 @@ input.success {
   color: rgb(71 85 105 / var(--tw-text-opacity));
 }
 
-:is(.dark .dataTable-dropdown > label),:is(.dark 
+:is(.dark .dataTable-dropdown > label),:is(.dark
 .dataTable-info){
   --tw-text-opacity: 1;
   color: rgb(203 213 225 / var(--tw-text-opacity));
@@ -5182,7 +5182,7 @@ input.success {
   outline-offset: 2px;
 }
 
-:is(.dark .dataTable-selector),:is(.dark 
+:is(.dark .dataTable-selector),:is(.dark
 .dataTable-input){
   --tw-border-opacity: 1;
   border-color: rgb(51 65 85 / var(--tw-border-opacity));
@@ -5248,8 +5248,8 @@ input.success {
   --tw-text-opacity: 1;
   color: rgb(56 116 255 / var(--tw-text-opacity));
 }
-:is(.dark .dataTable-pagination .active a),:is(.dark 
-.dataTable-pagination .active a:focus),:is(.dark 
+:is(.dark .dataTable-pagination .active a),:is(.dark
+.dataTable-pagination .active a:focus),:is(.dark
 .dataTable-pagination .active a:hover){
   background-color: rgb(51 65 85 / 0.6);
 }
@@ -5585,14 +5585,14 @@ input.success {
   pointer-events: none;
   stroke: #e2e8f0;
 }
-:is(.dark .apexcharts-ycrosshairs),:is(.dark 
-.apexcharts-gridline),:is(.dark 
-.apexcharts-gridlines-horizontal),:is(.dark 
-.apexcharts-gridlines-vertical),:is(.dark 
-.apexcharts-grid),:is(.dark 
-.apexcharts-gridline),:is(.dark 
-.apexcharts-xaxis-tick),:is(.dark 
-.apexcharts-xaxis line),:is(.dark 
+:is(.dark .apexcharts-ycrosshairs),:is(.dark
+.apexcharts-gridline),:is(.dark
+.apexcharts-gridlines-horizontal),:is(.dark
+.apexcharts-gridlines-vertical),:is(.dark
+.apexcharts-grid),:is(.dark
+.apexcharts-gridline),:is(.dark
+.apexcharts-xaxis-tick),:is(.dark
+.apexcharts-xaxis line),:is(.dark
 .apexcharts-gridline line){
   stroke: #334155;
 }
@@ -5606,10 +5606,10 @@ input.success {
   stroke: #f1f5f9;
 }
 
-:is(.dark .apexcharts-radar-series line),:is(.dark 
-.apexcharts-area-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events),:is(.dark 
-.apexcharts-line-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events),:is(.dark 
-.apexcharts-radar-series path),:is(.dark 
+:is(.dark .apexcharts-radar-series line),:is(.dark
+.apexcharts-area-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events),:is(.dark
+.apexcharts-line-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events),:is(.dark
+.apexcharts-radar-series path),:is(.dark
 .apexcharts-radar-series polygon){
   stroke: #334155;
 }
@@ -5704,7 +5704,7 @@ input.success {
   color: rgb(226 232 240 / var(--tw-text-opacity));
 }
 
-:is(.dark .apexcharts-tooltip-series-group.apexcharts-active),:is(.dark 
+:is(.dark .apexcharts-tooltip-series-group.apexcharts-active),:is(.dark
 .apexcharts-tooltip-series-group:last-child){
   --tw-text-opacity: 1;
   color: rgb(226 232 240 / var(--tw-text-opacity));
@@ -5757,7 +5757,7 @@ input.success {
   border-top-color: rgb(243 244 246 / var(--tw-border-opacity));
 }
 
-:is(.dark .apexcharts-xaxistooltip-top):before,:is(.dark 
+:is(.dark .apexcharts-xaxistooltip-top):before,:is(.dark
 .apexcharts-xaxistooltip-top):after{
   --tw-border-opacity: 1;
   border-top-color: rgb(30 41 59 / var(--tw-border-opacity));
@@ -5769,7 +5769,7 @@ input.success {
   border-bottom-color: rgb(243 244 246 / var(--tw-border-opacity));
 }
 
-:is(.dark .apexcharts-xaxistooltip-bottom):before,:is(.dark 
+:is(.dark .apexcharts-xaxistooltip-bottom):before,:is(.dark
 .apexcharts-xaxistooltip-bottom):after{
   --tw-border-opacity: 1;
   border-bottom-color: rgb(30 41 59 / var(--tw-border-opacity));
@@ -5781,7 +5781,7 @@ input.success {
   border-color: rgb(243 244 246 / var(--tw-border-opacity));
 }
 
-:is(.dark .apexcharts-xaxistooltip):before,:is(.dark 
+:is(.dark .apexcharts-xaxistooltip):before,:is(.dark
 .apexcharts-xaxistooltip):after{
   --tw-border-opacity: 1;
   border-color: rgb(30 41 59 / var(--tw-border-opacity));
@@ -5793,7 +5793,7 @@ input.success {
   color: rgb(51 65 85 / var(--tw-text-opacity));
 }
 
-:is(.dark .apexcharts-title-text),:is(.dark 
+:is(.dark .apexcharts-title-text),:is(.dark
 .apexcharts-datalabel-label){
   --tw-text-opacity: 1;
   color: rgb(241 245 249 / var(--tw-text-opacity));
@@ -5916,8 +5916,8 @@ input.success {
   --tw-text-opacity: 1;
   color: rgb(51 65 85 / var(--tw-text-opacity));
 }
-:is(.dark .fc .fc-daygrid-more-link.fc-more-link),:is(.dark 
-.fc .fc-col-header-cell-cushion),:is(.dark 
+:is(.dark .fc .fc-daygrid-more-link.fc-more-link),:is(.dark
+.fc .fc-col-header-cell-cushion),:is(.dark
 .fc .fc-daygrid-day-number){
   --tw-text-opacity: 1;
   color: rgb(148 163 184 / var(--tw-text-opacity));
@@ -5936,8 +5936,8 @@ input.success {
   border-color: rgb(226 232 240 / var(--tw-border-opacity));
 }
 
-:is(.dark .fc-theme-standard .fc-scrollgrid),:is(.dark 
-.fc-theme-standard td),:is(.dark 
+:is(.dark .fc-theme-standard .fc-scrollgrid),:is(.dark
+.fc-theme-standard td),:is(.dark
 .fc-theme-standard th){
   --tw-border-opacity: 1;
   border-color: rgb(51 65 85 / var(--tw-border-opacity));
@@ -6641,7 +6641,7 @@ input.success {
           box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-:is(.dark .flatpickr-months .flatpickr-prev-month),:is(.dark 
+:is(.dark .flatpickr-months .flatpickr-prev-month),:is(.dark
 .flatpickr-months .flatpickr-next-month){
   fill: #cbd5e1;
   --tw-text-opacity: 1;
@@ -6707,7 +6707,7 @@ pre[class*=language-]{
   --tw-bg-opacity: 1;
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
 }
-:is(.dark :not(pre) > code[class*=language-]),:is(.dark 
+:is(.dark :not(pre) > code[class*=language-]),:is(.dark
 pre[class*=language-]){
   background-color: rgb(142 188 255 / 0.05);
 }

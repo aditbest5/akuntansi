@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-    <div class="page-wrapper relative ltr:ml-auto rtl:mr-auto rtl:ml-0 w-[calc(100%-260px)] px-4 pt-[64px] duration-300">
+    <div class="page-wrapper relative ltr:ml-auto rtl:mr-auto rtl:ml-0 w-[calc(100%-50px)] px-4 pt-[64px] duration-300">
         <div class="xl:w-full">
             <div class="flex flex-wrap">
                 <div class="flex items-center py-4 w-full">
@@ -106,7 +106,8 @@
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                         <a href="/document-format/{{ $value->modul_code }}"><i
                                                                 class="icofont-edit text-lg text-gray-500 dark:text-gray-400"></i></a>
-                                                        <button onclick="deleteDocumentFormat({{ $value->id }}, {{$value->modul_code}})"><i
+                                                        <button
+                                                            onclick="deleteDocumentFormat({{ $value->id }}, {{ $value->modul_code }})"><i
                                                                 class="icofont-ui-delete text-lg text-red-500 dark:text-red-400"></i></button>
                                                     </td>
                                                 </tr>

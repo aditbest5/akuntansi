@@ -10,25 +10,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="/template/dist/assets/images/favicon.ico" />
-    <link rel="stylesheet" href="assets/libs/mobius1-selectr/selectr.min.css">
+    <link rel="stylesheet" href="/template/dist/assets/libs/mobius1-selectr/selectr.min.css">
 
     <!-- Css -->
     <!-- Main Css -->
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link href="/template/dist/assets/libs/prismjs/themes/prism-twilight.min.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="/template/dist/assets/libs/simple-datatables/style.css" />
     <link rel="stylesheet" href="/template/dist/assets/libs/icofont/icofont.min.css">
     <link href="/template/dist/assets/libs/flatpickr/flatpickr.min.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="/template/dist/assets/css/tailwind.min.css">
-
 </head>
 
-<body data-layout-mode="light" data-sidebar-size="default" data-theme-layout="vertical"
-    class="bg-[#EEF0FC] dark:bg-gray-900">
+<body class="bg-[#EEF0FC] dark:bg-gray-900">
 
     <!-- leftbar-tab-menu -->
 
 
-    <div
+    {{-- <div
         class="min-h-full z-[99]  fixed inset-y-0 print:hidden bg-gradient-to-t from-[#6f3dc3] from-10% via-[#603dc3] via-40% to-[#5c3dc3] to-100% dark:bg-[#603dc3] main-sidebar duration-300 group-data-[sidebar=dark]:bg-[#603dc3] group-data-[sidebar=brand]:bg-brand group-[.dark]:group-data-[sidebar=brand]:bg-[#603dc3]">
         <div
             class=" text-center border-b bg-[#603dc3] border-r h-[64px] flex justify-center items-center brand-logo dark:bg-[#603dc3] dark:border-slate-700/40 group-data-[sidebar=dark]:bg-[#603dc3] group-data-[sidebar=dark]:border-slate-700/40 group-data-[sidebar=brand]:bg-brand group-[.dark]:group-data-[sidebar=brand]:bg-[#603dc3] group-data-[sidebar=brand]:border-slate-700/40">
@@ -252,10 +251,10 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
-    <nav id="topbar"
+    {{-- <nav id="topbar"
         class="topbar border-b  dark:border-slate-700/40  fixed inset-x-0  duration-300
              block print:hidden z-50">
         <div
@@ -462,28 +461,273 @@
                 </div>
             </div>
         </div>
+    </nav> --}}
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button type="button"
+                        class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                        aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="absolute -inset-0.5"></span>
+                        <span class="sr-only">Open main menu</span>
+                        <!--
+                  Icon when menu is closed.
+
+                  Menu open: "hidden", Menu closed: "block"
+                -->
+                        <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <!--
+                  Icon when menu is open.
+
+                  Menu open: "block", Menu closed: "hidden"
+                -->
+                        <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-1 items-center justify-start sm:items-stretch sm:justify-start">
+                    <div class="flex flex-shrink-0 items-center">
+                        <img class="h-8 w-auto" src="template/dist/assets/images/arneva.png" alt="Your Company">
+                    </div>
+                    <div class="hidden sm:ml-6 sm:block">
+                        <div class="flex space-x-4">
+                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                            <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                                aria-current="page">Dashboard</a>
+                            <a href="#"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Team</a>
+                            <a href="#"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Projects</a>
+                            <a href="#"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Calendar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <div class="ltr:me-2 ltr:lg:me-4 rtl:me-0 rtl:ms-2 rtl:lg:me-0 rtl:md:ms-4 dropdown relative">
+                        <button type="button" class="dropdown-toggle flex rounded-full md:me-0" id="Notifications"
+                            aria-expanded="false" data-fc-autoclose="both" data-fc-type="dropdown">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="#f2eded" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-bell">
+                                <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+                                <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+                            </svg> </button>
+
+                        <div class="left-auto right-0 z-50 my-1 hidden w-64
+                        list-none divide-y h-52 divide-gray-100 rounded border border-slate-700/10
+                       text-base shadow dark:divide-gray-600 bg-white
+                        dark:bg-slate-800"
+                            id="navNotifications" data-simplebar>
+                            <ul class="py-1" aria-labelledby="navNotifications">
+                                <li class="py-2 px-4">
+                                    <a href="javascript:void(0);" class="dropdown-item">
+                                        <div class="flex">
+                                            <div class="h-8 w-8 rounded-full bg-primary-500/20 inline-flex me-3">
+                                                <span data-lucide="shopping-cart"
+                                                    class="w-4 h-4 inline-block text-primary-500 dark:text-primary-400 self-center mx-auto"></span>
+                                            </div>
+                                            <div class="flex-grow flex-1 ms-0.5 overflow-hidden">
+                                                <p
+                                                    class="text-sm font-medium text-gray-900 truncate
+                                    dark:text-gray-300">
+                                                    Karen Robinson</p>
+                                                <p
+                                                    class="text-gray-500 mb-0 text-xs truncate
+                                    dark:text-gray-400">
+                                                    Hey ! i'm available here
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="py-2 px-4">
+                                    <a href="javascript:void(0);" class="dropdown-item">
+                                        <div class="flex">
+                                            <img class="object-cover rounded-full h-8 w-8 shrink-0 me-3"
+                                                src="/template/dist/assets/images/users/avatar-3.png"
+                                                alt="logo" />
+                                            <div class="flex-grow flex-1 ms-0.5 overflow-hidden">
+                                                <p
+                                                    class="text-sm font-medium text-gray-900 truncate
+                                    dark:text-gray-300">
+                                                    Your order is placed</p>
+                                                <p
+                                                    class="text-gray-500 mb-0 text-xs truncate
+                                    dark:text-gray-400">
+                                                    Dummy text of the printing and industry.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="py-2 px-4">
+                                    <a href="javascript:void(0);" class="dropdown-item">
+                                        <div class="flex">
+                                            <div class="h-8 w-8 rounded-full bg-primary-500/20 inline-flex me-3">
+                                                <span data-lucide="user"
+                                                    class="w-4 h-4 inline-block text-primary-500 dark:text-primary-400 self-center mx-auto"></span>
+                                            </div>
+                                            <div class="flex-grow flex-1 ms-0.5 overflow-hidden">
+                                                <p
+                                                    class="text-sm font-medium text-gray-900 truncate
+                                    dark:text-gray-300">
+                                                    Robert McCray</p>
+                                                <p
+                                                    class="text-gray-500 mb-0 text-xs truncate
+                                    dark:text-gray-400">
+                                                    Good Morning!
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="py-2 px-4">
+                                    <a href="javascript:void(0);" class="dropdown-item">
+                                        <div class="flex">
+                                            <img class="object-cover rounded-full h-8 w-8 shrink-0 me-3"
+                                                src="/template/dist/assets/images/users/avatar-9.png"
+                                                alt="logo" />
+                                            <div class="flex-grow flex-1 ms-0.5 overflow-hidden">
+                                                <p
+                                                    class="text-sm font-medium  text-gray-900 truncate
+                                    dark:text-gray-300">
+                                                    Meeting with designers</p>
+                                                <p
+                                                    class="text-gray-500 mb-0 text-xs truncate
+                                    dark:text-gray-400">
+                                                    It is a long established fact that a reader.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Profile dropdown -->
+                    <div class="me-2  dropdown relative">
+                        <button type="button"
+                            class="dropdown-toggle flex items-center rounded-full text-sm
+                        focus:bg-none focus:ring-0 dark:focus:ring-0 md:me-0"
+                            id="user-profile" aria-expanded="false" data-fc-autoclose="both"
+                            data-fc-type="dropdown">
+                            <img class="h-8 w-8 rounded-full" src="/template/dist/assets/images/users/avatar-1.png"
+                                alt="user photo" />
+                            <span class="ltr:ms-2 rtl:ms-0 rtl:me-2 hidden text-left xl:block">
+                                <span class="block font-medium text-slate-200 dark:text-gray-300">Maria Gibson</span>
+                                <span class="-mt-0.5 block text-xs text-slate-400 dark:text-gray-400">Admin</span>
+                            </span>
+                        </button>
+
+                        <div class="left-auto right-0 z-50 my-1 hidden list-none
+                        divide-y divide-gray-100 rounded border border-slate-700/10
+                        text-base shadow dark:divide-gray-600 bg-white dark:bg-slate-800 w-40"
+                            id="navUserdata">
+
+                            <ul class="py-1" aria-labelledby="navUserdata">
+                                <li>
+                                    <a href="#"
+                                        class="flex items-center py-2 px-3 text-sm text-gray-700 hover:bg-gray-50
+                              dark:text-gray-200 dark:hover:bg-gray-900/20
+                              dark:hover:text-white">
+                                        <span data-lucide="user"
+                                            class="w-4 h-4 inline-block text-slate-800 dark:text-slate-400 me-2"></span>
+                                        Profile</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="flex items-center py-2 px-3 text-sm text-gray-700 hover:bg-gray-50
+                              dark:text-gray-200 dark:hover:bg-gray-900/20
+                              dark:hover:text-white">
+                                        <span data-lucide="settings"
+                                            class="w-4 h-4 inline-block text-slate-800 dark:text-slate-400 me-2"></span>
+                                        Settings</a>
+                                </li>
+                                <li>
+                                    <a href="#"
+                                        class="flex items-center py-2 px-3 text-sm text-gray-700 hover:bg-gray-50
+                              dark:text-gray-200 dark:hover:bg-gray-900/20
+                              dark:hover:text-white">
+                                        <span data-lucide="dollar-sign"
+                                            class="w-4 h-4 inline-block text-slate-800 dark:text-slate-400 me-2"></span>
+                                        Earnings</a>
+                                </li>
+                                <li>
+                                    <a href="auth-lockscreen.html"
+                                        class="flex items-center py-2 px-3 text-sm text-red-500 hover:bg-gray-50 hover:text-red-600
+                              dark:text-red-500 dark:hover:bg-gray-900/20
+                              dark:hover:text-red-500">
+                                        <span data-lucide="power"
+                                            class="w-4 h-4 inline-block text-red-500 dark:text-red-500 me-2"></span>
+                                        Sign out</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pb-3 pt-2">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+                    aria-current="page">Dashboard</a>
+                <a href="#"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Team</a>
+                <a href="#"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Projects</a>
+                <a href="#"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Calendar</a>
+            </div>
+        </div>
     </nav>
 
+
+
+    <nav class="bg-white border-gray-200 dark:bg-gray-900">
+        <div class="flex flex-wrap items-center justify-center max-w-screen-xl mx-auto p-4">
+            <div id="mega-menu-icons" class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
+                <ul class="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8 rtl:space-x-reverse"
+                    id="nav">
+
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     @yield('content')
 
     <!-- JAVASCRIPTS -->
     <!-- <div class="menu-overlay"></div> -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     <script src="/template/dist/assets/libs/lucide/umd/lucide.min.js"></script>
     <script src="/template/dist/assets/libs/simplebar/simplebar.min.js"></script>
     <script src="/template/dist/assets/libs/flatpickr/flatpickr.min.js"></script>
     <script src="/template/dist/assets/libs/@frostui/tailwindcss/frostui.js"></script>
     <script src="/template/dist/assets/libs/prismjs/prism.js"></script>
-    <script src="assets/libs/mobius1-selectr/selectr.min.js"></script>
-    <script src="assets/js/pages/form-advanced.init.js"></script>
+    <script src="/template/dist/assets/libs/mobius1-selectr/selectr.min.js"></script>
+    <script src="/template/dist/assets/js/pages/form-advanced.init.js"></script>
     <script src="/template/dist/assets/libs/simple-datatables/umd/simple-datatables.js"></script>
     <script src="/template/dist/assets/js/pages/datatable.init.js"></script>
     <script src="/template/dist/assets/libs/apexcharts/apexcharts.min.js"></script>
     <script src="/template/dist/assets/js/pages/analytics-index.init.js"></script>
     <script src="/template/dist/assets/js/app.js"></script>
     <script src="/template/dist/assets/js/pages/coa.js"></script>
+    <script src="/template/dist/assets/js/pages/index.js"></script>
 
     <!-- JAVASCRIPTS -->
 </body>
