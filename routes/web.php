@@ -194,12 +194,22 @@ Route::get('/list-currency-management', function () {
     return view('coa.currencyManagement', ['list_currency' => $list_currency]);
 });
 
+Route::get('/edit-currency-management/{edit_id}', function ($id) {
+    $list_currency = DB::table('currency')->where('id', $id)->first();
+    return view('coa.currencyManagementEdit', ['list_currency' => $list_currency]);
+});
+
 Route::get('/supplier-type-management', function () {
     $document_format = DB::table('document_format')->where('modul_name', 'Supplier Type Management')->first();
     if ($document_format === null) {
         $document_format = (object) ['format' => null];
     }
     return view('coa.supplierTypeManagementAdd', ['document_format' => $document_format]);
+});
+
+Route::get('/edit-supplier-type-management/{edit_id}', function ($id) {
+    $list_supplier = DB::table('supplier_type')->where('id', $id)->first();
+    return view('coa.supplierTypeManagementEdit', ['list_supplier' => $list_supplier]);
 });
 
 Route::get('/list-supplier-type-management', function () {

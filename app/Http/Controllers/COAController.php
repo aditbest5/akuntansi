@@ -214,20 +214,29 @@ class COAController extends Controller
         return response()->json($results);
     }
 
-    public function storeCurrency(Request $request)
+    public function updateSupplier(Request $request, $id)
     {
-        $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'Currency Management')->first();
-        $results = DB::table('currency')->insert([
-            'currency_code' => $request->input('currency_code'),
-            'currency_name' => $request->input('currency_name'),
-            'currency_desc' => $request->input('currency_desc'),
-            'currency_status' => $request->input('currency_status'),
-            'modul_code' => $modul_code->modul_code,
+        $results = DB::table('supplier_type')->where('id', $id)->update([
+            'supplier_type_code' => $request->input('supplier_type_code'),
+            'supplier_type_name' => $request->input('supplier_type_name'),
+            'supplier_type_desc' => $request->input('supplier_type_desc'),
+            'supplier_type_status' => $request->input('supplier_type_status'),
         ]);
         if (!$results) {
             $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
         }
         return response()->json($results);
+    }
+
+    public function destroySupplier(Request $request)
+    {
+        $deleted = DB::table('supplier_type')->where('id', $request->input('id'))->delete();
+        if (!$deleted) {
+            $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
+        } else {
+            $resutlMsg = array("sts" => "OK", "desc" => " Delete Success !", "msg" => "");
+        }
+        return response()->json($resutlMsg);
     }
 
     public function storeDocumentFormat(Request $request)
@@ -284,6 +293,36 @@ class COAController extends Controller
             $resutlMsg = array("sts" => "OK", "desc" => " Delete Success !", "msg" => "");
         }
         return response()->json($resutlMsg);
+    }
+
+    public function storeCurrency(Request $request)
+    {
+        $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'Currency Management')->first();
+        $results = DB::table('currency')->insert([
+            'currency_code' => $request->input('currency_code'),
+            'currency_name' => $request->input('currency_name'),
+            'currency_desc' => $request->input('currency_desc'),
+            'currency_status' => $request->input('currency_status'),
+            'modul_code' => $modul_code->modul_code,
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
+    }
+
+    public function updateCurrency(Request $request, $id)
+    {
+        $results = DB::table('currency')->where('id', $id)->update([
+            'currency_code' => $request->input('currency_code'),
+            'currency_name' => $request->input('currency_name'),
+            'currency_desc' => $request->input('currency_desc'),
+            'currency_status' => $request->input('currency_status'),
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
     }
 
     public function destroyCurrency(Request $request)

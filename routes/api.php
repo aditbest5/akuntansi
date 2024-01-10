@@ -33,10 +33,13 @@ Route::post('coa/store-customer', [COAController::class, 'storeCustomer']);
 Route::patch('coa/update-customer/{id}', [COAController::class, 'updateCustomer']);
 Route::delete('coa/delete-customer', [COAController::class, 'destroyCustomer']);
 Route::post('coa/store-supplier', [COAController::class, 'storeSupplier']);
+Route::patch('coa/update-supplier/{id}', [COAController::class, 'updateSupplier']);
+Route::delete('coa/delete-supplier', [COAController::class, 'destroySupplier']);
 Route::post('coa/store-document-format', [COAController::class, 'storeDocumentFormat']);
 Route::put('coa/update-document-format', [COAController::class, 'updateDocumentFormat']);
 Route::delete('coa/delete-document-format', [COAController::class, 'destroyDocumentFormat']);
 Route::post('coa/store-currency', [COAController::class, 'storeCurrency']);
+Route::patch('coa/update-currency/{id}', [COAController::class, 'updateCurrency']);
 Route::delete('coa/delete-currency', [COAController::class, 'destroyCurrency']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

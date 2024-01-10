@@ -116,8 +116,8 @@
                                                     Aktif
                                                 </option>
                                             @endif
-                                            <option value="0">Tidak</option>
                                             <option value="1">Aktif</option>
+                                            <option value="0">Tidak</option>
                                         </select>
                                     </div>
                                 </div>

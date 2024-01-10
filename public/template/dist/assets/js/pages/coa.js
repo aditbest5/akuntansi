@@ -666,6 +666,102 @@ function submitSupplier(e) {
         });
 }
 
+function submitEditSupplier(e, id) {
+    e.preventDefault();
+    let supplier_type_code =
+        document.getElementById("supplier_type_code").value;
+    let supplier_type_name =
+        document.getElementById("supplier_type_name").value;
+    let supplier_type_desc =
+        document.getElementById("supplier_type_desc").value;
+    let supplier_type_status = document.getElementById(
+        "supplier_type_status"
+    ).value;
+
+    const requestData = {
+        supplier_type_code,
+        supplier_type_name,
+        supplier_type_desc,
+        supplier_type_status,
+    };
+
+    const requestOptions = {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(requestData),
+    };
+
+    // Lakukan permintaan fetch
+    fetch(`/api/coa/update-supplier/${id}`, requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-supplier-type-management";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function deleteSupplier(id) {
+    const requestOptions = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+            id,
+        }),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("api/coa/delete-supplier", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-supplier-type-management";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
 function submitDocumentFormat(e) {
     e.preventDefault();
     let doc_num_code = document.getElementById("doc_num_code").value;
@@ -855,6 +951,56 @@ function submitCurrency(e) {
 
     // Lakukan permintaan fetch
     fetch("/api/coa/store-currency", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-currency-management";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function submitEditCurrency(e, id) {
+    e.preventDefault();
+    let currency_code = document.getElementById("currency_code").value;
+    let currency_name = document.getElementById("currency_name").value;
+    let currency_desc = document.getElementById("currency_desc").value;
+    let currency_status = document.getElementById("currency_status").value;
+    const requestData = {
+        currency_code,
+        currency_name,
+        currency_desc,
+        currency_status,
+    };
+
+    const requestOptions = {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(requestData),
+    };
+
+    // Lakukan permintaan fetch
+    fetch(`/api/coa/update-currency/${id}`, requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
