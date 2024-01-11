@@ -34,7 +34,7 @@
         </div><!--end container-->
 
         <div class="xl:w-full min-h-[calc(100vh-152px)] relative pb-14">
-            <div class="flex flex-row justify-start mb-10"><a href="/supplier-type-management"
+            <div class="flex flex-row justify-start mb-10"><a href="/journal-type-management"
                     class="bg-blue-500 text-white font-bold py-2 px-4 rounded">+</a></div>
             <div class="xl:w-full gap-4 mb-4">
                 <div class="sm:col-span-12 md:col-span-12 lg:col-span-8 xl:col-span-6 xl:col-start-4">
@@ -60,7 +60,7 @@
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    Journal Type Name
+                                                    Journal Type type_
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
@@ -78,7 +78,7 @@
                                         </thead>
                                         <tbody>
                                             <!-- 1 -->
-                                            @forelse ($list_journal as $key => $value)
+                                            @forelse ($list_journal_type as $key => $value)
                                                 <tr
                                                     class="bg-white border-b border-dashed dark:bg-gray-900 dark:border-gray-700">
 
@@ -86,19 +86,19 @@
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                         <img src="template/dist/assets/images/users/avatar-1.png"
                                                             alt="" class="mr-2 h-8 rounded-full inline-block" />
-                                                        {{ $value->journal_code }}
+                                                        {{ $value->journal_type_code }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        {{ $value->journal_name }}
+                                                        {{ $value->journal_type_name }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        {{ $value->journal_desc }}
+                                                        {{ $value->journal_type_desc }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        {{ $value->journal_status == 0 ? 'Tidak Aktif' : 'Aktif' }}
+                                                        {{ $value->journal_type_status == 0 ? 'Tidak Aktif' : 'Aktif' }}
                                                     </td>
                                                     {{-- <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                         <img src="assets/images/users/avatar-1.png" alt=""
@@ -107,9 +107,9 @@
                                                     </td> --}}
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        <a href="/edit-supplier-type-management/{{ $value->id }}"><i
+                                                        <a href="/edit-journal-type-management/{{ $value->id }}"><i
                                                                 class="icofont-edit text-lg text-gray-500 dark:text-gray-400"></i></a>
-                                                        <button onclick="deleteSupplier({{ $value->id }})"><i
+                                                        <button onclick="deleteJournal({{ $value->id }})"><i
                                                                 class="icofont-ui-delete text-lg text-red-500 dark:text-red-400"></i></button>
                                                     </td>
                                                 </tr>

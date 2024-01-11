@@ -81,17 +81,13 @@
                                         </label>
                                     </div>
                                     <div class="relative z-0 mb-2 w-full group">
-                                        <select type="text" name="modul_status" id="modul_status"
+                                        <input type="text" name="modul_url" id="modul_url"
+                                            value="{{ $list_modul->modul_url }}"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
-                                            required>
-                                            <option value="{{ $list_modul->modul_status }}" hidden>
-                                                {{ $list_modul->modul_status == '0' ? 'Tidak Aktif' : 'Aktif' }}</option>
-                                            <option value="0">Tidak</option>
-                                            <option value="1">Aktif</option>
-                                        </select>
-                                        <label for="modul_status"
+                                            placeholder=" " required />
+                                        <label for="modul_url"
                                             class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Modul
-                                            Status
+                                            URL
                                         </label>
                                     </div>
                                 </div>
@@ -131,6 +127,21 @@
                                             Modul Name
                                         </label>
                                     </div>
+                                </div>
+                                <br />
+                                <div class="relative z-0 mb-2 w-full group">
+                                    <select type="text" name="modul_status" id="modul_status"
+                                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
+                                        required>
+                                        <option value="{{ $list_modul->modul_status }}" hidden>
+                                            {{ $list_modul->modul_status == '0' ? 'Tidak Aktif' : 'Aktif' }}</option>
+                                        <option value="1">Aktif</option>
+                                        <option value="0">Tidak</option>
+                                    </select>
+                                    <label for="modul_status"
+                                        class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Modul
+                                        Status
+                                    </label>
                                 </div>
                                 <br />
                                 <button type="submit"

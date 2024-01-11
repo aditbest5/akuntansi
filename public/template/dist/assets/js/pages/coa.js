@@ -205,6 +205,7 @@ function submitModul(e) {
     let modul_code = document.getElementById("modul_code").value;
     let modul_name = document.getElementById("modul_name").value;
     let modul_description = document.getElementById("modul_description").value;
+    let modul_url = document.getElementById("modul_url").value;
     let modul_status = document.getElementById("modul_status").value;
     let split_group_modul_code = group_modul_code.split("+");
     group_modul_code = split_group_modul_code[1];
@@ -215,6 +216,7 @@ function submitModul(e) {
         modul_code,
         modul_name,
         modul_description,
+        modul_url,
         modul_status,
     };
 
@@ -274,7 +276,7 @@ function submitEditModul(e, id) {
     };
 
     const requestOptions = {
-        method: "PUT",
+        method: "PATCH",
         headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
@@ -850,7 +852,7 @@ function updateDocumentFormat(e) {
     };
 
     const requestOptions = {
-        method: "PUT",
+        method: "PATCH",
         headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
@@ -1057,6 +1059,99 @@ function deleteCurrency(id) {
                 } else {
                     alert("OK");
                     document.location.href = "/list-currency-management";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function submitJournal(e) {
+    e.preventDefault();
+    let journal_type_code = document.getElementById("journal_type_code").value;
+    let journal_type_name = document.getElementById("journal_type_name").value;
+    let journal_type_desc = document.getElementById("journal_type_desc").value;
+    let journal_type_status = document.getElementById(
+        "journal_type_status"
+    ).value;
+
+    const requestData = {
+        journal_type_code,
+        journal_type_name,
+        journal_type_desc,
+        journal_type_status,
+    };
+
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(requestData),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("/api/coa/store-journal", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-journal-type-management";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function deleteJournal(id) {
+    const requestOptions = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+            id,
+        }),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("api/coa/delete-journal", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-journal-type-management";
                 }
             }
         })

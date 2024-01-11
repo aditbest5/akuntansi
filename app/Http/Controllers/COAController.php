@@ -82,6 +82,7 @@ class COAController extends Controller
             'modul_code' => $request->input('modul_code'),
             'modul_name' => $request->input('modul_name'),
             'modul_description' => $request->input('modul_description'),
+            'modul_url' => $request->input('modul_url'),
             'modul_status' => $request->input('modul_status')
 
         ]);
@@ -328,6 +329,33 @@ class COAController extends Controller
     public function destroyCurrency(Request $request)
     {
         $deleted = DB::table('currency')->where('id', $request->input('id'))->delete();
+        if (!$deleted) {
+            $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
+        } else {
+            $resutlMsg = array("sts" => "OK", "desc" => " Delete Success !", "msg" => "");
+        }
+        return response()->json($resutlMsg);
+    }
+
+    public function storeJournal(Request $request)
+    {
+        $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'Journal Type Management')->first();
+        $results = DB::table('journal_type')->insert([
+            'journal_type_code' => $request->input('journal_type_code'),
+            'journal_type_name' => $request->input('journal_type_name'),
+            'journal_type_desc' => $request->input('journal_type_desc'),
+            'journal_type_status' => $request->input('journal_type_status'),
+            'modul_code' => $modul_code->modul_code,
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
+    }
+
+    public function destroyJournal(Request $request)
+    {
+        $deleted = DB::table('journal_type')->where('id', $request->input('id'))->delete();
         if (!$deleted) {
             $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
         } else {

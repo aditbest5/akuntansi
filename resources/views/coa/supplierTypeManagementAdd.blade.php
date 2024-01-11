@@ -49,7 +49,7 @@
                                 <div class="grid xl:grid-cols-2 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
                                         <input type="text" name="supplier_type_code" id="supplier_type_code"
-                                            value="{{ $document_format->format ? $document_format->format . ($document_format->start_number + 1) : $document_format->format }}"
+                                            value="{{ $count ? $document_format->format . ($count + 1) : $document_format->format . $document_format->start_number }}"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
                                             placeholder=" " required disabled />
                                         <label for="supplier_type_code"
@@ -77,7 +77,8 @@
                                     </div>
                                     <div class="relative z-0 mb-2 w-full group">
                                         <label for="supplier_type_status"
-                                            class="font-medium text-sm text-slate-600 dark:text-slate-400 top-3">Credit Term
+                                            class="font-medium text-sm text-slate-600 dark:text-slate-400 top-3">Supplier
+                                            Type
                                             Status</label>
                                         <select id="supplier_type_status" name="supplier_type_status"
                                             class="form-input w-full rounded-md mt-1 border border-slate-300/60 dark:border-slate-700 dark:text-slate-300 bg-transparent px-3 py-1 focus:outline-none focus:ring-0 placeholder:text-slate-400/70 placeholder:font-normal placeholder:text-sm hover:border-slate-400 focus:border-primary-500 dark:focus:border-primary-500  dark:hover:border-slate-700">

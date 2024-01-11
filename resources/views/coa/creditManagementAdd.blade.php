@@ -48,7 +48,7 @@
                                 <div class="grid xl:grid-cols-2 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
                                         <input type="text" name="credit_term_code" id="credit_term_code"
-                                            value="{{ $document_format->format ? $document_format->format . ($document_format->start_number + 1) : $document_format->format }}"
+                                            value="{{ $count ? $document_format->format . ($count + 1) : $document_format->format . $document_format->start_number }}"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
                                             placeholder=" " required disabled />
                                         <label for="credit_term_code"

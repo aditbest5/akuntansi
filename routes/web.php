@@ -125,10 +125,11 @@ Route::get('/coa-entry-list', function () {
 
 Route::get('/credit-management', function () {
     $document_format = DB::table('document_format')->where('modul_name', 'Credit Term Management')->first();
+    $count = DB::table('credit_term')->count();
     if ($document_format === null) {
         $document_format = (object) ['format' => null];
     }
-    return view('coa.creditManagementAdd', ['document_format' => $document_format]);
+    return view('coa.creditManagementAdd', ['document_format' => $document_format, 'count' => $count]);
 });
 
 Route::get('/list-credit-management', function () {
@@ -137,7 +138,6 @@ Route::get('/list-credit-management', function () {
 });
 
 Route::get('/edit-credit-management/{edit_id}', function ($id) {
-    // $list_group = DB::table('group_modul')->get();
     $list_credit = DB::table('credit_term')->where('id', $id)->first();
     return view('coa.creditManagementEdit', ['list_credit' => $list_credit]);
 });
@@ -145,10 +145,11 @@ Route::get('/edit-credit-management/{edit_id}', function ($id) {
 
 Route::get('/customer-supplier-group', function () {
     $document_format = DB::table('document_format')->where('modul_name', 'Customer Supplier Group Management')->first();
+    $count = DB::table('customer_supplier_group')->count();
     if ($document_format === null) {
         $document_format = (object) ['format' => null];
     }
-    return view('coa.customerSupplierGroupAdd', ['document_format' => $document_format]);
+    return view('coa.customerSupplierGroupAdd', ['document_format' => $document_format, 'count' => $count]);
 });
 
 Route::get('/list-customer-supplier-group', function () {
@@ -184,10 +185,11 @@ Route::get('/list-modul-management',  function () {
 
 Route::get('/currency-management', function () {
     $document_format = DB::table('document_format')->where('modul_name', 'Currency Management')->first();
+    $count = DB::table('currency')->count();
     if ($document_format === null) {
         $document_format = (object) ['format' => null];
     }
-    return view('coa.currencyManagementAdd', ['document_format' => $document_format]);
+    return view('coa.currencyManagementAdd', ['document_format' => $document_format, 'count' => $count]);
 });
 Route::get('/list-currency-management', function () {
     $list_currency = DB::table('currency')->get();
@@ -201,10 +203,11 @@ Route::get('/edit-currency-management/{edit_id}', function ($id) {
 
 Route::get('/supplier-type-management', function () {
     $document_format = DB::table('document_format')->where('modul_name', 'Supplier Type Management')->first();
+    $count = DB::table('supplier_type')->count();
     if ($document_format === null) {
         $document_format = (object) ['format' => null];
     }
-    return view('coa.supplierTypeManagementAdd', ['document_format' => $document_format]);
+    return view('coa.supplierTypeManagementAdd', ['document_format' => $document_format, 'count' => $count]);
 });
 
 Route::get('/edit-supplier-type-management/{edit_id}', function ($id) {
@@ -236,4 +239,20 @@ Route::get('/document-format/{code}', function ($code) {
         return view('coa.documentNumberingManagementPilih', ['modul_code' => $modul_code, 'list_modul' => $list_modul]);
     }
     return view('coa.documentNumberingManagementEdit', ['modul_code' => $modul_code, 'list_modul' => $list_modul]);
+});
+
+Route::get('/list-journal-type-management', function () {
+    $list_journal_type = DB::table('journal_type')->get();
+    return view('coa.journalTypeManagement', ['list_journal_type' => $list_journal_type]);
+});
+
+Route::get('/journal-type-management', function () {
+    $list_journal_type = DB::table('journal_type')->get();
+    $count = DB::table('journal_type')->count();
+
+    $document_format = DB::table('document_format')->where('modul_name', 'Journal Type Management')->first();
+    if ($document_format === null) {
+        $document_format = (object) ['format' => null];
+    }
+    return view('coa.journalTypeManagementAdd', ['list_journal_type' => $list_journal_type, 'document_format' => $document_format, 'count' => $count]);
 });
