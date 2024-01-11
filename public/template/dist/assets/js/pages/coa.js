@@ -1161,3 +1161,56 @@ function deleteJournal(id) {
             alert("ERROR", "error", "Error \n" + error.message);
         });
 }
+
+function submitEditJournal(e, id) {
+    e.preventDefault();
+    let journal_type_code = document.getElementById("journal_type_code").value;
+    let journal_type_name = document.getElementById("journal_type_name").value;
+    let journal_type_desc = document.getElementById("journal_type_desc").value;
+    let journal_type_status = document.getElementById(
+        "journal_type_status"
+    ).value;
+
+    const requestData = {
+        journal_type_code,
+        journal_type_name,
+        journal_type_desc,
+        journal_type_status,
+    };
+
+    const requestOptions = {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(requestData),
+    };
+
+    // Lakukan permintaan fetch
+    fetch(`/api/coa/update-journal/${id}`, requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-journal-type-management";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}

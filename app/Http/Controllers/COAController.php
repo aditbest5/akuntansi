@@ -363,4 +363,18 @@ class COAController extends Controller
         }
         return response()->json($resutlMsg);
     }
+
+    public function updateJournal(Request $request, $id)
+    {
+        $results = DB::table('journal_type')->where('id', $id)->update([
+            'journal_type_code' => $request->input('journal_type_code'),
+            'journal_type_name' => $request->input('journal_type_name'),
+            'journal_type_desc' => $request->input('journal_type_desc'),
+            'journal_type_status' => $request->input('journal_type_status'),
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
+    }
 }

@@ -44,6 +44,8 @@ Route::patch('coa/update-currency/{id}', [COAController::class, 'updateCurrency'
 Route::delete('coa/delete-currency', [COAController::class, 'destroyCurrency']);
 Route::post('coa/store-journal', [COAController::class, 'storeJournal']);
 Route::delete('coa/delete-journal', [COAController::class, 'destroyJournal']);
+Route::patch('coa/update-journal/{id}', [COAController::class, 'updateJournal']);
+
 
 
 

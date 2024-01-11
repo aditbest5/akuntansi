@@ -256,3 +256,8 @@ Route::get('/journal-type-management', function () {
     }
     return view('coa.journalTypeManagementAdd', ['list_journal_type' => $list_journal_type, 'document_format' => $document_format, 'count' => $count]);
 });
+
+Route::get('/edit-journal-type-management/{edit_id}', function ($id) {
+    $list_journal = DB::table('journal_type')->where('id', $id)->first();
+    return view('coa.journalTypeManagementEdit', ['list_journal' => $list_journal]);
+});
