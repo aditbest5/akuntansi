@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
         </li>`;
 
             msg.forEach((value, index) => {
-                console.log(value);
                 list_group += `<li>
                 <button id="dropdown-menu-${
                     index + 1
@@ -56,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         }">`;
 
                 value.modul.forEach((modul) => {
-                    console.log(modul);
                     list_group += `
                         <li>
                             <a href="${
@@ -70,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
                 list_group += `</ul></div>
                 </div></li>`;
-                // console.log(list_modul);
             });
 
             document.getElementById("nav").innerHTML = list_group;

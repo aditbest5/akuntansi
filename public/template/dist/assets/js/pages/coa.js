@@ -162,7 +162,6 @@ function groupCode(e) {
 function modulCode(e) {
     let split_string = e.split("+");
     let id = split_string[0];
-    console.log(id);
     const requestOptions = {
         method: "POST",
         headers: {
@@ -347,7 +346,6 @@ function submitCredit(e) {
         })
         .then((data) => {
             // Proses respons JSON
-            console.log(data);
             if (data.length == 0) {
                 alert("Tidak Ada Data", "warning", "Warning");
             } else {
@@ -401,7 +399,6 @@ function submitEditCredit(e, id) {
         })
         .then((data) => {
             // Proses respons JSON
-            console.log(data);
             if (data.length == 0) {
                 alert("Tidak Ada Data", "warning", "Warning");
             } else {
@@ -496,7 +493,6 @@ function submitCustomer(e) {
             return response.json();
         })
         .then((data) => {
-            console.log(data);
             // Proses respons JSON
             if (data.length == 0) {
                 alert("Tidak Ada Data", "warning", "Warning");
@@ -552,7 +548,6 @@ function submitEditCustomer(e, id) {
             return response.json();
         })
         .then((data) => {
-            console.log(data);
             // Proses respons JSON
             if (data.length == 0) {
                 alert("Tidak Ada Data", "warning", "Warning");
@@ -772,14 +767,6 @@ function submitDocumentFormat(e) {
     let doc_num_name = document.getElementById("doc_num_name").value;
     let start_number = document.getElementById("start_number").value;
     let format = document.getElementById("format").value;
-    console.log([
-        modul_code,
-        modul_name,
-        doc_num_name,
-        doc_num_code,
-        start_number,
-        format,
-    ]);
     const requestData = {
         doc_num_code,
         doc_num_name,
@@ -834,14 +821,6 @@ function updateDocumentFormat(e) {
     let doc_num_name = document.getElementById("doc_num_name").value;
     let start_number = document.getElementById("start_number").value;
     let format = document.getElementById("format").value;
-    console.log([
-        modul_code,
-        modul_name,
-        doc_num_name,
-        doc_num_code,
-        start_number,
-        format,
-    ]);
     const requestData = {
         doc_num_code,
         doc_num_name,
