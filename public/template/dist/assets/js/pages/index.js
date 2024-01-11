@@ -57,7 +57,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log(modul);
                     list_group += `
                                 <li>
-                                    <a href="${modul["modul_url"]}"
+                                    <a href="${
+                                        modul["modul_url"]
+                                            ? modul["modul_url"]
+                                            : "#"
+                                    }"
                                         class="flex items-center text-md block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                         ${modul["modul_name"]}
                                     </a>
