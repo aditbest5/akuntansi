@@ -59,7 +59,6 @@
                     if (data.length == 0) {
                         alert('Tidak Ada Data', 'warning', 'Warning');
                     } else {
-                        alert(data.sts);
                         if (data.sts == 'N') {
                             alert('Error');
                         } else {

@@ -109,3 +109,24 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
 });
+
+function printPreview(title) {
+    // Open a new window for printing
+    var printWindow = window.open("", "_blank");
+
+    // Create the HTML content for the table
+    var tableContent = document.getElementById("datatable_preview").outerHTML;
+
+    // Set the content of the new window
+    printWindow.document.write(
+        `<html><head><title>${title}</title></head><body>`
+    );
+    printWindow.document.write(`<h1>${title}</h1>`);
+    printWindow.document.write(tableContent);
+    printWindow.document.write("</body></html>");
+
+    // Close the new window after printing
+    printWindow.document.close();
+    printWindow.print();
+    printWindow.close();
+}
