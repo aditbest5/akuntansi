@@ -184,10 +184,7 @@
                     <!-- 1 -->
                     @forelse ($list_supplier_type as $key => $value)
                         <tr class="bg-white border-b border-dashed dark:bg-gray-900 dark:border-gray-700">
-
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                <img src="template/dist/assets/images/users/avatar-1.png" alt=""
-                                    class="mr-2 h-8 rounded-full inline-block" />
                                 {{ $value->supplier_type_code }}
                             </td>
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
@@ -199,9 +196,6 @@
                         </tr>
                     @empty
                         <tr class="bg-white border-b border-dashed dark:bg-gray-900 dark:border-gray-700">
-
-                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                            </td>
                             <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                             </td>
                             <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
