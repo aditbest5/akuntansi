@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\COAController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
@@ -132,8 +133,13 @@ Route::get('/credit-management', function () {
     return view('coa.creditManagementAdd', ['document_format' => $document_format, 'count' => $count]);
 });
 
-Route::get('/list-credit-management', function () {
-    $list_credit_term = DB::table('credit_term')->get();
+Route::get('/list-credit-management', function (Request $request) {
+    $search_term = $request->input('search');
+    if ($search_term) {
+        $list_credit_term = DB::table('credit_term')->where('credit_term_name', 'LIKE', '%' . $search_term . '%')->orWhere('credit_term_value', 'LIKE', '%' . $search_term . '%')->get();
+    } else {
+        $list_credit_term = DB::table('credit_term')->get();
+    }
     return view('coa.creditManagement', ['list_credit_term' => $list_credit_term]);
 });
 
@@ -152,8 +158,13 @@ Route::get('/customer-supplier-group', function () {
     return view('coa.customerSupplierGroupAdd', ['document_format' => $document_format, 'count' => $count]);
 });
 
-Route::get('/list-customer-supplier-group', function () {
-    $list_customer_supplier = DB::table('customer_supplier_group')->get();
+Route::get('/list-customer-supplier-group', function (Request $request) {
+    $search_term = $request->input('search');
+    if ($search_term) {
+        $list_customer_supplier = DB::table('customer_supplier_group')->where('group_name', 'LIKE', '%' . $search_term . '%')->orWhere('group_description', 'LIKE', '%' . $search_term . '%')->orWhere('coa_name', 'LIKE', '%' . $search_term . '%')->get();
+    } else {
+        $list_customer_supplier = DB::table('customer_supplier_group')->get();
+    }
     return view('coa.customerSupplierGroup', ['list_customer_supplier' => $list_customer_supplier]);
 });
 
@@ -178,8 +189,13 @@ Route::get('/modul-management', function () {
 
 Route::get('/edit-modul-management/{edit_id}', [COAController::class, 'showEditModul']);
 
-Route::get('/list-modul-management',  function () {
-    $list_modul = DB::table('modul_form')->get();
+Route::get('/list-modul-management',  function (Request $request) {
+    $search_term = $request->input('search');
+    if ($search_term) {
+        $list_modul = DB::table('modul_form')->where('modul_name', 'LIKE', '%' . $search_term . '%')->orWhere('modul_description', 'LIKE', '%' . $search_term . '%')->orWhere('group_modul_name', 'LIKE', '%' . $search_term . '%')->get();
+    } else {
+        $list_modul = DB::table('modul_form')->get();
+    }
     return view('coa.modulManagement', ['list_modul' => $list_modul]);
 });
 
@@ -191,8 +207,13 @@ Route::get('/currency-management', function () {
     }
     return view('coa.currencyManagementAdd', ['document_format' => $document_format, 'count' => $count]);
 });
-Route::get('/list-currency-management', function () {
-    $list_currency = DB::table('currency')->get();
+Route::get('/list-currency-management', function (Request $request) {
+    $search_term = $request->input('search');
+    if ($search_term) {
+        $list_currency = DB::table('currency')->where('currency_name', 'LIKE', '%' . $search_term . '%')->orWhere('currency_desc', 'LIKE', '%' . $search_term . '%')->get();
+    } else {
+        $list_currency = DB::table('currency')->get();
+    }
     return view('coa.currencyManagement', ['list_currency' => $list_currency]);
 });
 
@@ -215,8 +236,13 @@ Route::get('/edit-supplier-type-management/{edit_id}', function ($id) {
     return view('coa.supplierTypeManagementEdit', ['list_supplier' => $list_supplier]);
 });
 
-Route::get('/list-supplier-type-management', function () {
-    $list_supplier_type = DB::table('supplier_type')->get();
+Route::get('/list-supplier-type-management', function (Request $request) {
+    $search_term = $request->input('search');
+    if ($search_term) {
+        $list_supplier_type = DB::table('supplier_type')->where('supplier_type_name', 'LIKE', '%' . $search_term . '%')->orWhere('supplier_type_desc', 'LIKE', '%' . $search_term . '%')->get();
+    } else {
+        $list_supplier_type = DB::table('supplier_type')->get();
+    }
     return view('coa.supplierTypeManagement', ['list_supplier_type' => $list_supplier_type]);
 });
 
@@ -241,8 +267,13 @@ Route::get('/document-format/{code}', function ($code) {
     return view('coa.documentNumberingManagementEdit', ['modul_code' => $modul_code, 'list_modul' => $list_modul]);
 });
 
-Route::get('/list-journal-type-management', function () {
-    $list_journal_type = DB::table('journal_type')->get();
+Route::get('/list-journal-type-management', function (Request $request) {
+    $search_term = $request->input('search');
+    if ($search_term) {
+        $list_journal_type = DB::table('journal_type')->where('journal_type_name', 'LIKE', '%' . $search_term . '%')->orWhere('journal_type_desc', 'LIKE', '%' . $search_term . '%')->get();
+    } else {
+        $list_journal_type = DB::table('journal_type')->get();
+    }
     return view('coa.journalTypeManagement', ['list_journal_type' => $list_journal_type]);
 });
 

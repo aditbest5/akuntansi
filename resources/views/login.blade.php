@@ -24,7 +24,8 @@
             return dateClient;
         }
 
-        function login() {
+        function login(e) {
+            e.preventDefault();
             var userId = document.getElementById("emailaddress").value;
             var userPwd = document.getElementById("password").value;
 
@@ -89,7 +90,7 @@
                 <p class="text-xs text-slate-400">Sign in to continue to Core of Accounting.</p>
             </div>
 
-            <form action="#" class="p-6">
+            <form onsubmit="return login(event)" class="p-6">
                 @csrf
                 <div>
                     <label for="emailaddress"
@@ -117,7 +118,7 @@
                     </label>
                 </div>
                 <div class="mt-4">
-                    <button type="button" onclick="login()"
+                    <button type="submit"
                         class="w-full px-2 py-2 tracking-wide text-white transition-colors duration-200 transform bg-brand-500 rounded hover:bg-brand-600 focus:outline-none focus:bg-brand-600">
                         Login
                     </button>

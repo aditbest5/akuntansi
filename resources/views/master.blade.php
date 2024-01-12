@@ -21,6 +21,34 @@
     <link rel="stylesheet" href="/template/dist/assets/libs/icofont/icofont.min.css">
     <link href="/template/dist/assets/libs/flatpickr/flatpickr.min.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="/template/dist/assets/css/tailwind.min.css">
+    <style>
+        /* Add this style to your existing stylesheet or in a style block in your HTML file */
+
+        @media print {
+            #datatable_preview {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            #datatable_preview th,
+            #datatable_preview td {
+                border: 1px solid #8d929a;
+                /* Border color */
+                padding: 10px;
+                /* Add padding for content within cells */
+            }
+
+            #datatable_preview th {
+                background-color: #f8fafc;
+                /* Header background color */
+            }
+
+            #datatable_preview tbody tr:nth-child(even) {
+                background-color: #f9fafb;
+                /* Alternate row background color */
+            }
+        }
+    </style>
 </head>
 
 <body class="bg-[#EEF0FC] dark:bg-gray-900">

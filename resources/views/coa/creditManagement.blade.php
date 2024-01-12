@@ -21,11 +21,14 @@
                             </div><!--end /div-->
                             <div class="flex flex-row justify-between items-center">
                                 <div class="mx-5">
-                                    <form action="">
-
-                                        <input type="text" id="search-navbar"
-                                            class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    <form method="GET" class="flex flex-row items-center">
+                                        <input type="text" id="search" name="search"
+                                            class="block w-full px-4 py-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Search...">
+                                        <button
+                                            class="bg-blue-500 text-white font-bold flex items-center justify-center px-4 py-3 rounded-lg ml-2">
+                                            <i class="icofont-search pr-2"></i>
+                                        </button>
                                     </form>
                                 </div>
                                 <div

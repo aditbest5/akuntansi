@@ -21,11 +21,14 @@
                             </div><!--end /div-->
                             <div class="flex flex-row justify-between items-center">
                                 <div class="mx-5">
-                                    <form action="">
-
-                                        <input type="text" id="search-navbar"
-                                            class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    <form method="GET" class="flex flex-row items-center">
+                                        <input type="text" id="search" name="search"
+                                            class="block w-full px-4 py-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Search...">
+                                        <button
+                                            class="bg-blue-500 text-white font-bold flex items-center justify-center px-4 py-3 rounded-lg ml-2">
+                                            <i class="icofont-search pr-2"></i>
+                                        </button>
                                     </form>
                                 </div>
                                 <div
@@ -170,27 +173,27 @@
                 </div>
                 <!--end col-->
             </div>
-            <table class="w-full border-collapse hidden" id="datatable_preview">
+            <table class="w-full border-collapse border border-slate-400 hidden" id="datatable_preview">
                 <thead class="bg-slate-100 dark:bg-slate-700/20">
                     <tr>
                         <th scope="col"
-                            class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                            class="p-3 text-xs font-medium tracking-wider border border-slate-400 text-left text-gray-700 dark:text-gray-400 uppercase">
                             Modul Code
                         </th>
                         <th scope="col"
-                            class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                            class="p-3 text-xs font-medium tracking-wider border border-slate-400 text-left text-gray-700 dark:text-gray-400 uppercase">
                             Group Modul Code
                         </th>
                         <th scope="col"
-                            class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                            class="p-3 text-xs font-medium tracking-wider border border-slate-400 text-left text-gray-700 dark:text-gray-400 uppercase">
                             Group Modul Name
                         </th>
                         <th scope="col"
-                            class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                            class="p-3 text-xs font-medium tracking-wider border border-slate-400 text-left text-gray-700 dark:text-gray-400 uppercase">
                             Modul Name
                         </th>
                         <th scope="col"
-                            class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                            class="p-3 text-xs font-medium tracking-wider border border-slate-400 text-left text-gray-700 dark:text-gray-400 uppercase">
                             Modul Description
                         </th>
                     </tr>
@@ -202,16 +205,20 @@
                             <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                 {{ $value->modul_code }}
                             </td>
-                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                            <td
+                                class="p-3 text-sm text-gray-500 whitespace-nowrap border border-slate-400 dark:text-gray-400">
                                 {{ $value->group_modul_code }}
                             </td>
-                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                            <td
+                                class="p-3 text-sm text-gray-500 whitespace-nowrap border border-slate-400 dark:text-gray-400">
                                 {{ $value->group_modul_name }}
                             </td>
-                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                            <td
+                                class="p-3 text-sm text-gray-500 whitespace-nowrap border border-slate-400 dark:text-gray-400">
                                 {{ $value->modul_name }}
                             </td>
-                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                            <td
+                                class="p-3 text-sm text-gray-500 whitespace-nowrap border border-slate-400 dark:text-gray-400">
                                 {{ $value->modul_description }}
                             </td>
                         </tr>
