@@ -60,7 +60,7 @@ class GeneralController extends Controller
         // $array_group = ["group" => $list_group];
         // $array_group = array();
         foreach ($list_group as $group) {
-            $modul = DB::table('modul_form')->where('group_modul_code', $group->group_modul_code)->get();
+            $modul = DB::table('modul_form')->where('group_modul_code', $group->group_modul_code)->where('modul_status', '1')->get();
             $array_group[] = ["group" => $group, "modul" => $modul];
         }
 
