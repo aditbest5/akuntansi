@@ -34,7 +34,7 @@
 
         <div class="xl:w-full min-h-[calc(100vh-152px)] relative pb-14">
             <div class="flex flex-row justify-start mb-10"><a href="/group-modul"
-                    class="bg-blue-500 text-white font-bold py-2 px-4 rounded">+</a></div>
+                    class="bg-blue-500 text-white font-bold py-2 px-4 rounded"><i class="icofont-ui-add"></i></a></div>
             <div class="xl:w-full gap-4 mb-4">
                 <div class="sm:col-span-12 md:col-span-12 lg:col-span-8 xl:col-span-6 xl:col-start-4">
                     <div

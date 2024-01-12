@@ -130,3 +130,9 @@ function printPreview(title) {
     printWindow.print();
     printWindow.close();
 }
+
+function exportExcel() {
+    const table = document.getElementById("datatable_preview");
+    const wb = XLSX.utils.table_to_book(table, { sheet: "Sheet1" });
+    XLSX.writeFile(wb, "export.xlsx");
+}
