@@ -377,4 +377,41 @@ class COAController extends Controller
         }
         return response()->json($results);
     }
+
+    public function storePayment(Request $request)
+    {
+        $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'Payment Method Management')->first();
+        $results = DB::table('payment_method')->insert([
+            'coa_code' => $request->input('coa_code'),
+            'coa_name' => $request->input('coa_name'),
+            'journal_type_code' => $request->input('journal_type_code'),
+            'journal_type_name' => $request->input('journal_type_name'),
+            'payment_method_code' => $request->input('payment_method_code'),
+            'payment_method_name' => $request->input('payment_method_name'),
+            'payment_method_desc' => $request->input('payment_method_desc'),
+            'payment_method_status' => $request->input('payment_method_status'),
+            'modul_code' => $modul_code->modul_code,
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
+    }
+
+    public function queryJournalName(Request $request)
+    {
+        $name = DB::table('journal_type')->where('id', $request->id)->first();
+        return json_encode($name);
+    }
+
+    public function destroyPayment(Request $request)
+    {
+        $deleted = DB::table('payment_method')->where('id', $request->input('id'))->delete();
+        if (!$deleted) {
+            $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
+        } else {
+            $resutlMsg = array("sts" => "OK", "desc" => " Delete Success !", "msg" => "");
+        }
+        return response()->json($resutlMsg);
+    }
 }

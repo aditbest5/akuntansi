@@ -292,3 +292,23 @@ Route::get('/edit-journal-type-management/{edit_id}', function ($id) {
     $list_journal = DB::table('journal_type')->where('id', $id)->first();
     return view('coa.journalTypeManagementEdit', ['list_journal' => $list_journal]);
 });
+
+Route::get('/list-payment-management', function (Request $request) {
+    $search_term = $request->input('search');
+    if ($search_term) {
+        $list_payment = DB::table('payment_method')->where('journal_type_name', 'LIKE', '%' . $search_term . '%')->orWhere('payment_method_name', 'LIKE', '%' . $search_term . '%')->orWhere('payment_method_desc', 'LIKE', '%' . $search_term . '%')->get();
+    } else {
+        $list_payment = DB::table('payment_method')->get();
+    }
+    return view('coa.paymentMethodManagement', ['list_payment' => $list_payment]);
+});
+
+Route::get('/payment-management', function () {
+    $document_format = DB::table('document_format')->where('modul_name', 'Payment Method Management')->first();
+    $list_journal = DB::table('journal_type')->get();
+    $count = DB::table('payment_method')->count();
+    if ($document_format === null) {
+        $document_format = (object) ['format' => null];
+    }
+    return view('coa.paymentMethodManagementAdd', ['document_format' => $document_format, 'count' => $count, 'list_journal' => $list_journal]);
+});

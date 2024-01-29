@@ -45,8 +45,9 @@ Route::delete('coa/delete-currency', [COAController::class, 'destroyCurrency']);
 Route::post('coa/store-journal', [COAController::class, 'storeJournal']);
 Route::delete('coa/delete-journal', [COAController::class, 'destroyJournal']);
 Route::patch('coa/update-journal/{id}', [COAController::class, 'updateJournal']);
-
-
+Route::post('coa/store-payment', [COAController::class, 'storePayment']);
+Route::post('coa/get-journal-name', [COAController::class, 'queryJournalName']);
+Route::delete('coa/delete-payment', [COAController::class, 'destroyPayment']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

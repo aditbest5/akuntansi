@@ -159,6 +159,45 @@ function groupCode(e) {
         });
 }
 
+function journalCode(e) {
+    let split_string = e.split("+");
+    let id = split_string[0];
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+            id: id,
+        }),
+    };
+    fetch("/api/coa/get-journal-name", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            const { journal_type_name, sts } = data;
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (sts == "N") {
+                    alert("Error");
+                } else {
+                    document.getElementById("journal_type_name").value =
+                        journal_type_name;
+                }
+            }
+        })
+        .catch((error) => {
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
 function modulCode(e) {
     let split_string = e.split("+");
     let id = split_string[0];
@@ -1168,6 +1207,113 @@ function submitEditJournal(e, id) {
 
     // Lakukan permintaan fetch
     fetch(`/api/coa/update-journal/${id}`, requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-journal-type-management";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function submitPayment(e) {
+    e.preventDefault();
+    let payment_method_code = document.getElementById(
+        "payment_method_code"
+    ).value;
+    let payment_method_name = document.getElementById(
+        "payment_method_name"
+    ).value;
+    let payment_method_desc = document.getElementById(
+        "payment_method_desc"
+    ).value;
+    let journal_type_code = document.getElementById("journal_type_code").value;
+    let journal_type_name = document.getElementById("journal_type_name").value;
+    let coa_code = document.getElementById("coa_code").value;
+    let coa_name = document.getElementById("coa_name").value;
+    let payment_method_status = document.getElementById(
+        "payment_method_status"
+    ).value;
+
+    const requestData = {
+        payment_method_code,
+        payment_method_name,
+        payment_method_desc,
+        payment_method_status,
+        journal_type_code,
+        journal_type_name,
+        coa_code,
+        coa_name,
+    };
+
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(requestData),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("/api/coa/store-payment", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-payment-management";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function deletePayment(id) {
+    const requestOptions = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+            id,
+        }),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("api/coa/delete-payment", requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
