@@ -165,7 +165,13 @@
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                                                    </td>
+                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                         Data not found</td>
+                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                                                    </td>
+                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                                                    </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
@@ -205,13 +211,36 @@
                         <th scope="col"
                             class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
                             Payment Description
+                        </th>
+                        <th scope="col"
+                            class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                            COA Account
+                        </th>
+                        <th scope="col"
+                            class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                            COA Name
+                        </th>
+                        <th scope="col"
+                            class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                            Journal Name
+                        </th>
+                        <th scope="col"
+                            class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                            Payment Status
+                        </th>
+                        <th scope="col"
+                            class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                            Action
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- 1 -->
                     @forelse ($list_payment as $key => $value)
                         <tr class="bg-white border-b border-dashed dark:bg-gray-900 dark:border-gray-700">
+
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                <img src="template/dist/assets/images/users/avatar-1.png" alt=""
+                                    class="mr-2 h-8 rounded-full inline-block" />
                                 {{ $value->payment_method_code }}
                             </td>
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
@@ -220,6 +249,29 @@
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                 {{ $value->payment_method_desc }}
                             </td>
+                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                {{ $value->coa_code }}
+                            </td>
+                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                {{ $value->coa_name }}
+                            </td>
+                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                {{ $value->journal_type_name }}
+                            </td>
+                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                {{ $value->payment_method_status == 0 ? 'Tidak Aktif' : 'Aktif' }}
+                            </td>
+                            {{-- <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                                                        <img src="assets/images/users/avatar-1.png" alt=""
+                                                            class="mr-2 h-8 rounded-full inline-block" />
+                                                        {{ $value->modul_code }}
+                                                    </td> --}}
+                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                <a href="/edit-payment-management/{{ $value->id }}"><i
+                                        class="icofont-edit text-lg text-gray-500 dark:text-gray-400"></i></a>
+                                <button onclick="deletePayment({{ $value->id }})"><i
+                                        class="icofont-ui-delete text-lg text-red-500 dark:text-red-400"></i></button>
+                            </td>
                         </tr>
                     @empty
                         <tr class="bg-white border-b border-dashed dark:bg-gray-900 dark:border-gray-700">
@@ -227,7 +279,17 @@
                             <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                             </td>
                             <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                            </td>
+                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                            </td>
+                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                 Data not found</td>
+                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                            </td>
+                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                            </td>
+                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                            </td>
                             <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                             </td>
                         </tr>

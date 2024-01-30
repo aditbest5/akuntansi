@@ -1339,3 +1339,231 @@ function deletePayment(id) {
             alert("ERROR", "error", "Error \n" + error.message);
         });
 }
+
+function submitTax(e) {
+    e.preventDefault();
+    let tax_code = document.getElementById("tax_code").value;
+    let input_tax_coa = document.getElementById("input_tax_coa").value;
+    let output_tax_coa = document.getElementById("output_tax_coa").value;
+    let tax_name = document.getElementById("tax_name").value;
+    let tax_description = document.getElementById("tax_description").value;
+    let tax_percentage = document.getElementById("tax_percentage").value;
+    let tax_method = document.getElementById("tax_method").value;
+    let tax_status = document.getElementById("tax_status").value;
+
+    const requestData = {
+        tax_code,
+        input_tax_coa,
+        output_tax_coa,
+        tax_name,
+        tax_description,
+        tax_percentage,
+        tax_method,
+        tax_status,
+    };
+
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(requestData),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("/api/coa/store-tax", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-payment-management";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function inputCoaCode(e) {
+    let split_string = e.split("+");
+    let id = split_string[0];
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+            id: id,
+        }),
+    };
+    fetch("/api/coa/get-coa-name", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            const { coa_name, sts } = data;
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (sts == "N") {
+                    alert("Error");
+                } else {
+                    document.getElementById("input_coa_name").value = coa_name;
+                }
+            }
+        })
+        .catch((error) => {
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function outputCoaCode(e) {
+    let split_string = e.split("+");
+    let id = split_string[0];
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+            id: id,
+        }),
+    };
+    fetch("/api/coa/get-coa-name", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            const { coa_name, sts } = data;
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (sts == "N") {
+                    alert("Error");
+                } else {
+                    document.getElementById("output_coa_name").value = coa_name;
+                }
+            }
+        })
+        .catch((error) => {
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function submitCoaGroup(e) {
+    e.preventDefault();
+    let coa_group_code = document.getElementById("coa_group_code").value;
+    let coa_group_name = document.getElementById("coa_group_name").value;
+    let coa_mutation = document.getElementById("coa_mutation").value;
+    let coa_report = document.getElementById("coa_report").value;
+    let coa_status = document.getElementById("coa_status").value;
+
+    const requestData = {
+        coa_group_code,
+        coa_group_name,
+        coa_mutation,
+        coa_report,
+        coa_status,
+    };
+
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(requestData),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("/api/coa/store-coa-group", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-coa-group";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function deleteCoaGroup(id) {
+    const requestOptions = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+            id,
+        }),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("api/coa/delete-coa-group", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-coa-group";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}

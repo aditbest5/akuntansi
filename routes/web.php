@@ -117,12 +117,7 @@ Route::get('material-request-summary', function () {
 Route::get('general-issue-note', function () {
     return view('report.pemakaian.generalIssueSummary');
 });
-Route::get('/coa-group', function () {
-    return view('coa.coaGroupAdd');
-});
-Route::get('/coa-entry-list', function () {
-    return view('coa.coaEntryList');
-});
+
 
 Route::get('/credit-management', function () {
     $document_format = DB::table('document_format')->where('modul_name', 'Credit Term Management')->first();
@@ -311,4 +306,58 @@ Route::get('/payment-management', function () {
         $document_format = (object) ['format' => null];
     }
     return view('coa.paymentMethodManagementAdd', ['document_format' => $document_format, 'count' => $count, 'list_journal' => $list_journal]);
+});
+
+Route::get('/edit-payment-management/{edit_id}', function ($id) {
+    $list_payment = DB::table('payment_method')->where('id', $id)->first();
+    return view('coa.paymentMethodManagementEdit', ['list_payment' => $list_payment]);
+});
+
+Route::get('/list-tax-management', function (Request $request) {
+    $search_term = $request->input('search');
+    if ($search_term) {
+        $list_tax = DB::table('tax_type')->where('tax_name', 'LIKE', '%' . $search_term . '%')->orWhere('tax_method', 'LIKE', '%' . $search_term . '%')->orWhere('tax_code', 'LIKE', '%' . $search_term . '%')->get();
+    } else {
+        $list_tax = DB::table('tax_type')->get();
+    }
+    return view('coa.taxManagement', ['list_tax' => $list_tax]);
+});
+
+Route::get('/tax-management', function () {
+    $document_format = DB::table('document_format')->where('modul_name', 'Tax Type Management')->first();
+    $list_coa = DB::table('coa_entry_list')->get();
+    $count = DB::table('tax_type')->count();
+    if ($document_format === null) {
+        $document_format = (object) ['format' => null];
+    }
+    return view('coa.taxManagementAdd', ['document_format' => $document_format, 'count' => $count, 'list_coa' => $list_coa]);
+});
+
+Route::get('/list-coa-group', function (Request $request) {
+    $search_term = $request->input('search');
+    if ($search_term) {
+        $list_coa_group = DB::table('coa_group')->where('coa_group_name', 'LIKE', '%' . $search_term . '%')->orWhere('coa_report', 'LIKE', '%' . $search_term . '%')->orWhere('coa_mutation', 'LIKE', '%' . $search_term . '%')->get();
+    } else {
+        $list_coa_group = DB::table('coa_group')->get();
+    }
+    return view('coa.coaGroup', ['list_coa_group' => $list_coa_group]);
+});
+
+Route::get('/coa-group', function () {
+    $document_format = DB::table('document_format')->where('modul_name', 'COA Group')->first();
+    $count = DB::table('tax_type')->count();
+    if ($document_format === null) {
+        $document_format = (object) ['format' => null];
+    }
+    return view('coa.coaGroupAdd', ['count' => $count, 'document_format' => $document_format]);
+});
+
+Route::get('/list-coa-entry-list', function (Request $request) {
+    $search_term = $request->input('search');
+    if ($search_term) {
+        $list_coa = DB::table('coa_entry_list')->where('coa_name', 'LIKE', '%' . $search_term . '%')->orWhere('coa_group_name', 'LIKE', '%' . $search_term . '%')->orWhere('coa_header_name', 'LIKE', '%' . $search_term . '%')->get();
+    } else {
+        $list_coa = DB::table('coa_entry_list')->get();
+    }
+    return view('coa.coaEntryList', ['list_coa' => $list_coa]);
 });

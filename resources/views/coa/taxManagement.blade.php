@@ -7,15 +7,16 @@
                     <div class="w-full">
                         <div class="flex flex-wrap justify-between">
                             <div class="items-center ">
-                                <h1 class="font-medium text-3xl block dark:text-slate-100">Coa Entry List</h1>
+                                <h1 class="font-medium text-3xl block dark:text-slate-100">Tax Management
+                                </h1>
                                 <ol class="list-reset flex text-sm">
                                     <li><a href="#" class="text-gray-500 dark:text-slate-400">Master Data</a>
                                     </li>
                                     <li><span class="text-gray-500 dark:text-slate-400 mx-2">/</span></li>
                                     <li class="text-gray-500 dark:text-slate-400">COA</li>
                                     <li><span class="text-gray-500 dark:text-slate-400 mx-2">/</span></li>
-                                    <li class="text-primary-500 hover:text-primary-600 dark:text-primary-400">Coa Entry List
-
+                                    <li class="text-primary-500 hover:text-primary-600 dark:text-primary-400">Tax
+                                        Management
                                     </li>
                                 </ol>
                             </div><!--end /div-->
@@ -45,9 +46,9 @@
 
         <div class="xl:w-full min-h-[calc(100vh-152px)] relative pb-14">
             <div class="flex flex-row justify-start gap-5">
-                <div class="flex flex-row justify-start mb-10"><a href="/coa-entry-list"
+                <div class="flex flex-row justify-start mb-10"><a href="/tax-management"
                         class="bg-blue-500 text-white font-bold py-2 px-4 rounded"><i class="icofont-ui-add"></i></a></div>
-                <div class="flex flex-row justify-start mb-10"><button onclick="printPreview('Coa Entry List')"
+                <div class="flex flex-row justify-start mb-10"><button onclick="printPreview('Tax Management')"
                         class="bg-blue-500 text-white font-bold py-2 px-4 rounded"><i class="icofont-print"></i></button>
                 </div>
                 <div class="flex flex-row justify-start mb-10"><button onclick="exportExcel()"
@@ -61,7 +62,7 @@
                         <div class="border-b border-slate-200 dark:border-slate-700/40 py-3 px-4 dark:text-slate-300/70">
                             <div class="flex-none md:flex">
                                 <h4 class="font-medium text-lg flex-1 self-center mb-2 md:mb-0">
-                                    COA Entry List Details
+                                    Tax Details
                                 </h4>
                             </div>
                         </div>
@@ -74,52 +75,39 @@
                                             <tr>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-
-                                                    COA Code
+                                                    Tax Code
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Name
+                                                    Tax Name
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Group Code
+                                                    Tax Description
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Group Name
+                                                    Tax Percentage
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Header Code
+                                                    Input Tax COA Account
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Header Name
+                                                    Output Tax COA Account
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Type
+                                                    Tax Method
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Special Account
+                                                    Journal Name
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Description
-                                                </th>
-                                                <th scope="col"
-                                                    class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    Opening Saldo
-                                                </th>
-                                                <th scope="col"
-                                                    class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Status
-                                                </th>
-                                                <th scope="col"
-                                                    class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    Modul Code
+                                                    Tax Status
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
@@ -129,7 +117,7 @@
                                         </thead>
                                         <tbody>
                                             <!-- 1 -->
-                                            @forelse ($list_coa as $key => $value)
+                                            @forelse ($list_tax as $key => $value)
                                                 <tr
                                                     class="bg-white border-b border-dashed dark:bg-gray-900 dark:border-gray-700">
 
@@ -137,51 +125,50 @@
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                         <img src="template/dist/assets/images/users/avatar-1.png"
                                                             alt="" class="mr-2 h-8 rounded-full inline-block" />
-                                                        {{ $value->coa_code }}
+                                                        {{ $value->tax_code }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        {{ $value->coa_group_code }}
+                                                        {{ $value->input_tax_coa }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        {{ $value->coa_group_name }}
+                                                        {{ $value->output_tax_coa }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        {{ $value->coa_name }}
+                                                        {{ $value->tax_name }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        {{ $value->coa_header_code }}
+                                                        {{ $value->tax_code }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        {{ $value->coa_header_code }}
-                                                    </td>
-                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        {{ $value->coa_header_name }}
-                                                    </td>
-                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        {{ $value->coa_type }}
-                                                    </td>
-                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        {{ $value->coa_sa }}
-                                                    </td>
-                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        {{ $value->coa_description }}
-                                                    </td>
-                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        {{ $value->opening_saldo }}
-                                                    </td>
-                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        {{ $value->coa_status == '0' ? 'Tidak Aktif' : 'Aktif' }}
+                                                        {{ $value->tax_description }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        <a href="/edit-coa-group/{{ $value->id }}"><i
+                                                        {{ $value->tax_percentage }}
+                                                    </td>
+                                                    <td
+                                                        class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                        {{ $value->tax_method }}
+                                                    </td>
+                                                    <td
+                                                        class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                        {{ $value->tax_status == 0 ? 'Tidak Aktif' : 'Aktif' }}
+                                                    </td>
+                                                    {{-- <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                                                        <img src="assets/images/users/avatar-1.png" alt=""
+                                                            class="mr-2 h-8 rounded-full inline-block" />
+                                                        {{ $value->modul_code }}
+                                                    </td> --}}
+                                                    <td
+                                                        class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                        <a href="/edit-payment-management/{{ $value->id }}"><i
                                                                 class="icofont-edit text-lg text-gray-500 dark:text-gray-400"></i></a>
-                                                        <button onclick="deleteCoaGroup({{ $value->id }})"><i
+                                                        <button onclick="deletePayment({{ $value->id }})"><i
                                                                 class="icofont-ui-delete text-lg text-red-500 dark:text-red-400"></i></button>
                                                     </td>
                                                 </tr>
@@ -199,6 +186,8 @@
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                         Data not found</td>
+                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                                                    </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
@@ -226,57 +215,46 @@
                 </div>
                 <!--end col-->
             </div>
+            <!--end inner-grid-->
+            <!-- footer -->
             <table class="w-full border-collapse hidden" id="datatable_preview">
                 <thead class="bg-slate-100 dark:bg-slate-700/20">
                     <tr>
                         <th scope="col"
                             class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-
-                            COA Code
+                            Tax Code
                         </th>
                         <th scope="col"
                             class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                            COA Name
+                            Tax Name
                         </th>
                         <th scope="col"
                             class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                            COA Group Code
+                            Tax Description
                         </th>
                         <th scope="col"
                             class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                            COA Group Name
+                            Tax Percentage
                         </th>
                         <th scope="col"
                             class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                            COA Header Code
+                            Input Tax COA Account
                         </th>
                         <th scope="col"
                             class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                            COA Header Name
+                            Output Tax COA Account
                         </th>
                         <th scope="col"
                             class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                            COA Type
+                            Tax Method
                         </th>
                         <th scope="col"
                             class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                            COA Special Account
+                            Journal Name
                         </th>
                         <th scope="col"
                             class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                            COA Description
-                        </th>
-                        <th scope="col"
-                            class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                            Opening Saldo
-                        </th>
-                        <th scope="col"
-                            class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                            COA Status
-                        </th>
-                        <th scope="col"
-                            class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                            Modul Code
+                            Tax Status
                         </th>
                         <th scope="col"
                             class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
@@ -285,60 +263,53 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- 1 -->
-                    @forelse ($list_coa as $key => $value)
+                    @forelse ($list_tax as $key => $value)
                         <tr class="bg-white border-b border-dashed dark:bg-gray-900 dark:border-gray-700">
 
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                 <img src="template/dist/assets/images/users/avatar-1.png" alt=""
                                     class="mr-2 h-8 rounded-full inline-block" />
-                                {{ $value->coa_code }}
+                                {{ $value->tax_code }}
                             </td>
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                {{ $value->coa_group_code }}
+                                {{ $value->input_tax_coa }}
                             </td>
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                {{ $value->coa_group_name }}
+                                {{ $value->output_tax_coa }}
                             </td>
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                {{ $value->coa_name }}
+                                {{ $value->tax_name }}
                             </td>
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                {{ $value->coa_header_code }}
+                                {{ $value->tax_code }}
                             </td>
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                {{ $value->coa_header_code }}
-                            </td>
-                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                {{ $value->coa_header_name }}
-                            </td>
-                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                {{ $value->coa_type }}
-                            </td>
-                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                {{ $value->coa_sa }}
-                            </td>
-                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                {{ $value->coa_description }}
-                            </td>
-                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                {{ $value->opening_saldo }}
-                            </td>
-                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                {{ $value->coa_status == '0' ? 'Tidak Aktif' : 'Aktif' }}
+                                {{ $value->tax_description }}
                             </td>
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                <a href="/edit-coa-group/{{ $value->id }}"><i
+                                {{ $value->tax_percentage }}
+                            </td>
+                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                {{ $value->tax_method }}
+                            </td>
+                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                {{ $value->tax_status == 0 ? 'Tidak Aktif' : 'Aktif' }}
+                            </td>
+                            {{-- <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                                                        <img src="assets/images/users/avatar-1.png" alt=""
+                                                            class="mr-2 h-8 rounded-full inline-block" />
+                                                        {{ $value->modul_code }}
+                                                    </td> --}}
+                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                <a href="/edit-payment-management/{{ $value->id }}"><i
                                         class="icofont-edit text-lg text-gray-500 dark:text-gray-400"></i></a>
-                                <button onclick="deleteCoaGroup({{ $value->id }})"><i
+                                <button onclick="deletePayment({{ $value->id }})"><i
                                         class="icofont-ui-delete text-lg text-red-500 dark:text-red-400"></i></button>
                             </td>
                         </tr>
                     @empty
                         <tr class="bg-white border-b border-dashed dark:bg-gray-900 dark:border-gray-700">
 
-                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                            </td>
                             <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                             </td>
                             <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
@@ -359,8 +330,6 @@
                     @endforelse
                 </tbody>
             </table>
-            <!--end inner-grid-->
-            <!-- footer -->
             <div
                 class="absolute bottom-0 -left-4 -right-4 block print:hidden border-t p-4 h-[52px] dark:border-slate-700/40">
                 <div class="container">

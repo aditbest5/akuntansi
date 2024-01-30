@@ -414,4 +414,58 @@ class COAController extends Controller
         }
         return response()->json($resutlMsg);
     }
+
+    public function storeTax(Request $request)
+    {
+        $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'Tax Management')->first();
+        $results = DB::table('tax_type')->insert([
+            'tax_code' => $request->input('tax_code'),
+            'input_tax_coa' => $request->input('input_tax_coa'),
+            'output_tax_coa' => $request->input('output_tax_coa'),
+            'tax_name' => $request->input('tax_name'),
+            'tax_description' => $request->input('tax_description'),
+            'tax_percentage' => $request->input('tax_percentage'),
+            'tax_method' => $request->input('tax_method'),
+            'tax_status' => $request->input('tax_status'),
+            'modul_code' => $modul_code->modul_code,
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
+    }
+
+    public function queryCoaName(Request $request)
+    {
+        $name = DB::table('coa_entry_list')->where('id', $request->id)->first();
+        return json_encode($name);
+    }
+
+    public function storeCoaGroup(Request $request)
+    {
+        $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'COA Group')->first();
+        $results = DB::table('coa_group')->insert([
+            'coa_group_code' => $request->input('coa_group_code'),
+            'coa_group_name' => $request->input('coa_group_name'),
+            'coa_mutation' => $request->input('coa_mutation'),
+            'coa_report' => $request->input('coa_report'),
+            'coa_status' => $request->input('coa_status'),
+            'modul_code' => $modul_code->modul_code,
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
+    }
+
+    public function destroyCoaGroup(Request $request)
+    {
+        $deleted = DB::table('coa_group')->where('id', $request->input('id'))->delete();
+        if (!$deleted) {
+            $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
+        } else {
+            $resutlMsg = array("sts" => "OK", "desc" => " Delete Success !", "msg" => "");
+        }
+        return response()->json($resutlMsg);
+    }
 }
