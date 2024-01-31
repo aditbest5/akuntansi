@@ -67,17 +67,27 @@
                                 <br>
                                 <div class="grid xl:grid-cols-2 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
-                                        <input type="text" name="coa_header_code " id="coa_header_code"
-                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
-                                            placeholder=" " required />
-                                        <label for="coa_header_code "
+                                        <select onchange="coaCode(this.value)" name="coa_header_code" id="coa_header_code"
+                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
+                                            required>
+                                            <option value='00' hidden>Pilih COA</option>
+                                            @forelse ($list_coa as $key => $value)
+                                                {{ $value->id = (string) $value->id }}
+                                                <option value='{{ $value->id . '+' . $value->coa_code }}'>
+                                                    {{ $value->coa_code . ' - ' . $value->coa_name }}
+                                                </option>
+                                            @empty
+                                                <option value='00'>Tidak Ada Data</option>
+                                            @endforelse
+                                        </select>
+                                        <label for="coa_header_code"
                                             class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">COA
-                                            Header Code</label>
+                                            Header Code </label>
                                     </div>
                                     <div class="relative z-0 mb-2 w-full group">
                                         <input type="text" name="coa_header_name " id="coa_header_name"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
-                                            placeholder=" " required />
+                                            placeholder=" " disabled />
                                         <label for="coa_header_name "
                                             class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">COA
                                             Header Name</label>
@@ -122,7 +132,7 @@
                                     <div class="relative z-0 mb-2 w-full group">
                                         <input type="text" name="opening_saldo " id="opening_saldo"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
-                                            placeholder=" " required />
+                                            placeholder=" " disabled />
                                         <label for="opening_saldo "
                                             class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Opening
                                             Saldo</label>
@@ -174,7 +184,7 @@
                                 <br>
                                 <button type="submit"
                                     class="inline-block focus:outline-none text-primary-500 hover:bg-primary-500 hover:text-white bg-transparent border border-gray-200 dark:bg-transparent dark:text-primary-500 dark:hover:text-white dark:border-gray-700 dark:hover:bg-primary-500  text-sm font-medium py-1 px-3 rounded mb-1 lg:mb-0">Submit</button>
-                                <a href="/list-coa-group"
+                                <a href="/list-coa-entry-list"
                                     class="inline-block focus:outline-none text-red-500 hover:bg-red-500 hover:text-white bg-transparent border border-gray-200 dark:bg-transparent dark:text-red-500 dark:hover:text-white dark:border-gray-700 dark:hover:bg-red-500  text-sm font-medium py-1 px-3 rounded mb-1 lg:mb-0">Cancel</a>
                             </form>
                         </div><!--end card-body-->

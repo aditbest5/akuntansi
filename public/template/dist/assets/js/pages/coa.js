@@ -1329,7 +1329,7 @@ function deletePayment(id) {
                     alert("Error");
                 } else {
                     alert("OK");
-                    document.location.href = "/list-journal-type-management";
+                    document.location.href = "/list-payment-management";
                 }
             }
         })
@@ -1350,6 +1350,10 @@ function submitTax(e) {
     let tax_percentage = document.getElementById("tax_percentage").value;
     let tax_method = document.getElementById("tax_method").value;
     let tax_status = document.getElementById("tax_status").value;
+    let split_input_tax_coa = input_tax_coa.split("+");
+    input_tax_coa = split_input_tax_coa[1];
+    let split_output_tax_coa = output_tax_coa.split("+");
+    output_tax_coa = split_output_tax_coa[1];
 
     const requestData = {
         tax_code,
@@ -1388,7 +1392,7 @@ function submitTax(e) {
                     alert("Error");
                 } else {
                     alert("OK");
-                    document.location.href = "/list-payment-management";
+                    document.location.href = "/list-tax-management";
                 }
             }
         })
@@ -1620,6 +1624,8 @@ function submitCoa(e) {
     let coa_description = document.getElementById("coa_description").value;
     let opening_saldo = document.getElementById("opening_saldo").value;
     let coa_status = document.getElementById("coa_status").value;
+    let split_coa_group_code = coa_group_code.split("+");
+    coa_group_code = split_coa_group_code[1];
 
     const requestData = {
         coa_code,
@@ -1703,6 +1709,85 @@ function deleteCoa(id) {
                 } else {
                     alert("OK");
                     document.location.href = "/list-coa-entry-list";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function coaCode(e) {
+    let split_string = e.split("+");
+    let id = split_string[0];
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+            id: id,
+        }),
+    };
+    fetch("/api/coa/get-coa-name", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            const { coa_name, sts } = data;
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (sts == "N") {
+                    alert("Error");
+                } else {
+                    document.getElementById("coa_name").value = coa_name;
+                    document.getElementById("coa_header_name").value = coa_name;
+                }
+            }
+        })
+        .catch((error) => {
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function deleteTax(id) {
+    const requestOptions = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+            id,
+        }),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("api/coa/delete-tax", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-tax-management";
                 }
             }
         })

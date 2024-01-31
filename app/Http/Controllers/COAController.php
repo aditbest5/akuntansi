@@ -508,4 +508,15 @@ class COAController extends Controller
         }
         return response()->json($resutlMsg);
     }
+
+    public function destroyTax(Request $request)
+    {
+        $deleted = DB::table('tax_type')->where('id', $request->input('id'))->delete();
+        if (!$deleted) {
+            $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
+        } else {
+            $resutlMsg = array("sts" => "OK", "desc" => " Delete Success !", "msg" => "");
+        }
+        return response()->json($resutlMsg);
+    }
 }

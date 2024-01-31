@@ -168,7 +168,7 @@
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                         <a href="/edit-payment-management/{{ $value->id }}"><i
                                                                 class="icofont-edit text-lg text-gray-500 dark:text-gray-400"></i></a>
-                                                        <button onclick="deletePayment({{ $value->id }})"><i
+                                                        <button onclick="deleteTax({{ $value->id }})"><i
                                                                 class="icofont-ui-delete text-lg text-red-500 dark:text-red-400"></i></button>
                                                     </td>
                                                 </tr>
@@ -185,9 +185,9 @@
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        Data not found</td>
-                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                     </td>
+                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                                                        Data not found</td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">

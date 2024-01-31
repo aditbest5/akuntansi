@@ -301,11 +301,12 @@ Route::get('/list-payment-management', function (Request $request) {
 Route::get('/payment-management', function () {
     $document_format = DB::table('document_format')->where('modul_name', 'Payment Method Management')->first();
     $list_journal = DB::table('journal_type')->get();
+    $list_coa = DB::table('coa_entry_list')->get();
     $count = DB::table('payment_method')->count();
     if ($document_format === null) {
         $document_format = (object) ['format' => null];
     }
-    return view('coa.paymentMethodManagementAdd', ['document_format' => $document_format, 'count' => $count, 'list_journal' => $list_journal]);
+    return view('coa.paymentMethodManagementAdd', ['document_format' => $document_format, 'count' => $count, 'list_journal' => $list_journal, 'list_coa' => $list_coa]);
 });
 
 Route::get('/edit-payment-management/{edit_id}', function ($id) {
@@ -365,9 +366,10 @@ Route::get('/list-coa-entry-list', function (Request $request) {
 Route::get('/coa-entry-list', function () {
     $document_format = DB::table('document_format')->where('modul_name', 'COA Entry List')->first();
     $list_coa_group = DB::table('coa_group')->get();
+    $list_coa = DB::table('coa_entry_list')->get();
     $count = DB::table('coa_group')->count();
     if ($document_format === null) {
         $document_format = (object) ['format' => null];
     }
-    return view('coa.coaEntryListAdd', ['count' => $count, 'document_format' => $document_format, 'list_coa_group' => $list_coa_group]);
+    return view('coa.coaEntryListAdd', ['count' => $count, 'document_format' => $document_format, 'list_coa_group' => $list_coa_group, 'list_coa' => $list_coa]);
 });
