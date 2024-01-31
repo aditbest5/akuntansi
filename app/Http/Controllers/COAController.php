@@ -468,4 +468,44 @@ class COAController extends Controller
         }
         return response()->json($resutlMsg);
     }
+
+    public function queryCoaGroup(Request $request)
+    {
+        $name = DB::table('coa_group')->where('id', $request->id)->first();
+        return json_encode($name);
+    }
+
+    public function storeCoa(Request $request)
+    {
+        $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'COA Entry List')->first();
+        $results = DB::table('coa_entry_list')->insert([
+            'coa_group_code' => $request->input('coa_group_code'),
+            'coa_group_name' => $request->input('coa_group_name'),
+            'coa_code' => $request->input('coa_code'),
+            'coa_name' => $request->input('coa_name'),
+            'coa_header_code' => $request->input('coa_header_code'),
+            'coa_header_name' => $request->input('coa_header_name'),
+            'coa_type' => $request->input('coa_type'),
+            'coa_sa' => $request->input('coa_sa'),
+            'coa_description' => $request->input('coa_description'),
+            'opening_saldo' => $request->input('opening_saldo'),
+            'coa_status' => $request->input('coa_status'),
+            'modul_code' => $modul_code->modul_code,
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
+    }
+
+    public function destroyCoa(Request $request)
+    {
+        $deleted = DB::table('coa_entry_list')->where('id', $request->input('id'))->delete();
+        if (!$deleted) {
+            $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
+        } else {
+            $resutlMsg = array("sts" => "OK", "desc" => " Delete Success !", "msg" => "");
+        }
+        return response()->json($resutlMsg);
+    }
 }

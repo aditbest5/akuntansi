@@ -1567,3 +1567,148 @@ function deleteCoaGroup(id) {
             alert("ERROR", "error", "Error \n" + error.message);
         });
 }
+
+function groupCoa(e) {
+    let split_string = e.split("+");
+    let id = split_string[0];
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+            id: id,
+        }),
+    };
+    fetch("/api/coa/get-coa-group", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            const { coa_group_name, sts } = data;
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (sts == "N") {
+                    alert("Error");
+                } else {
+                    document.getElementById("coa_group_name").value =
+                        coa_group_name;
+                }
+            }
+        })
+        .catch((error) => {
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function submitCoa(e) {
+    e.preventDefault();
+    let coa_code = document.getElementById("coa_code").value;
+    let coa_group_code = document.getElementById("coa_group_code").value;
+    let coa_group_name = document.getElementById("coa_group_name").value;
+    let coa_name = document.getElementById("coa_name").value;
+    let coa_header_code = document.getElementById("coa_header_code").value;
+    let coa_header_name = document.getElementById("coa_header_name").value;
+    let coa_type = document.getElementById("coa_type").value;
+    let coa_sa = document.getElementById("coa_sa").value;
+    let coa_description = document.getElementById("coa_description").value;
+    let opening_saldo = document.getElementById("opening_saldo").value;
+    let coa_status = document.getElementById("coa_status").value;
+
+    const requestData = {
+        coa_code,
+        coa_group_code,
+        coa_group_name,
+        coa_group_name,
+        coa_name,
+        coa_header_code,
+        coa_header_name,
+        coa_type,
+        coa_sa,
+        coa_description,
+        opening_saldo,
+        coa_status,
+    };
+
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(requestData),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("/api/coa/store-coa", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-coa-entry-list";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function deleteCoa(id) {
+    const requestOptions = {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+            id,
+        }),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("api/coa/delete-coa", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-coa-entry-list";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}

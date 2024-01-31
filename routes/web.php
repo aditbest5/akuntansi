@@ -361,3 +361,13 @@ Route::get('/list-coa-entry-list', function (Request $request) {
     }
     return view('coa.coaEntryList', ['list_coa' => $list_coa]);
 });
+
+Route::get('/coa-entry-list', function () {
+    $document_format = DB::table('document_format')->where('modul_name', 'COA Entry List')->first();
+    $list_coa_group = DB::table('coa_group')->get();
+    $count = DB::table('coa_group')->count();
+    if ($document_format === null) {
+        $document_format = (object) ['format' => null];
+    }
+    return view('coa.coaEntryListAdd', ['count' => $count, 'document_format' => $document_format, 'list_coa_group' => $list_coa_group]);
+});

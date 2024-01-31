@@ -141,19 +141,15 @@
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                        {{ $value->coa_name }}
+                                                    </td>
+                                                    <td
+                                                        class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                         {{ $value->coa_group_code }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                         {{ $value->coa_group_name }}
-                                                    </td>
-                                                    <td
-                                                        class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        {{ $value->coa_name }}
-                                                    </td>
-                                                    <td
-                                                        class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        {{ $value->coa_header_code }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
@@ -163,10 +159,10 @@
                                                         {{ $value->coa_header_name }}
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        {{ $value->coa_type }}
+                                                        {{ $value->coa_type == '0' ? 'Header' : 'Detail' }}
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        {{ $value->coa_sa }}
+                                                        {{ $value->coa_sa == '0' ? 'Bank Cash' : ($value->coa_sa == '1' ? 'Customer' : ($value->coa_sa == '2' ? 'Supplier' : ($value->coa_sa == '3' ? 'Stock' : 'Fixed Asset'))) }}
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                         {{ $value->coa_description }}
@@ -177,11 +173,14 @@
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                         {{ $value->coa_status == '0' ? 'Tidak Aktif' : 'Aktif' }}
                                                     </td>
+                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                                                        {{ $value->modul_code }}
+                                                    </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                         <a href="/edit-coa-group/{{ $value->id }}"><i
                                                                 class="icofont-edit text-lg text-gray-500 dark:text-gray-400"></i></a>
-                                                        <button onclick="deleteCoaGroup({{ $value->id }})"><i
+                                                        <button onclick="deleteCoa({{ $value->id }})"><i
                                                                 class="icofont-ui-delete text-lg text-red-500 dark:text-red-400"></i></button>
                                                     </td>
                                                 </tr>
@@ -198,7 +197,15 @@
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                                                    </td>
+                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                                                    </td>
+                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                         Data not found</td>
+                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                                                    </td>
+                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                                                    </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
@@ -295,16 +302,13 @@
                                 {{ $value->coa_code }}
                             </td>
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                {{ $value->coa_name }}
+                            </td>
+                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                 {{ $value->coa_group_code }}
                             </td>
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                 {{ $value->coa_group_name }}
-                            </td>
-                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                {{ $value->coa_name }}
-                            </td>
-                            <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                {{ $value->coa_header_code }}
                             </td>
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                 {{ $value->coa_header_code }}
@@ -327,10 +331,13 @@
                             <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                 {{ $value->coa_status == '0' ? 'Tidak Aktif' : 'Aktif' }}
                             </td>
+                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                                {{ $value->modul_code }}
+                            </td>
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                <a href="/edit-coa-group/{{ $value->id }}"><i
+                                <a href="/edit-coa-entry-list/{{ $value->id }}"><i
                                         class="icofont-edit text-lg text-gray-500 dark:text-gray-400"></i></a>
-                                <button onclick="deleteCoaGroup({{ $value->id }})"><i
+                                <button onclick="deleteCoa({{ $value->id }})"><i
                                         class="icofont-ui-delete text-lg text-red-500 dark:text-red-400"></i></button>
                             </td>
                         </tr>
@@ -346,7 +353,13 @@
                             <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                             </td>
                             <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                            </td>
+                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                 Data not found</td>
+                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                            </td>
+                            <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
+                            </td>
                             <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                             </td>
                             <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">

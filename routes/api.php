@@ -52,6 +52,10 @@ Route::post('coa/store-tax', [COAController::class, 'storeTax']);
 Route::post('coa/get-coa-name', [COAController::class, 'queryCoaName']);
 Route::post('coa/store-coa-group', [COAController::class, 'storeCoaGroup']);
 Route::delete('coa/delete-coa-group', [COAController::class, 'destroyCoaGroup']);
+Route::post('coa/get-coa-group', [COAController::class, 'queryCoaGroup']);
+Route::post('coa/store-coa', [COAController::class, 'storeCoa']);
+Route::delete('coa/delete-coa', [COAController::class, 'destroyCoa']);
+
 
 
 
