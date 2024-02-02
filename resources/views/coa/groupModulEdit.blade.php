@@ -44,7 +44,7 @@
                             </div>
                         </div><!--end header-title-->
                         <div class="flex-auto p-4 ">
-                            <form onsubmit="return submitEditGroup(event)">
+                            <form onsubmit="return submitEditGroup(event, {{ $list_group_modul->id }})">
                                 <div class="relative z-0 mb-2 w-full group">
                                     <input type="text" name="group_modul_code" id="group_modul_code"
                                         value="{{ $list_group_modul->group_modul_code }}"

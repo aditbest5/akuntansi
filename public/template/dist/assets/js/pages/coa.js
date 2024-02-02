@@ -47,7 +47,7 @@ function submitGroup(e) {
         });
 }
 
-function submitEditGroup(e) {
+function submitEditGroup(e, id) {
     e.preventDefault();
     let group_modul_code = document.getElementById("group_modul_code").value;
     let group_modul_name = document.getElementById("group_modul_name").value;
@@ -69,7 +69,7 @@ function submitEditGroup(e) {
     };
 
     // Lakukan permintaan fetch
-    fetch("/api/coa/update-group", requestOptions)
+    fetch(`/api/coa/update-group/${id}`, requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
