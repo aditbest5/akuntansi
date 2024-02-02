@@ -94,6 +94,10 @@
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                                                    Modul URL
+                                                </th>
+                                                <th scope="col"
+                                                    class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
                                                     Modul Status
                                                 </th>
                                                 <th scope="col"
@@ -127,6 +131,10 @@
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                         {{ $value->modul_description }}
+                                                    </td>
+                                                    <td
+                                                        class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
+                                                        {{ $value->modul_url }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
