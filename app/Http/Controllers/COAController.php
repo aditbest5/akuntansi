@@ -35,6 +35,24 @@ class COAController extends Controller
         return response()->json($results);
     }
 
+    public function updateGroup(Request $request, $id)
+    {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
+        $results = DB::table('group_modul')->where('id', $id)->update([
+            'group_modul_code' => $request->input('group_modul_code'),
+            'group_modul_name' => $request->input('group_modul_name'),
+            'group_modul_desc' => $request->input('group_modul_desc')
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
+    }
+
     public function destroyGroup(Request $request)
     {
         header("Access-Control-Allow-Origin: *");
@@ -52,6 +70,10 @@ class COAController extends Controller
 
     public function destroyModul(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
         $deleted = DB::table('modul_form')->where('id', $request->input('id'))->delete();
         if (!$deleted) {
             $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
@@ -75,6 +97,10 @@ class COAController extends Controller
 
     public function storeModul(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 
         $results = DB::table('modul_form')->insert([
             'group_modul_code' => $request->input('group_modul_code'),
@@ -94,6 +120,10 @@ class COAController extends Controller
 
     public function updateModul(Request $request, $id)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
 
         $results = DB::table('modul_form')->where('id', $id)->update([
             'group_modul_code' => $request->input('group_modul_code'),
@@ -112,6 +142,11 @@ class COAController extends Controller
 
     public function storeCredit(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'Credit Term Management')->first();
         $results = DB::table('credit_term')->insert([
             'credit_term_code' => $request->input('credit_term_code'),
@@ -129,6 +164,11 @@ class COAController extends Controller
 
     public function updateCredit(Request $request, $id)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'Credit Term Management')->first();
         $results =  DB::table('credit_term')->where('id', $id)->update([
             'credit_term_code' => $request->input('credit_term_code'),
@@ -145,6 +185,11 @@ class COAController extends Controller
 
     public function destroyCredit(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $deleted = DB::table('credit_term')->where('id', $request->input('id'))->delete();
         if (!$deleted) {
             $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
@@ -156,6 +201,11 @@ class COAController extends Controller
 
     public function storeCustomer(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'Customer Supplier Group Management')->first();
         $results = DB::table('customer_supplier_group')->insert([
             'group_code' => $request->input('group_code'),
@@ -174,6 +224,11 @@ class COAController extends Controller
 
     public function updateCustomer(Request $request, $id)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $results = DB::table('customer_supplier_group')->where('id', $id)->update([
             'group_code' => $request->input('group_code'),
             'coa_code' => $request->input('coa_code'),
@@ -190,6 +245,11 @@ class COAController extends Controller
 
     public function destroyCustomer(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $deleted = DB::table('customer_supplier_group')->where('id', $request->input('id'))->delete();
         if (!$deleted) {
             $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
@@ -201,6 +261,11 @@ class COAController extends Controller
 
     public function storeSupplier(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'Supplier Type Management')->first();
         $results = DB::table('supplier_type')->insert([
             'supplier_type_code' => $request->input('supplier_type_code'),
@@ -217,6 +282,11 @@ class COAController extends Controller
 
     public function updateSupplier(Request $request, $id)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $results = DB::table('supplier_type')->where('id', $id)->update([
             'supplier_type_code' => $request->input('supplier_type_code'),
             'supplier_type_name' => $request->input('supplier_type_name'),
@@ -231,6 +301,11 @@ class COAController extends Controller
 
     public function destroySupplier(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $deleted = DB::table('supplier_type')->where('id', $request->input('id'))->delete();
         if (!$deleted) {
             $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
@@ -242,6 +317,11 @@ class COAController extends Controller
 
     public function storeDocumentFormat(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $results1 = DB::table('document_format')->insert([
             'doc_num_code' => $request->input('doc_num_code'),
             'modul_code' => $request->input('modul_code'),
@@ -265,6 +345,11 @@ class COAController extends Controller
 
     public function updateDocumentFormat(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $results1 = DB::table('document_format')->where('modul_code', $request->input('modul_code'))->update([
             'doc_num_code' => $request->input('doc_num_code'),
             'modul_code' => $request->input('modul_code'),
@@ -284,6 +369,11 @@ class COAController extends Controller
     }
     public function destroyDocumentFormat(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $deleted = DB::table('document_format')->where('id', $request->input('id'))->delete();
         $updated = DB::table('modul_form')->where('modul_code', $request->input('code'))->update([
             'document_status' => '0',
@@ -298,6 +388,11 @@ class COAController extends Controller
 
     public function storeCurrency(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'Currency Management')->first();
         $results = DB::table('currency')->insert([
             'currency_code' => $request->input('currency_code'),
@@ -314,6 +409,11 @@ class COAController extends Controller
 
     public function updateCurrency(Request $request, $id)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $results = DB::table('currency')->where('id', $id)->update([
             'currency_code' => $request->input('currency_code'),
             'currency_name' => $request->input('currency_name'),
@@ -328,6 +428,11 @@ class COAController extends Controller
 
     public function destroyCurrency(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $deleted = DB::table('currency')->where('id', $request->input('id'))->delete();
         if (!$deleted) {
             $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
@@ -339,6 +444,11 @@ class COAController extends Controller
 
     public function storeJournal(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'Journal Type Management')->first();
         $results = DB::table('journal_type')->insert([
             'journal_type_code' => $request->input('journal_type_code'),
@@ -355,6 +465,11 @@ class COAController extends Controller
 
     public function destroyJournal(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $deleted = DB::table('journal_type')->where('id', $request->input('id'))->delete();
         if (!$deleted) {
             $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
@@ -366,6 +481,11 @@ class COAController extends Controller
 
     public function updateJournal(Request $request, $id)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $results = DB::table('journal_type')->where('id', $id)->update([
             'journal_type_code' => $request->input('journal_type_code'),
             'journal_type_name' => $request->input('journal_type_name'),
@@ -380,6 +500,11 @@ class COAController extends Controller
 
     public function storePayment(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'Payment Method Management')->first();
         $results = DB::table('payment_method')->insert([
             'coa_code' => $request->input('coa_code'),
@@ -406,6 +531,11 @@ class COAController extends Controller
 
     public function destroyPayment(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $deleted = DB::table('payment_method')->where('id', $request->input('id'))->delete();
         if (!$deleted) {
             $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
@@ -417,6 +547,11 @@ class COAController extends Controller
 
     public function storeTax(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'Tax Management')->first();
         $results = DB::table('tax_type')->insert([
             'tax_code' => $request->input('tax_code'),
@@ -443,6 +578,11 @@ class COAController extends Controller
 
     public function storeCoaGroup(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'COA Group')->first();
         $results = DB::table('coa_group')->insert([
             'coa_group_code' => $request->input('coa_group_code'),
@@ -460,6 +600,11 @@ class COAController extends Controller
 
     public function destroyCoaGroup(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $deleted = DB::table('coa_group')->where('id', $request->input('id'))->delete();
         if (!$deleted) {
             $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
@@ -477,6 +622,11 @@ class COAController extends Controller
 
     public function storeCoa(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $modul_code = DB::table('modul_form')->select('modul_code')->where('modul_name', 'COA Entry List')->first();
         $results = DB::table('coa_entry_list')->insert([
             'coa_group_code' => $request->input('coa_group_code'),
@@ -500,6 +650,11 @@ class COAController extends Controller
 
     public function destroyCoa(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $deleted = DB::table('coa_entry_list')->where('id', $request->input('id'))->delete();
         if (!$deleted) {
             $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);
@@ -511,6 +666,11 @@ class COAController extends Controller
 
     public function destroyTax(Request $request)
     {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
         $deleted = DB::table('tax_type')->where('id', $request->input('id'))->delete();
         if (!$deleted) {
             $resutlMsg = array("sts" => "N", "desc" => " Delete Failed !", "msg" => $deleted);

@@ -46,6 +46,56 @@ function submitGroup(e) {
             alert("ERROR", "error", "Error \n" + error.message);
         });
 }
+
+function submitEditGroup(e) {
+    e.preventDefault();
+    let group_modul_code = document.getElementById("group_modul_code").value;
+    let group_modul_name = document.getElementById("group_modul_name").value;
+    let group_modul_desc = document.getElementById("group_modul_desc").value;
+    const requestData = {
+        group_modul_code: group_modul_code,
+        group_modul_name: group_modul_name,
+        group_modul_desc: group_modul_desc,
+    };
+
+    // Konfigurasi untuk fetch
+    const requestOptions = {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(requestData),
+    };
+
+    // Lakukan permintaan fetch
+    fetch("/api/coa/update-group", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            // Proses respons JSON
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (data.sts == "N") {
+                    alert("Error");
+                } else {
+                    alert("OK");
+                    document.location.href = "/list-group-modul";
+                }
+            }
+        })
+        .catch((error) => {
+            // Tangani kesalahan
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
 function deleteGroup(id) {
     const requestOptions = {
         method: "DELETE",

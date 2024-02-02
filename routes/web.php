@@ -177,6 +177,11 @@ Route::get('/list-group-modul', function () {
     return view('coa.groupModul', ['list_group' => $list_group]);
 });
 
+Route::get('/edit-group_modul/{edit_id}', function ($id) {
+    $list_group_modul = DB::table('group_modul')->where('id', $id)->first();
+    return view('coa.paymentMethodManagementEdit', ['list_group_modul' => $list_group_modul]);
+});
+
 Route::get('/modul-management', function () {
     $list_group = DB::table('group_modul')->get();
     return view('coa.modulManagementAdd', ['list_group' => $list_group]);
