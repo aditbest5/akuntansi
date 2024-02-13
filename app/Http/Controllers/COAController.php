@@ -648,6 +648,32 @@ class COAController extends Controller
         return response()->json($results);
     }
 
+    public function updateCoa(Request $request, $id)
+    {
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+
+        $results = DB::table('coa_entry_list')->where('id', $id)->update([
+            'coa_group_code' => $request->input('coa_group_code'),
+            'coa_group_name' => $request->input('coa_group_name'),
+            'coa_code' => $request->input('coa_code'),
+            'coa_name' => $request->input('coa_name'),
+            'coa_header_code' => $request->input('coa_header_code'),
+            'coa_header_name' => $request->input('coa_header_name'),
+            'coa_type' => $request->input('coa_type'),
+            'coa_sa' => $request->input('coa_sa'),
+            'coa_description' => $request->input('coa_description'),
+            'opening_saldo' => $request->input('opening_saldo'),
+            'coa_status' => $request->input('coa_status'),
+        ]);
+        if (!$results) {
+            $results = array("sts" => "N", "desc" => "Gagal", "msg" => "Kesalahan Server");
+        }
+        return response()->json($results);
+    }
+
     public function destroyCoa(Request $request)
     {
         header("Access-Control-Allow-Origin: *");

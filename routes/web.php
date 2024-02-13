@@ -349,6 +349,7 @@ Route::get('/list-coa-group', function (Request $request) {
     return view('coa.coaGroup', ['list_coa_group' => $list_coa_group]);
 });
 
+
 Route::get('/coa-group', function () {
     $document_format = DB::table('document_format')->where('modul_name', 'COA Group')->first();
     $count = DB::table('tax_type')->count();
@@ -377,4 +378,33 @@ Route::get('/coa-entry-list', function () {
         $document_format = (object) ['format' => null];
     }
     return view('coa.coaEntryListAdd', ['count' => $count, 'document_format' => $document_format, 'list_coa_group' => $list_coa_group, 'list_coa' => $list_coa]);
+});
+
+Route::get('/edit-coa-entry-list/{edit_id}', function ($id) {
+    $list_coa_entry = DB::table('coa_entry_list')->where('id', $id)->first();
+    $list_coa = DB::table('coa_entry_list')->get();
+    $list_coa_group = DB::table('coa_group')->get();
+
+    return view('coa.coaEntryListEdit', ['list_coa_entry' => $list_coa_entry, 'list_coa_group' => $list_coa_group, 'list_coa' => $list_coa]);
+});
+
+Route::get('/list-cash-bank-header', function (Request $request) {
+    $search_term = $request->input('search');
+    if ($search_term) {
+        $list_bank_header = DB::table('cash_bank_header')->where('doc_no', 'LIKE', '%' . $search_term . '%')->orWhere('doc_reff_no', 'LIKE', '%' . $search_term . '%')->orWhere('doc_type', 'LIKE', '%' . $search_term . '%')->get();
+    } else {
+        $list_bank_header = DB::table('cash_bank_header')->get();
+    }
+    return view('coa.cashBankEntry', ['list_bank_header' => $list_bank_header]);
+});
+
+Route::get('/cash-bank-header', function (Request $request) {
+    $document_format = DB::table('document_format')->where('modul_name', 'COA Entry List')->first();
+    $list_bank_header = DB::table('cash_bank_header')->get();
+    $list_payment = DB::table('payment_method')->get();
+    $count = DB::table('coa_group')->count();
+    if ($document_format === null) {
+        $document_format = (object) ['format' => null];
+    }
+    return view('coa.cashBankEntryAdd', ['count' => $count, 'document_format' => $document_format, 'list_bank_header' => $list_bank_header, 'list_payment' => $list_payment]);
 });

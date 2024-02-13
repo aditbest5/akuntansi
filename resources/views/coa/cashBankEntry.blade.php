@@ -7,15 +7,15 @@
                     <div class="w-full">
                         <div class="flex flex-wrap justify-between">
                             <div class="items-center ">
-                                <h1 class="font-medium text-3xl block dark:text-slate-100">Coa Entry List</h1>
+                                <h1 class="font-medium text-3xl block dark:text-slate-100">Cash Bank Entry</h1>
                                 <ol class="list-reset flex text-sm">
-                                    <li><a href="#" class="text-gray-500 dark:text-slate-400">Master Data</a>
+                                    <li><a href="#" class="text-gray-500 dark:text-slate-400">General Management</a>
                                     </li>
                                     <li><span class="text-gray-500 dark:text-slate-400 mx-2">/</span></li>
                                     <li class="text-gray-500 dark:text-slate-400">COA</li>
                                     <li><span class="text-gray-500 dark:text-slate-400 mx-2">/</span></li>
-                                    <li class="text-primary-500 hover:text-primary-600 dark:text-primary-400">Coa Entry List
-
+                                    <li class="text-primary-500 hover:text-primary-600 dark:text-primary-400">Cash Bank
+                                        Entry
                                     </li>
                                 </ol>
                             </div><!--end /div-->
@@ -45,9 +45,9 @@
 
         <div class="xl:w-full min-h-[calc(100vh-152px)] relative pb-14">
             <div class="flex flex-row justify-start gap-5">
-                <div class="flex flex-row justify-start mb-10"><a href="/coa-entry-list"
+                <div class="flex flex-row justify-start mb-10"><a href="/cash-bank-header"
                         class="bg-blue-500 text-white font-bold py-2 px-4 rounded"><i class="icofont-ui-add"></i></a></div>
-                <div class="flex flex-row justify-start mb-10"><button onclick="printPreview('Coa Entry List')"
+                <div class="flex flex-row justify-start mb-10"><button onclick="printPreview('Cash Bank Entry')"
                         class="bg-blue-500 text-white font-bold py-2 px-4 rounded"><i class="icofont-print"></i></button>
                 </div>
                 <div class="flex flex-row justify-start mb-10"><button onclick="exportExcel()"
@@ -61,7 +61,7 @@
                         <div class="border-b border-slate-200 dark:border-slate-700/40 py-3 px-4 dark:text-slate-300/70">
                             <div class="flex-none md:flex">
                                 <h4 class="font-medium text-lg flex-1 self-center mb-2 md:mb-0">
-                                    COA Entry List Details
+                                    Cash Bank Entry Details
                                 </h4>
                             </div>
                         </div>
@@ -75,47 +75,35 @@
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
 
-                                                    COA Code
+                                                    Voucher Number</th>
+                                                <th scope="col"
+                                                    class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
+                                                    Document Type
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Name
+                                                    Ref No
+
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Group Code
+                                                    Total Payment
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Group Name
+                                                    Net Total
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Header Code
+                                                    Note
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Header Name
+                                                    Date
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Type
-                                                </th>
-                                                <th scope="col"
-                                                    class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Special Account
-                                                </th>
-                                                <th scope="col"
-                                                    class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Description
-                                                </th>
-                                                <th scope="col"
-                                                    class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    Opening Saldo
-                                                </th>
-                                                <th scope="col"
-                                                    class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
-                                                    COA Status
+                                                    Status
                                                 </th>
                                                 <th scope="col"
                                                     class="p-3 text-xs font-medium tracking-wider text-left text-gray-700 dark:text-gray-400 uppercase">
@@ -129,7 +117,7 @@
                                         </thead>
                                         <tbody>
                                             <!-- 1 -->
-                                            @forelse ($list_coa as $key => $value)
+                                            @forelse ($list_bank_header as $key => $value)
                                                 <tr
                                                     class="bg-white border-b border-dashed dark:bg-gray-900 dark:border-gray-700">
 
@@ -137,50 +125,38 @@
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
                                                         <img src="template/dist/assets/images/users/avatar-1.png"
                                                             alt="" class="mr-2 h-8 rounded-full inline-block" />
-                                                        {{ $value->coa_code }}
+                                                        {{ $value->doc_no }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        {{ $value->coa_name }}
+                                                        {{ $value->doc_reff_no }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        {{ $value->coa_group_code }}
+                                                        {{ $value->doc_type }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        {{ $value->coa_group_name }}
+                                                        {{ $value->doc_value1 }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        {{ $value->coa_header_code }}
+                                                        {{ $value->doc_value2 }}
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        {{ $value->coa_header_name }}
+                                                        {{ $value->doc_note }}
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        {{ $value->coa_type == '0' ? 'Header' : 'Detail' }}
-                                                    </td>
-                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        {{ $value->coa_sa == '0' ? 'Bank Cash' : ($value->coa_sa == '1' ? 'Customer' : ($value->coa_sa == '2' ? 'Supplier' : ($value->coa_sa == '3' ? 'Stock' : 'Fixed Asset'))) }}
-                                                    </td>
-                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        {{ $value->coa_description }}
-                                                    </td>
-                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        {{ $value->opening_saldo }}
-                                                    </td>
-                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                        {{ $value->coa_status == '0' ? 'Tidak Aktif' : 'Aktif' }}
+                                                        {{ $value->doc_status == '0' ? 'Tidak Aktif' : 'Aktif' }}
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                         {{ $value->modul_code }}
                                                     </td>
                                                     <td
                                                         class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
-                                                        <a href="/edit-coa-entry-list/{{ $value->id }}"><i
+                                                        <a href="/edit-cash-bank-header/{{ $value->id }}"><i
                                                                 class="icofont-edit text-lg text-gray-500 dark:text-gray-400"></i></a>
-                                                        <button onclick="deleteCoa({{ $value->id }})"><i
+                                                        <button onclick="deleteCashBank({{ $value->id }})"><i
                                                                 class="icofont-ui-delete text-lg text-red-500 dark:text-red-400"></i></button>
                                                     </td>
                                                 </tr>
@@ -197,13 +173,7 @@
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                    </td>
-                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                    </td>
-                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                         Data not found</td>
-                                                    <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
-                                                    </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
                                                     </td>
                                                     <td class="p-3 text-sm font-medium whitespace-nowrap dark:text-white">
@@ -293,7 +263,7 @@
                 </thead>
                 <tbody>
                     <!-- 1 -->
-                    @forelse ($list_coa as $key => $value)
+                    @forelse ($list_bank_header as $key => $value)
                         <tr class="bg-white border-b border-dashed dark:bg-gray-900 dark:border-gray-700">
 
                             <td class="p-3 text-sm text-gray-500 whitespace-nowrap dark:text-gray-400">
