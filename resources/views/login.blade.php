@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="template/dist/assets/libs/icofont/icofont.min.css">
     <link href="template/dist/assets/libs/flatpickr/flatpickr.min.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="template/dist/assets/css/tailwind.min.css">
+    <link rel="stylesheet" href="template/dist/assets/css/icons.css">
+
     <script>
         function getDateClient() {
             var d = new Date();
@@ -82,7 +84,7 @@
 
     <div class="relative flex flex-col justify-center min-h-screen overflow-hidden">
         <div
-            class="w-full  m-auto bg-white dark:bg-slate-800/60 rounded shadow-lg ring-2 ring-slate-300/50 dark:ring-slate-700/50 lg:max-w-md">
+            class="w-full m-auto bg-white dark:bg-slate-800/60 rounded shadow-lg ring-2 ring-slate-300/50 dark:ring-slate-700/50 lg:max-w-md">
             <div class="text-center p-6 bg-slate-900 rounded-t">
                 <a href="index.html"><img src="template/dist/assets/images/arneva.png" alt=""
                         class="w-18 h-14 mx-auto mb-2"></a>

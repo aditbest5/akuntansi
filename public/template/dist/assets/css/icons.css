@@ -1,4 +1,11 @@
-/* Template Name: 
+/* Template Name:
    File Description: Main Icon file of the template
 */
 /* Plugins */
+.bg-authentication {
+    background-image: url("../images/arneva-bg.png");
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+    background-position: center;
+    min-height: 250px;
+}
