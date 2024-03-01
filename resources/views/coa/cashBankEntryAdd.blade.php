@@ -40,11 +40,12 @@
                         class="bg-white dark:bg-gray-900 border border-slate-200 dark:border-slate-700/40  rounded-md w-full relative mb-4">
                         <div class="border-b border-slate-200 dark:border-slate-700/40 py-3 px-4 dark:text-slate-300/70">
                             <div class="flex-none md:flex">
-                                <h4 class="font-medium text-lg flex-1 self-center mb-2 md:mb-0">COA Entry List</h4>
+                                <h4 class="font-medium text-lg flex-1 self-center mb-2 md:mb-0">Cash Bank Header</h4>
                             </div>
                         </div><!--end header-title-->
                         <div class="flex-auto p-4 ">
                             <form onsubmit="return submitCashBank(event)">
+                                <br>
                                 <div class="grid xl:grid-cols-3 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
                                         <input type="text" name="doc_no" id="doc_no"
@@ -66,18 +67,6 @@
                                         </label>
                                     </div>
                                     <div class="relative z-0 mb-2 w-full group">
-                                        <input type="text" name="doc_type" id="doc_type"
-                                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
-                                            placeholder=" " required />
-                                        <label for="doc_type "
-                                            class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Document
-                                            Type
-                                        </label>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="grid xl:grid-cols-3 xl:gap-6">
-                                    <div class="relative z-0 mb-2 w-full group">
                                         <input type="number" name="doc_value1" id="doc_value1"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
                                             placeholder=" " required />
@@ -86,6 +75,10 @@
                                             Payment
                                         </label>
                                     </div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="grid xl:grid-cols-3 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
                                         <input type="number" name="doc_value2" id="doc_value2"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
@@ -103,9 +96,6 @@
                                             class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Date
                                         </label>
                                     </div>
-                                </div>
-                                <br>
-                                <div class="grid xl:grid-cols-3 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
                                         <label for="doc_status"
                                             class="font-medium text-sm text-slate-600 dark:text-slate-400 top-3">Status</label>
@@ -115,8 +105,9 @@
                                             <option value="0">Tidak</option>
                                         </select>
                                     </div>
-                                    <div class="relative z-0 mb-2 w-full group">
-                                    </div>
+                                </div>
+                                <br>
+                                <div class="grid xl:grid-cols-3 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
                                         <textarea type="text" name="doc_note" id="doc_note"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-slate-300/60 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"

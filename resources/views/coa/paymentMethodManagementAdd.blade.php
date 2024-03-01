@@ -55,8 +55,7 @@
                                             placeholder=" " required disabled />
                                         <label for="payment_method_code"
                                             class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Payment
-                                            Method
-                                            Code
+                                            Method Code
                                         </label>
                                     </div>
                                     <div class="relative z-0 mb-2 w-full group">
@@ -65,8 +64,7 @@
                                             placeholder=" " required />
                                         <label for="payment_method_name "
                                             class="absolute text-sm text-gray-400 dark:text-slate-400/70 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary-500 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Payment
-                                            Method
-                                            Name</label>
+                                            Method Name</label>
                                     </div>
                                 </div>
                                 <br>

@@ -280,7 +280,6 @@ Route::get('/list-journal-type-management', function (Request $request) {
 Route::get('/journal-type-management', function () {
     $list_journal_type = DB::table('journal_type')->get();
     $count = DB::table('journal_type')->count();
-
     $document_format = DB::table('document_format')->where('modul_name', 'Journal Type Management')->first();
     if ($document_format === null) {
         $document_format = (object) ['format' => null];
@@ -352,7 +351,7 @@ Route::get('/list-coa-group', function (Request $request) {
 
 Route::get('/coa-group', function () {
     $document_format = DB::table('document_format')->where('modul_name', 'COA Group')->first();
-    $count = DB::table('tax_type')->count();
+    $count = DB::table('coa_group')->count();
     if ($document_format === null) {
         $document_format = (object) ['format' => null];
     }
@@ -373,7 +372,7 @@ Route::get('/coa-entry-list', function () {
     $document_format = DB::table('document_format')->where('modul_name', 'COA Entry List')->first();
     $list_coa_group = DB::table('coa_group')->get();
     $list_coa = DB::table('coa_entry_list')->get();
-    $count = DB::table('coa_group')->count();
+    $count = DB::table('coa_entry_list')->count();
     if ($document_format === null) {
         $document_format = (object) ['format' => null];
     }
@@ -402,7 +401,7 @@ Route::get('/cash-bank-header', function (Request $request) {
     $document_format = DB::table('document_format')->where('modul_name', 'COA Entry List')->first();
     $list_bank_header = DB::table('cash_bank_header')->get();
     $list_payment = DB::table('payment_method')->get();
-    $count = DB::table('coa_group')->count();
+    $count = DB::table('cash_bank_header')->count();
     if ($document_format === null) {
         $document_format = (object) ['format' => null];
     }

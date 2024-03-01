@@ -1301,6 +1301,10 @@ function submitPayment(e) {
     let payment_method_status = document.getElementById(
         "payment_method_status"
     ).value;
+    let split_coa_code = coa_code.split("+");
+    coa_code = split_coa_code[1];
+    let split_journal_code = journal_type_code.split("+");
+    journal_type_code = split_journal_code[1];
 
     const requestData = {
         payment_method_code,
@@ -1844,6 +1848,44 @@ function deleteCoa(id) {
 }
 
 function coaCode(e) {
+    let split_string = e.split("+");
+    let id = split_string[0];
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+            id: id,
+        }),
+    };
+    fetch("/api/coa/get-coa-name", requestOptions)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
+        })
+        .then((data) => {
+            const { coa_name, sts } = data;
+            if (data.length == 0) {
+                alert("Tidak Ada Data", "warning", "Warning");
+            } else {
+                if (sts == "N") {
+                    alert("Error");
+                } else {
+                    document.getElementById("coa_name").value = coa_name;
+                }
+            }
+        })
+        .catch((error) => {
+            console.error("There was an error!", error);
+            alert("ERROR", "error", "Error \n" + error.message);
+        });
+}
+
+function selectCOA(e) {
     let split_string = e.split("+");
     let id = split_string[0];
     const requestOptions = {

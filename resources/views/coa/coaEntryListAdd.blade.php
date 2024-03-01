@@ -67,7 +67,7 @@
                                 <br>
                                 <div class="grid xl:grid-cols-2 xl:gap-6">
                                     <div class="relative z-0 mb-2 w-full group">
-                                        <select onchange="coaCode(this.value)" name="coa_header_code" id="coa_header_code"
+                                        <select onchange="selectCOA(this.value)" name="coa_header_code" id="coa_header_code"
                                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b border-gray-300 appearance-none dark:text-slate-300 dark:border-slate-700 dark:focus:border-primary-500 focus:outline-none focus:ring-0 focus:border-primary-500 peer"
                                             required>
                                             <option value='00' hidden>Pilih COA</option>
