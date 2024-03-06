@@ -131,7 +131,9 @@ class COAController extends Controller
             'modul_code' => $request->input('modul_code'),
             'modul_name' => $request->input('modul_name'),
             'modul_description' => $request->input('modul_description'),
-            'modul_status' => $request->input('modul_status')
+            'modul_status' => $request->input('modul_status'),
+            'modul_url' => $request->input('modul_url')
+
 
         ]);
         if (!$results) {

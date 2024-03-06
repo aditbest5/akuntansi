@@ -349,6 +349,7 @@ function submitEditModul(e, id) {
     let group_modul_code = document.getElementById("group_modul_code").value;
     let group_modul_name = document.getElementById("group_modul_name").value;
     let modul_code = document.getElementById("modul_code").value;
+    let modul_url = document.getElementById("modul_url").value;
     let modul_name = document.getElementById("modul_name").value;
     let modul_description = document.getElementById("modul_description").value;
     let modul_status = document.getElementById("modul_status").value;
@@ -359,6 +360,7 @@ function submitEditModul(e, id) {
         group_modul_name,
         modul_code,
         modul_name,
+        modul_url,
         modul_description,
         modul_status,
     };
