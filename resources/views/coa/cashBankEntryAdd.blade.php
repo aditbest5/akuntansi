@@ -220,7 +220,7 @@
                             <div
                                 class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                    Create New Product
+                                    Cash Bank Opposite
                                 </h3>
                                 <button type="button"
                                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -238,33 +238,47 @@
                                 <div class="grid gap-4 mb-4 grid-cols-2">
                                     <div class="col-span-2">
                                         <label for="name"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Voucher
+                                            Code</label>
                                         <input type="text" name="name" id="name"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             placeholder="Type product name" required="">
                                     </div>
+
+                                    <div class="col-span-2">
+                                        <label for="coa_code"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Coa
+                                            Code</label>
+                                        <select id="coa_code"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                            <option vlaue="00" selected hidden>Select COA</option>
+                                            @forelse ($list_coa as $value)
+                                                <option value="{{ $value->coa_code }}">
+                                                    {{ $value->coa_name }}</option>
+                                            @empty
+                                                <option value="00">Tidak Ada</option>
+                                            @endforelse
+                                        </select>
+                                    </div>
                                     <div class="col-span-2 sm:col-span-1">
-                                        <label for="price"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                                        <input type="number" name="price" id="price"
+                                        <label for="coa_name"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">COA
+                                            Name</label>
+                                        <input type="number" name="coa_name" id="coa_name"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                             placeholder="$2999" required="">
                                     </div>
                                     <div class="col-span-2 sm:col-span-1">
-                                        <label for="category"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                                        <select id="category"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                            <option selected="">Select category</option>
-                                            <option value="TV">TV/Monitors</option>
-                                            <option value="PC">PC</option>
-                                            <option value="GA">Gaming/Console</option>
-                                            <option value="PH">Phones</option>
-                                        </select>
+                                        <label for="payment_value"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Payment
+                                            Value</label>
+                                        <input type="number" name="payment_value" id="payment_value"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                            placeholder="" required="">
                                     </div>
                                     <div class="col-span-2">
                                         <label for="description"
-                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                             Description</label>
                                         <textarea id="description" rows="4"
                                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -279,7 +293,7 @@
                                             d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    Add new product
+                                    Add new
                                 </button>
                             </form>
                         </div>
@@ -293,7 +307,7 @@
                                 class="border-b border-slate-200 dark:border-slate-700/40 py-3 px-4 dark:text-slate-300/70">
                                 <div class="flex-none md:flex">
                                     <h4 class="font-medium text-lg flex-1 self-center mb-2 md:mb-0">
-                                        Receipt Voucher
+                                        Cash Bank Detail
                                     </h4>
                                 </div>
                                 <div class="flex flex-row justify-start my-5"><button data-modal-target="crud-modal1"
@@ -378,7 +392,7 @@
                                 class="border-b border-slate-200 dark:border-slate-700/40 py-3 px-4 dark:text-slate-300/70">
                                 <div class="flex-none md:flex">
                                     <h4 class="font-medium text-lg flex-1 self-center mb-2 md:mb-0">
-                                        Cash Bank Entry Details
+                                        Cash Bank Opposite
                                     </h4>
                                 </div>
                                 <div class="flex flex-row justify-start my-5"><button data-modal-target="crud-modal2"

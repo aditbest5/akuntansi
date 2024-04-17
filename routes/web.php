@@ -401,9 +401,10 @@ Route::get('/cash-bank-header', function (Request $request) {
     $document_format = DB::table('document_format')->where('modul_name', 'COA Entry List')->first();
     $list_bank_header = DB::table('cash_bank_header')->get();
     $list_payment = DB::table('payment_method')->get();
+    $list_coa = DB::table('coa_entry_list')->get();
     $count = DB::table('cash_bank_header')->count();
     if ($document_format === null) {
         $document_format = (object) ['format' => null];
     }
-    return view('coa.cashBankEntryAdd', ['count' => $count, 'document_format' => $document_format, 'list_bank_header' => $list_bank_header, 'list_payment' => $list_payment]);
+    return view('coa.cashBankEntryAdd', ['count' => $count, 'document_format' => $document_format, 'list_bank_header' => $list_bank_header, 'list_payment' => $list_payment, 'list_coa' => $list_coa]);
 });
